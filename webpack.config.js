@@ -14,11 +14,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        loader: require.resolve('babel-loader')
-      },
-      {
         enforce: 'pre',
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
@@ -27,6 +22,11 @@ module.exports = {
           failOnWarning: true,
           failOnError: true,
         },
+      },
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        loader: require.resolve('babel-loader')
       },
       {
         test: /\.(scss)$/,
