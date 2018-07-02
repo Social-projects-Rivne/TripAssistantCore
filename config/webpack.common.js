@@ -1,14 +1,15 @@
+const paths = require('./paths');
 const webpack = require('webpack');
-const paths = require('./config/paths');
 const autoprefixer = require('autoprefixer');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 
-
 module.exports = {
-  entry:paths.appIndexJs,
+  entry: paths.appIndexJs,
   output: {
-    path:paths.appBuild,
+    path: paths.appBuild,
     filename: 'bundle.js'
   },
   module: {
@@ -21,12 +22,17 @@ module.exports = {
         options: {
           failOnWarning: true,
           failOnError: true,
-        },
+        }
       },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        loader: require.resolve('babel-loader')
+        use: {
+          loader: require.resolve('babel-loader'),
+          options: {
+            presets: ['env', 'react', 'stage-2']
+          }
+        }
       },
       {
         test: /\.(scss)$/,
@@ -37,7 +43,7 @@ module.exports = {
           {
             loader: require.resolve('css-loader'),
             options: {
-              importLoaders: 1
+              importLoaders: 1,
             },
           },
           require.resolve('sass-loader'),
@@ -63,20 +69,18 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx']
+    modules: ['node_modules', paths.appAssets],
+    extensions: ['*', '.js', '.jsx'],
   },
   plugins: [
+    new CleanWebpackPlugin(['build'], {root: paths.root}),
     new webpack.HotModuleReplacementPlugin(),
     new MiniCssExtractPlugin({
       filename: 'style.css'
     }),
+    new HtmlWebpackPlugin({
+      template: paths.appHtml,
+      filename: 'index.html'
+    })
   ],
-  devServer: {
-    historyApiFallback: true,
-    stats: 'errors-only',
-    port: '8080',
-    hot: true,
-    open: true,
-    overlay:true
-  },
-}
+};
