@@ -12,6 +12,14 @@
   "keywords": [],
   "author": "Dmytro Prokopiuk <dima.prokopyuk@gmail.com> (-)",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Social-projects-Rivne/TripAssistantCore.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Social-projects-Rivne/TripAssistantCore/issues"
+  },
+  "homepage": "https://github.com/Social-projects-Rivne/TripAssistantCore#readme",
   "dependencies": {
     "express": "^4.16.3",
     "react": "^16.3.2",
