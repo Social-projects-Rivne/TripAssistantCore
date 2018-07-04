@@ -1,0 +1,16 @@
+.navigation {
+  &_item {
+    display: flex;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+
+    // Delete this style, when global styles be set
+    color: #00deff;
+    //
+
+    &:hover {
+      background: white;
+    }
+  }
+}
