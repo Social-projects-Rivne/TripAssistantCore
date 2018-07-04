@@ -45,6 +45,9 @@ module.exports = {
             loader: require.resolve('css-loader'),
             options: {
               importLoaders: 1,
+              alias: {
+                '@images': paths.globalImages,
+              }
             },
           },
           require.resolve('sass-loader'),
@@ -67,10 +70,21 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.(png|jpe?g|gif|svg)/,
+        use: [
+          {
+            loader: require.resolve('file-loader'),
+            options: {
+              name: 'images/[name].[ext]'
+            }
+          }
+        ]
+      },
     ]
   },
   resolve: {
-    modules: ['node_modules', paths.appAssets],
+    modules: [paths.appSrc, paths.appAssets , 'node_modules'],
     extensions: ['*', '.js', '.jsx'],
   },
   plugins: [
