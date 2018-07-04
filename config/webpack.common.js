@@ -2,6 +2,7 @@ const paths = require('./paths');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+var styleLintPlugin = require('stylelint-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
@@ -75,6 +76,11 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(['build'], {root: paths.root}),
     new webpack.HotModuleReplacementPlugin(),
+    new styleLintPlugin({
+      files: 'client/**/*.scss',
+      failOnError: false,
+      quiet: false,
+    }),
     new MiniCssExtractPlugin({
       filename: 'style.css'
     }),

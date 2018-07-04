@@ -1,5 +1,5 @@
 {
-  "name": "server",
+  "name": "trip-assistant",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,6 +12,14 @@
   "keywords": [],
   "author": "Dmytro Prokopiuk <dima.prokopyuk@gmail.com> (-)",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Social-projects-Rivne/TripAssistantCore.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Social-projects-Rivne/TripAssistantCore/issues"
+  },
+  "homepage": "https://github.com/Social-projects-Rivne/TripAssistantCore#readme",
   "dependencies": {
     "express": "^4.16.3",
     "react": "^16.3.2",
@@ -42,6 +50,9 @@
     "react-hot-loader": "^4.3.3",
     "sass-loader": "^7.0.3",
     "style-loader": "^0.21.0",
+    "stylelint": "^9.3.0",
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint-webpack-plugin": "^0.10.5",
     "webpack": "^4.14.0",
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.4",
