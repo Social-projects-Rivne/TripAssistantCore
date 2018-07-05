@@ -18,6 +18,7 @@
     "jsx-a11y/label-has-for": "off",
     "react/prefer-stateless-function": "off",
     "comma-dangle": ["error", {"functions": "never"}],
-    "indent": ["error", 2]
+    "indent": ["error", 2],
+    "linebreak-style": "off"
   }
 }

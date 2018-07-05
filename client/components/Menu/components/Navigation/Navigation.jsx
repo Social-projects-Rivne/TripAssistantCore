@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './Navigation.scss';
 
@@ -21,5 +22,14 @@ const Navigation = ({ sidebar }) => (
     </ul>
   </nav>
 );
+
+NavigationItem.propTypes = {
+  name: PropTypes.string.isRequired,
+  path: PropTypes.string.isRequired
+};
+
+Navigation.propTypes = {
+  sidebar: PropTypes.func.isRequired
+};
 
 export default Navigation;
