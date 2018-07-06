@@ -1,0 +1,32 @@
+[  
+  {  
+     "id_cars":1,
+     "user_id":1,
+     "name_car":"Peugeot ",
+     "tank_volume":50,
+     "max_passengers_count":2,
+     "avg_gas_cost":"7",
+     "baggage_volume":2,
+     "avg_speed":80
+  },
+  {  
+     "id_cars":2,
+     "user_id":1,
+     "name_car":"Lamborghini ",
+     "tank_volume":40,
+     "max_passengers_count":2,
+     "avg_gas_cost":"8",
+     "baggage_volume":1,
+     "avg_speed":60
+  },
+  {  
+     "id_cars":3,
+     "user_id":1,
+     "name_car":"Porsche ",
+     "tank_volume":80,
+     "max_passengers_count":1,
+     "avg_gas_cost":"5",
+     "baggage_volume":2,
+     "avg_speed":90
+  }
+]
