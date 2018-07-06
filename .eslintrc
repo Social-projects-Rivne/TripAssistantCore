@@ -19,6 +19,7 @@
     "react/prefer-stateless-function": "off",
     "comma-dangle": ["error", {"functions": "never"}],
     "indent": ["error", 2],
-    "linebreak-style": "off"
+    "linebreak-style": "off",
+    "import/no-unresolved": "off"
   }
 }

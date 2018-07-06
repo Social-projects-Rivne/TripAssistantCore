@@ -3,7 +3,6 @@ const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 var styleLintPlugin = require('stylelint-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 
@@ -84,11 +83,10 @@ module.exports = {
     ]
   },
   resolve: {
-    modules: [paths.appSrc, paths.appAssets , 'node_modules'],
-    extensions: ['*', '.js', '.jsx'],
+    modules: ['node_modules', paths.appAssets],
+    extensions: ['*', '.js', '.jsx', '.scss', '.css'],
   },
   plugins: [
-    new CleanWebpackPlugin(['build'], {root: paths.root}),
     new webpack.HotModuleReplacementPlugin(),
     new styleLintPlugin({
       files: 'client/**/*.scss',
