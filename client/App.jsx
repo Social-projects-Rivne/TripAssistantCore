@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Routes from './routes';
 import Header from './components/Header';
@@ -25,16 +25,18 @@ class App extends Component {
   render() {
     const { sidebarActive } = this.state;
     return (
-      <div className="app">
-        <Menu sidebar={this.toggleSidebar} />
-        {sidebarActive && <Sidebar />}
+      <Fragment>
+        <Header />
         <div className="main">
-          <Header />
-          <Switch>
-            {Routes.map((route, i) => <Route {...route} key={i} />)}
-          </Switch>
+          <Menu sidebar={this.toggleSidebar} />
+          {sidebarActive && <Sidebar />}
+          <div className="content">
+            <Switch>
+              {Routes.map((route, i) => <Route {...route} key={i} />)}
+            </Switch>
+          </div>
         </div>
-      </div>
+      </Fragment>
     );
   }
 }
