@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Profile.scss';
+import CarCard from './CarCard/CarCard';
 
 class Profile extends Component {
   constructor() {
@@ -38,23 +39,7 @@ class Profile extends Component {
           <h2>{name}</h2>
           <p>{email}</p>
         </div>
-        {cars.map(({
-          name_car: carName,
-          tank_volume: tankVolume,
-          max_passengers_count: maxPassengerCount,
-          avg_gas_cost: avgGasCost,
-          baggage_volume: baggageVolume,
-          avg_speed: avgSpeed
-        }, i) => (
-          <div className="profile__card profile__card-cars" key={i}>
-            <input className="profile__input" type="text" defaultValue={carName} />
-            <input className="profile__input" type="text" defaultValue={tankVolume} />
-            <input className="profile__input" type="text" defaultValue={maxPassengerCount} />
-            <input className="profile__input" type="text" defaultValue={avgGasCost} />
-            <input className="profile__input" type="text" defaultValue={baggageVolume} />
-            <input className="profile__input" type="text" defaultValue={avgSpeed} />
-          </div>
-        ))}
+        {cars.map((car, i) => <CarCard settings={car} key={i} id={i} />)}
       </div>
     );
   }
