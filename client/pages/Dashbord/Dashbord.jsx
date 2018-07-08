@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import UserList from '../../components/UserList';
 
 const Dashbord = () => (
-  <h1>Dashbord</h1>
+  <Fragment>
+    <h1>Dashbord</h1>
+    <UserList />
+  </Fragment>
 );
 
 export default Dashbord;

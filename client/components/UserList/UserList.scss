@@ -1,0 +1,44 @@
+.user-list {
+  margin-top: 10px;
+
+  &_item {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 30px;
+
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+
+  &_info {
+    display: flex;
+    width: 25%;
+  }
+
+  &_img {
+    margin-right: 30px;
+    border-radius: 50%;
+    height: 55px;
+    overflow: hidden;
+  }
+
+  &_column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  &_btn {
+    border-radius: 0;
+    height: 100%;
+    padding-right: 10px;
+    padding-left: 10px;
+    min-width: 60px;
+
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+}
