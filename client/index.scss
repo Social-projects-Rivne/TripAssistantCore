@@ -7,8 +7,10 @@
 // What alternative for this
 html,
 body,
-#app {
-  height: 100%;
+#app,
+.menu,
+.main {
+  min-height: calc(100vh - 50px);
 }
 
 body {
@@ -21,4 +23,9 @@ a {
 
 img {
   height: 100%;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-size: 1.5em;
 }

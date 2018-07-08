@@ -1,13 +1,8 @@
-#app {
-  height: 100%;
-}
-
 .main {
   display: flex;
-  background: grey;
-  height: calc(100vh - 50px);
 }
 
 .content {
   flex-grow: 1;
+  padding: 10px 15px;
 }
