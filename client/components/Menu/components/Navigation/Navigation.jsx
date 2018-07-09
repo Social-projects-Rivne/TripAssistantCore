@@ -2,30 +2,44 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './Navigation.scss';
+import AddIco from 'images/add.svg';
+import UserMenuIco from 'images/user-menu.svg';
+import EnvelopeIco from 'images/envelope.svg';
 
 const MENU_ITEM = [
-  { name: 'Profile', path: '/profile' },
-  { name: 'History', path: '/history' },
-  { name: 'Statistic', path: '/statistic' },
-  { name: 'Contacts', path: '/contacts' }
+  { name: 'MY PROFILE', path: '/profile', ico: UserMenuIco },
+  { name: 'CONTACT', path: '/contacts', ico: EnvelopeIco }
 ];
 
-const NavigationItem = ({ name, path }) => (
-  <li><Link className="navigation_item" to={path}>{name}</Link></li>
+const NavigationItem = ({ name, path, ico }) => (
+  <li>
+    <Link className="navigation_item" to={path}>
+      <img src={ico} alt="ico" />
+      {name}
+    </Link>
+  </li>
 );
 
 const Navigation = ({ sidebar }) => (
   <nav className="navigation">
     <ul>
-      <li><Link className="navigation_item" to="/" onClick={sidebar}>+</Link></li>
-      {MENU_ITEM.map(({ name, path }, i) => <NavigationItem name={name} path={path} key={i} />)}
+      <li>
+        <Link className="navigation_item" to="/" onClick={sidebar}>
+          <img src={AddIco} alt="add" />
+          NEW TRIP
+        </Link>
+      </li>
+      {MENU_ITEM.map(({ name, path, ico }, i) => (
+        <NavigationItem name={name} path={path} ico={ico} key={i} />
+      ))}
     </ul>
   </nav>
 );
 
 NavigationItem.propTypes = {
   name: PropTypes.string.isRequired,
-  path: PropTypes.string.isRequired
+  path: PropTypes.string.isRequired,
+  ico: PropTypes.string.isRequired
 };
 
 Navigation.propTypes = {
