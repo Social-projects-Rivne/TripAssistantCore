@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import './Profile.scss';
-import CarCard from './CarCard/CarCard';
+import CarsCard from './CarsCard/CarsCard';
+import PersonalInfoCard from './PersonalInfoCard/PersonalInfoCard';
 
 class Profile extends Component {
   constructor() {
     super();
 
     this.state = {
-      name: '',
-      email: '',
-      cars: []
+      userInfo: {},
+      carsInfo: []
     };
   }
 
@@ -17,29 +17,32 @@ class Profile extends Component {
     fetch('http://fakecollapse.esy.es/fetch/userData.json')
       .then(res => res.json())
       .then(data => this.setState({
-        name: data[0].name,
-        email: data[0].email
+        userInfo: data[0]
       }));
 
     fetch('http://fakecollapse.esy.es/fetch/userCarsData.json')
       .then(res => res.json())
       .then(data => this.setState({
-        cars: data
+        carsInfo: data
       }));
   }
 
   render() {
-    const { name, email, cars } = this.state;
+    const { userInfo, carsInfo } = this.state;
 
     return (
       <div className="profile">
-        <h1>Profile</h1>
-        <div className="profile__card">
-          <img src="http://via.placeholder.com/150x150" className="profile__avatar" alt="avatar" />
-          <h2>{name}</h2>
-          <p>{email}</p>
+        <h1 className="profile__header">My Profile</h1>
+        <div className="profile-content-wrap">
+          <div className="row">
+            <div className="col-12 col-md-6">
+              <PersonalInfoCard settings={userInfo} />
+            </div>
+            <div className="col-12 col-md-6">
+              <CarsCard carsInfo={carsInfo} />
+            </div>
+          </div>
         </div>
-        {cars.map((car, i) => <CarCard settings={car} key={i} id={i} />)}
       </div>
     );
   }

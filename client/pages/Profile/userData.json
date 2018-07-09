@@ -1,20 +1,11 @@
 [  
   {  
      "id_user":1,
-     "name":"Oleksii                                           ",
-     "login":"Oleksii                                           ",
-     "password_hash":"adwqwqfafasf",
-     "token":"b08f86af-35da-48f2-8fab-cef3904660bd              ",
-     "email":"asda@asdasd.com                                   ",
-     "home_point":{  
-        "name":"Rixos The Palm Dubai",
-        "position":"[25.1212, 55.1535]"
-     },
-     "drive_hours_per_day":4,
-     "default_car_id":null,
-     "drive_stop_period":1,
-     "eat_stop_period":0.5,
-     "status":true,
-     "avatar":null
+     "name":"Oleksii Iordatii",
+     "email":"asda@asdasd.com",
+     "avatar":null,
+     "rating": 4.67,
+     "kmTraveled": 10.357,
+     "tripsCount": 5
   }
 ]

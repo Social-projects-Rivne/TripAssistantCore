@@ -5,7 +5,8 @@
 .main {
   display: flex;
   background: grey;
-  height: calc(100vh - 50px);
+  height: auto;
+  min-height: calc(100vh - 50px);
 }
 
 .content {
