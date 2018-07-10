@@ -13,16 +13,13 @@ body,
   min-height: calc(100vh - 50px);
 }
 
-body {
-  font-family: sans-serif;
-}
-
 a {
   text-decoration: none;
 }
 
 img {
   height: 100%;
+  flex-shrink: 0;
 }
 
 h1 {
