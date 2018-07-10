@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import './App.scss';
 import Routes from './routes';
 import Header from './components/Header';
 import Menu from './components/Menu';
 import Sidebar from './components/Sidebar';
-import './App.scss';
 
 class App extends Component {
   constructor(props) {

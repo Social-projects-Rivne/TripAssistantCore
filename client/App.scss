@@ -1,11 +1,15 @@
+@import 'materialize-css/sass/materialize.scss';
+
 #app {
+  padding-top: 50px;
   height: 100%;
 }
 
 .main {
   display: flex;
   background: grey;
-  height: calc(100vh - 50px);
+  height: auto;
+  min-height: calc(100vh - 50px);
 }
 
 .content {
