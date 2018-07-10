@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Profile.scss';
 import CarsCard from './CarsCard/CarsCard';
 import PersonalInfoCard from './PersonalInfoCard/PersonalInfoCard';
+import FeedbacksCard from './FeedbacksCard/FeedbacksCard';
 
 class Profile extends Component {
   constructor() {
@@ -9,26 +10,33 @@ class Profile extends Component {
 
     this.state = {
       userInfo: {},
-      carsInfo: []
+      carsInfo: [],
+      feedbacksInfo: []
     };
   }
 
   componentDidMount() {
-    fetch('http://fakecollapse.esy.es/fetch/userData.json')
+    fetch('public/userData.json')
       .then(res => res.json())
       .then(data => this.setState({
         userInfo: data[0]
       }));
 
-    fetch('http://fakecollapse.esy.es/fetch/userCarsData.json')
+    fetch('public/userCarsData.json')
       .then(res => res.json())
       .then(data => this.setState({
         carsInfo: data
       }));
+
+    fetch('public/feedbacksData.json')
+      .then(res => res.json())
+      .then(data => this.setState({
+        feedbacksInfo: data
+      }));
   }
 
   render() {
-    const { userInfo, carsInfo } = this.state;
+    const { userInfo, carsInfo, feedbacksInfo } = this.state;
 
     return (
       <div className="profile">
@@ -37,6 +45,7 @@ class Profile extends Component {
           <div className="row">
             <div className="col-12 col-md-6">
               <PersonalInfoCard settings={userInfo} />
+              <FeedbacksCard feedbacksInfo={feedbacksInfo} />
             </div>
             <div className="col-12 col-md-6">
               <CarsCard carsInfo={carsInfo} />

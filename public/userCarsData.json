@@ -6,7 +6,8 @@
      "maxPassengersCount":2,
      "avgGasCost":7,
      "baggageVolume":2,
-     "avgSpeed":80
+     "avgSpeed":80,
+     "isDefault": true
   },
   {  
      "id_cars":2,
@@ -15,7 +16,8 @@
      "maxPassengersCount":2,
      "avgGasCost":8,
      "baggageVolume":1,
-     "avgSpeed":60
+     "avgSpeed":60,
+     "isDefault": false
   },
   {  
      "id_cars":3,
@@ -24,6 +26,7 @@
      "maxPassengersCount":1,
      "avgGasCost":5,
      "baggageVolume":2,
-     "avgSpeed":90
+     "avgSpeed":90,
+     "isDefault": false
   }
 ]

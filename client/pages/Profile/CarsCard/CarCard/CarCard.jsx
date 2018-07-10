@@ -13,6 +13,11 @@ class CarCard extends Component {
     this.toggleCarCardBody = this.toggleCarCardBody.bind(this);
   }
 
+  componentDidMount() {
+    const { carInfo: { isDefault } } = this.props;
+    if (isDefault) this.setState({ isActive: true });
+  }
+
   toggleCarCardBody() {
     const { isActive } = this.state;
     this.setState({
@@ -21,16 +26,17 @@ class CarCard extends Component {
   }
 
   render() {
-    const { carInfo, id } = this.props;
-    const { isActive } = this.state;
     const {
-      nameCar,
-      tankVolume,
-      maxPassengersCount,
-      avgGasCost,
-      baggageVolume,
-      avgSpeed
-    } = carInfo;
+      carInfo: {
+        nameCar,
+        tankVolume,
+        maxPassengersCount,
+        avgGasCost,
+        baggageVolume,
+        avgSpeed
+      }, id
+    } = this.props;
+    const { isActive } = this.state;
 
     return (
       <div className="car-card__wrap">
@@ -45,20 +51,32 @@ class CarCard extends Component {
               <form>
                 <div className="row">
                   <div className="col-12 col-md-6">
-                    <label className="car-card__label">Car name</label>
-                    <input className="car-card__input" type="text" defaultValue={nameCar} />
-                    <label className="car-card__label">Tank Volume</label>
-                    <input className="car-card__input" type="text" defaultValue={tankVolume} />
-                    <label className="car-card__label">Number of passengers</label>
-                    <input className="car-card__input" type="text" defaultValue={maxPassengersCount} />
+                    <div className="input-field">
+                      <input className="car-card__input" type="text" defaultValue={nameCar} />
+                      <label className="car-card__label active">Car name</label>
+                    </div>
+                    <div className="input-field">
+                      <input className="car-card__input" type="text" defaultValue={tankVolume} />
+                      <label className="car-card__label active">Tank Volume</label>
+                    </div>
+                    <div className="input-field">
+                      <input className="car-card__input" type="text" defaultValue={maxPassengersCount} />
+                      <label className="car-card__label active">Number of passengers</label>
+                    </div>
                   </div>
                   <div className="col-12 col-md-6">
-                    <label className="car-card__label">Average gas cost</label>
-                    <input className="car-card__input" type="text" defaultValue={avgGasCost} />
-                    <label className="car-card__label">Baggage size, m3</label>
-                    <input className="car-card__input" type="text" defaultValue={baggageVolume} />
-                    <label className="car-card__label">Average speed, km/h</label>
-                    <input className="car-card__input" type="text" defaultValue={avgSpeed} />
+                    <div className="input-field">
+                      <input className="car-card__input" type="text" defaultValue={avgGasCost} />
+                      <label className="car-card__label active">Average gas cost</label>
+                    </div>
+                    <div className="input-field">
+                      <input className="car-card__input" type="text" defaultValue={baggageVolume} />
+                      <label className="car-card__label active">Baggage size, m3</label>
+                    </div>
+                    <div className="input-field">
+                      <input className="car-card__input" type="text" defaultValue={avgSpeed} />
+                      <label className="car-card__label active">Average speed, km/h</label>
+                    </div>
                   </div>
                 </div>
                 <button type="submit" href="#!" className="car-card__btn-submit">SAVE CHANGES</button>
