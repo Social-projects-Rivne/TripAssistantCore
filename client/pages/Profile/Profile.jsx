@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import './Profile.scss';
 import CarsCard from './CarsCard/CarsCard';
 import PersonalInfoCard from './PersonalInfoCard/PersonalInfoCard';
@@ -16,23 +17,14 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-    fetch('public/userData.json')
-      .then(res => res.json())
-      .then(data => this.setState({
-        userInfo: data[0]
-      }));
+    axios.get('public/data/profileUserData.json')
+      .then(({ data }) => this.setState({ userInfo: data[0] }));
 
-    fetch('public/userCarsData.json')
-      .then(res => res.json())
-      .then(data => this.setState({
-        carsInfo: data
-      }));
+    axios.get('public/data/userCarsData.json')
+      .then(({ data }) => this.setState({ carsInfo: data }));
 
-    fetch('public/feedbacksData.json')
-      .then(res => res.json())
-      .then(data => this.setState({
-        feedbacksInfo: data
-      }));
+    axios.get('public/data/feedbacksData.json')
+      .then(({ data }) => this.setState({ feedbacksInfo: data }));
   }
 
   render() {
