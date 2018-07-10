@@ -5,10 +5,12 @@ import './Navigation.scss';
 import AddIco from 'images/add.svg';
 import UserMenuIco from 'images/user-menu.svg';
 import EnvelopeIco from 'images/envelope.svg';
+import DashbordIco from 'images/dashbord.svg';
 
 const MENU_ITEM = [
   { name: 'MY PROFILE', path: '/profile', ico: UserMenuIco },
-  { name: 'CONTACT', path: '/contacts', ico: EnvelopeIco }
+  { name: 'CONTACT', path: '/contacts', ico: EnvelopeIco },
+  { name: 'DASHBORD', path: '/dashbord', ico: DashbordIco }
 ];
 
 const NavigationItem = ({ name, path, ico }) => (
@@ -29,8 +31,8 @@ const Navigation = ({ sidebar }) => (
           NEW TRIP
         </Link>
       </li>
-      {MENU_ITEM.map(({ name, path, ico }, i) => (
-        <NavigationItem name={name} path={path} ico={ico} key={i} />
+      {MENU_ITEM.map((path, i) => (
+        <NavigationItem {...path} key={i} />
       ))}
     </ul>
   </nav>

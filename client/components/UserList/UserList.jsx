@@ -20,7 +20,7 @@ class UserList extends Component {
   render() {
     const { userList } = this.state;
     return (
-      <ul className="user-list">
+      <ul className="userlist collection">
         {userList.map(user => <ListItem {...user} key={user.id} />)}
       </ul>
     );
