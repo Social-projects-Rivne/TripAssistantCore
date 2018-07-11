@@ -1,6 +1,7 @@
 import React from 'react';
 import Map from '../components/Map';
 import Profile from '../pages/Profile/Profile';
+import Dashbord from '../pages/Dashbord';
 
 
 // Pages exemple.
@@ -31,6 +32,10 @@ const Routes = [
   {
     path: '/contacts',
     component: Contacts
+  },
+  {
+    path: '/dashbord',
+    component: Dashbord
   }
 ];
 
