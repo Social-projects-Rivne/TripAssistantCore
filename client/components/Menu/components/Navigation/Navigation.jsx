@@ -8,7 +8,7 @@ import EnvelopeIco from 'images/envelope.svg';
 
 const MENU_ITEM = [
   { name: 'MY PROFILE', path: '/profile', ico: UserMenuIco },
-  { name: 'CONTACT', path: '/contacts', ico: EnvelopeIco }
+  { name: 'INFO', path: '/info', ico: EnvelopeIco }
 ];
 
 const NavigationItem = ({ name, path, ico }) => (

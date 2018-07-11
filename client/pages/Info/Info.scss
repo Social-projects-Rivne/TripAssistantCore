@@ -1,7 +1,41 @@
+
 .main-info {
   background-image: linear-gradient(89deg, #ff5edf 0%, #04c8de 100%);
+  display: flex;
+  flex-direction: column;
 }
 
-p {
-  font-size: 24px;
+.contacts {
+  text-align: center;
+}
+
+.form {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+footer {
+  margin-top: 50px;
+  max-height: 100px;
+  width: 100%;
+  background-color: rgb(140, 188, 243);
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+.copyright {
+  border: 1px solid black;
+  width: 30%;
+}
+
+.footer-menu {
+  border: 1px solid black;
+  width: 30%;
+}
+
+.footer-menu ul {
+  display: flex;
+  flex-direction: row;
 }
