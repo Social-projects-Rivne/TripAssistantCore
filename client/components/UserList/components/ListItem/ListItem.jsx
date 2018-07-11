@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 
 const OnlineStatus = ({ status }) => (
-  <span className={`collection-status ${status ? 'online' : 'offline'}`}>{status ? 'Online' : 'Offline'}</span>
+  <span className={`userlist-status ${status ? 'online' : 'offline'}`}>{status ? 'Online' : 'Offline'}</span>
 );
 
 const AccountStatus = ({ status }) => (
@@ -12,6 +12,10 @@ const AccountStatus = ({ status }) => (
 
 const UserRole = ({ isModerator }) => (
   <span title="Change user role" className="userlist-role new badge" data-badge-caption={isModerator ? 'Moderator' : 'User'} />
+);
+
+const BlockButton = ({ isActive }) => (
+  <a href="/#" className={`userlist-block waves-effect waves-light btn-large yellow ${isActive ? 'darken-3' : 'darken-1'}`}>{isActive ? 'Block' : 'Unblock'}</a>
 );
 
 const ListItem = ({
@@ -38,14 +42,18 @@ const ListItem = ({
     </div>
     <div className="userlist-actions">
       <a href="/#" className="waves-effect waves-light btn-large">View</a>
-      <a href="/#" className="waves-effect waves-light btn-large yellow darken-3">Block</a>
+      <BlockButton isActive={acountStatus} />
       <a href="/#" className="waves-effect waves-light btn-large red darken-2">Delete</a>
     </div>
   </li>
 );
 
 OnlineStatus.propTypes = {
-  status: PropTypes.bool.isRequired
+  status: PropTypes.bool
+};
+
+OnlineStatus.defaultProps = {
+  status: false
 };
 
 AccountStatus.propTypes = {
@@ -58,6 +66,10 @@ UserRole.propTypes = {
 
 UserRole.defaultProps = {
   isModerator: false
+};
+
+BlockButton.propTypes = {
+  isActive: PropTypes.bool.isRequired
 };
 
 ListItem.propTypes = {
