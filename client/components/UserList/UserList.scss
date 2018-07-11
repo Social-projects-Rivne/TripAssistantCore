@@ -1,0 +1,55 @@
+.userlist {
+  .collection-item {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-info {
+    display: flex;
+    width: 35%;
+    align-items: center;
+  }
+
+  &-img {
+    margin-right: 30px;
+    border-radius: 50%;
+    height: 55px;
+    overflow: hidden;
+  }
+
+  &-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  &-actions {
+    display: flex;
+    align-items: center;
+
+    & > :not(:last-child) {
+      margin-right: 5px;
+    }
+  }
+
+  &-status {
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+    margin-top: -7px;
+    margin-bottom: 14px;
+  }
+
+  &-city {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-role {
+    cursor: pointer;
+  }
+
+  &-block {
+    min-width: 130px;
+  }
+}
