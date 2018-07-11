@@ -12,6 +12,8 @@ Desktop.ini
 .directory
 *~
 
+# JetBrains
+.idea
 
 # npm
 node_modules
@@ -25,3 +27,6 @@ coverage
 
 # Benchmarking
 benchmarks/graphs
+
+# Other
+build

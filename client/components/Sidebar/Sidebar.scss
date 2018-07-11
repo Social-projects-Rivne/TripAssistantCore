@@ -1,0 +1,11 @@
+.sidebar {
+  background: black;
+  height: 100%;
+  width: 300px;
+}
+
+.trip-point {
+  &:not(:last-child) {
+    border-bottom: none;
+  }
+}
