@@ -1,32 +1,29 @@
 [  
   {  
-     "id_cars":1,
+     "idCars":1,
      "nameCar":"Peugeot",
      "tankVolume":50,
      "maxPassengersCount":2,
      "avgGasCost":7,
      "baggageVolume":2,
-     "avgSpeed":80,
-     "isDefault": true
+     "avgSpeed":80
   },
   {  
-     "id_cars":2,
+     "idCars":2,
      "nameCar":"Lamborghini ",
      "tankVolume":40,
      "maxPassengersCount":2,
      "avgGasCost":8,
      "baggageVolume":1,
-     "avgSpeed":60,
-     "isDefault": false
+     "avgSpeed":60
   },
   {  
-     "id_cars":3,
+     "idCars":3,
      "nameCar":"Porsche ",
      "tankVolume":80,
      "maxPassengersCount":1,
      "avgGasCost":5,
      "baggageVolume":2,
-     "avgSpeed":90,
-     "isDefault": false
+     "avgSpeed":90
   }
 ]

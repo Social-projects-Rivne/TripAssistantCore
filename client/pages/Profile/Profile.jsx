@@ -4,6 +4,7 @@ import './Profile.scss';
 import CarsCard from './CarsCard/CarsCard';
 import PersonalInfoCard from './PersonalInfoCard/PersonalInfoCard';
 import FeedbacksCard from './FeedbacksCard/FeedbacksCard';
+import HistoryWrap from './HistoryWrap/HistoryWrap';
 
 class Profile extends Component {
   constructor() {
@@ -12,7 +13,8 @@ class Profile extends Component {
     this.state = {
       userInfo: {},
       carsInfo: [],
-      feedbacksInfo: []
+      feedbacksInfo: [],
+      allHistory: []
     };
   }
 
@@ -25,10 +27,15 @@ class Profile extends Component {
 
     axios.get('public/data/feedbacksData.json')
       .then(({ data }) => this.setState({ feedbacksInfo: data }));
+
+    axios.get('public/data/allHistory.json')
+      .then(({ data }) => this.setState({ allHistory: data }));
   }
 
   render() {
-    const { userInfo, carsInfo, feedbacksInfo } = this.state;
+    const {
+      userInfo, carsInfo, feedbacksInfo, allHistory
+    } = this.state;
 
     return (
       <div className="profile">
@@ -41,6 +48,7 @@ class Profile extends Component {
             </div>
             <div className="col-12 col-md-6">
               <CarsCard carsInfo={carsInfo} />
+              <HistoryWrap allHistory={allHistory} />
             </div>
           </div>
         </div>
