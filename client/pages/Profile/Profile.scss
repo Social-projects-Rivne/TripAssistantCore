@@ -54,3 +54,32 @@
     max-width: 50%;
   }
 }
+
+.deleteCar-modal {
+  background-color: #f7f8fa;
+  text-align: left;
+  margin-bottom: 35px;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 3px;
+  box-shadow: 20px 0 40px rgba(74, 77, 101, 0.2);
+}
+
+.deleteCar-heading {
+  position: relative;
+  color: #252d3a;
+  font-size: 14px;
+  line-height: 1em;
+  font-weight: 600;
+  margin-bottom: 0;
+  padding: 32px 20px 31px;
+  box-shadow: 0 20px 40px rgba(89, 100, 191, 0.1);
+  border-radius: 3px 3px 0 0;
+  text-align: center;
+}
+
+.deleteCar-body {
+  padding: 8px 10px 10px;
+  text-align: center;
+  overflow: hidden;
+}

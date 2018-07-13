@@ -4,6 +4,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import axios from 'axios';
 
 import arrowDown from 'images/arrow-down.svg';
+import ProfileModal from '../../ProfileModal/ProfileModal';
 import './CarCard.scss';
 
 const inputInfo = [['Car name', 'nameCar'], ['Tank Volume', 'tankVolume'], ['Number of passengers', 'maxPassengersCount'], ['Average gas cost', 'avgGasCost'], ['Baggage size, m3', 'baggageVolume'], ['Average speed, km/h', 'avgSpeed']];
@@ -18,12 +19,29 @@ const CarInput = ({ inputDefaultValue, inputAdditionalInfo }) => (
 class CarCard extends Component {
   constructor() {
     super();
-    this.state = { isActive: false };
+    this.state = {
+      isActive: false,
+      isModalOpen: false
+    };
   }
 
   componentDidMount() {
     const { id } = this.props;
     if (id === 0) this.setState({ isActive: true });
+  }
+
+  toggleModal = () => {
+    const { isModalOpen } = this.state;
+    this.setState({ isModalOpen: !isModalOpen });
+  }
+
+  handleDeleteCar = (e) => {
+    e.preventDefault();
+    const { carInfo: { idCars } } = this.props;
+    axios.post('localhost/user/deleteCar', { logs: idCars })
+      .then(response => console.log(response))
+      .catch(error => console.log(error))
+      .then(() => this.toggleModal());
   }
 
   handleUpdateCar = (e) => {
@@ -55,7 +73,7 @@ class CarCard extends Component {
       id,
       isAddNew
     } = this.props;
-    const { isActive } = this.state;
+    const { isActive, isModalOpen } = this.state;
     const carInfoArr = [
       nameCar, tankVolume, maxPassengersCount, avgGasCost, baggageVolume, avgSpeed
     ];
@@ -81,11 +99,21 @@ class CarCard extends Component {
                   />
                 ))}
                 {idCars && <input type="hidden" name="idCars" value={idCars} />}
+                {isAddNew && <p className="car-card__delete-link"><a href="#!" onClick={this.toggleModal}>Delete this vehicle</a></p>}
                 <button type="submit" href="#!" className="car-card__btn-submit">{isAddNew ? 'SAVE CHANGES' : 'ADD'}</button>
               </form>
             </div>
           )}
         </ReactCSSTransitionGroup>
+        <ProfileModal toClose={this.toggleModal} isOpen={isModalOpen}>
+          <div className="deleteCar-modal" onClick={e => e.stopPropagation()}> {/* eslint-disable-line */}
+            <p className="deleteCar-heading">Are you sure you want to delete this vehicle?</p>
+            <div className="deleteCar-body">
+              <button type="button" href="#!" className="car-card__btn-submit" onClick={this.handleDeleteCar}>Delete</button>
+              <button type="button" href="#!" onClick={this.toggleModal} className="car-card__btn-submit">Cancel</button>
+            </div>
+          </div>
+        </ProfileModal>
       </div>
     );
   }
