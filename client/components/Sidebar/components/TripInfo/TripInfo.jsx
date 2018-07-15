@@ -18,7 +18,7 @@ const random = (min, max) => Math.round(min + Math.random() * (max - min));
 const TripInfo = ({
   name, duration, time, fuel, onSave
 }) => (
-  <div className={`trip-info ${colors[random(0, colors.length)]} accent-1`}>
+  <div className={`trip-info ${colors[random(0, colors.length - 1)]} accent-1`}>
     <h5 contentEditable="true" suppressContentEditableWarning="true" className="trip-info_title" onBlur={onSave}>{name}</h5>
     <div className="trip-info_icon">
       <span>{duration} km</span>
