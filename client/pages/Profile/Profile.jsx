@@ -22,14 +22,18 @@ class Profile extends Component {
     axios.get('public/data/profileUserData.json')
       .then(({ data }) => this.setState({ userInfo: data[0] }));
 
-    axios.get('public/data/userCarsData.json')
-      .then(({ data }) => this.setState({ carsInfo: data }));
-
     axios.get('public/data/feedbacksData.json')
       .then(({ data }) => this.setState({ feedbacksInfo: data }));
 
     axios.get('public/data/allHistory.json')
       .then(({ data }) => this.setState({ allHistory: data }));
+
+    this.updateCarData();
+  }
+
+  updateCarData = () => {
+    axios.get('public/data/userCarsData.json')
+      .then(({ data }) => this.setState({ carsInfo: data }));
   }
 
   render() {
@@ -47,7 +51,7 @@ class Profile extends Component {
               <FeedbacksCard feedbacksInfo={feedbacksInfo} />
             </div>
             <div className="col-12 col-md-6">
-              <CarsCard carsInfo={carsInfo} />
+              <CarsCard carsInfo={carsInfo} updateCarData={this.updateCarData} />
               <HistoryWrap allHistory={allHistory} />
             </div>
           </div>

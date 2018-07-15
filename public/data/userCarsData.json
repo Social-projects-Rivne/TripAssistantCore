@@ -10,7 +10,7 @@
   },
   {  
      "idCars":2,
-     "nameCar":"Lamborghini ",
+     "nameCar":"Lamborghini",
      "tankVolume":40,
      "maxPassengersCount":2,
      "avgGasCost":8,
@@ -19,7 +19,7 @@
   },
   {  
      "idCars":3,
-     "nameCar":"Porsche ",
+     "nameCar":"Porsche",
      "tankVolume":80,
      "maxPassengersCount":1,
      "avgGasCost":5,

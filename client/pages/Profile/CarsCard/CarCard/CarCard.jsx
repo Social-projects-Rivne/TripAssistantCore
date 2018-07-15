@@ -2,16 +2,23 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import axios from 'axios';
+import { toast } from 'materialize-css';
 
 import arrowDown from 'images/arrow-down.svg';
 import ProfileModal from '../../ProfileModal/ProfileModal';
 import './CarCard.scss';
 
-const inputInfo = [['Car name', 'nameCar'], ['Tank Volume', 'tankVolume'], ['Number of passengers', 'maxPassengersCount'], ['Average gas cost', 'avgGasCost'], ['Baggage size, m3', 'baggageVolume'], ['Average speed, km/h', 'avgSpeed']];
-
 const CarInput = ({ inputDefaultValue, inputAdditionalInfo }) => (
   <div className="input-field car-card__col">
-    <input className="car-card__input" type="text" name={inputAdditionalInfo[1]} defaultValue={inputDefaultValue} />
+    <input
+      className="car-card__input"
+      type="text"
+      name={inputAdditionalInfo[1]}
+      pattern={inputAdditionalInfo[2]}
+      title={inputAdditionalInfo[3]}
+      defaultValue={inputDefaultValue}
+      required
+    />
     <label className="car-card__label active">{inputAdditionalInfo[0]}</label>
   </div>
 );
@@ -37,27 +44,29 @@ class CarCard extends Component {
 
   handleDeleteCar = (e) => {
     e.preventDefault();
-    const { carInfo: { idCars } } = this.props;
-    axios.post('localhost/user/deleteCar', { logs: idCars })
+    const { carInfo: { idCars }, updateCarData } = this.props;
+    axios.post('localhost/something', { logs: idCars })
       .then(response => console.log(response))
       .catch(error => console.log(error))
-      .then(() => this.toggleModal());
+      .then(() => {
+        this.toggleModal();
+        updateCarData();
+        toast({ html: 'Vehicle has been deleted!' });
+      });
   }
 
   handleUpdateCar = (e) => {
     e.preventDefault();
+    const { inputInfo, updateCarData } = this.props;
     const updateCarinfo = { idCars: e.target.elements.idCars.value };
     inputInfo.forEach((el) => { updateCarinfo[el[1]] = e.target.elements[el[1]].value; });
-    console.log(updateCarinfo);
-    axios.post('localhost/user/newCar', { logs: updateCarinfo });
-  }
-
-  handleAddNewCar = (e) => {
-    e.preventDefault();
-    const newCarinfo = {};
-    inputInfo.forEach((el) => { newCarinfo[el[1]] = e.target.elements[el[1]].value; });
-    console.log(newCarinfo);
-    axios.post('localhost/user/newCar', { logs: newCarinfo });
+    axios.post('localhost/something', { logs: updateCarinfo })
+      .then(response => console.log(response))
+      .catch(error => console.log(error))
+      .then(() => {
+        updateCarData();
+        toast({ html: 'Vehicle has been updated!' });
+      });
   }
 
   toggleCarCardBody = () => {
@@ -71,7 +80,7 @@ class CarCard extends Component {
         idCars, nameCar, tankVolume, maxPassengersCount, avgGasCost, baggageVolume, avgSpeed
       },
       id,
-      isAddNew
+      inputInfo
     } = this.props;
     const { isActive, isModalOpen } = this.state;
     const carInfoArr = [
@@ -80,17 +89,15 @@ class CarCard extends Component {
 
     return (
       <div className="car-card__wrap">
-        {isAddNew && (
-          <button type="button" className="car-card__heading-block" onClick={this.toggleCarCardBody}>
-            <span className="car-card__num">{id + 1}</span>
-            <span className="car-card__name-p">{nameCar}</span>
-            <img className={isActive ? 'car-card__arrow-up' : 'car-card__arrow-down'} src={arrowDown} alt="arrow-down" />
-          </button>
-        )}
+        <button type="button" className="car-card__heading-block" onClick={this.toggleCarCardBody}>
+          <span className="car-card__num">{id + 1}</span>
+          <span className="car-card__name-p">{nameCar}</span>
+          <img className={isActive ? 'car-card__arrow-up' : 'car-card__arrow-down'} src={arrowDown} alt="arrow-down" />
+        </button>
         <ReactCSSTransitionGroup transitionName="slideInOut" transitionEnterTimeout={400} transitionLeaveTimeout={350}>
           {isActive && (
             <div className="car-card__body">
-              <form className="car-card__form-wrap" onSubmit={isAddNew ? this.handleUpdateCar : this.handleAddNewCar}>
+              <form className="car-card__form-wrap" onSubmit={this.handleUpdateCar}>
                 {carInfoArr.map((inputDefaultValue, i) => (
                   <CarInput
                     key={i}
@@ -98,9 +105,9 @@ class CarCard extends Component {
                     inputDefaultValue={inputDefaultValue}
                   />
                 ))}
-                {idCars && <input type="hidden" name="idCars" value={idCars} />}
-                {isAddNew && <p className="car-card__delete-link"><a href="#!" onClick={this.toggleModal}>Delete this vehicle</a></p>}
-                <button type="submit" href="#!" className="car-card__btn-submit">{isAddNew ? 'SAVE CHANGES' : 'ADD'}</button>
+                <input type="hidden" name="idCars" value={idCars} />
+                <p className="car-card__delete-link"><a href="#!" onClick={this.toggleModal}>Delete this vehicle</a></p>
+                <button type="submit" href="#!" className="car-card__btn-submit">SAVE CHANGES</button>
               </form>
             </div>
           )}
@@ -127,11 +134,8 @@ CarInput.propTypes = {
 CarCard.propTypes = {
   carInfo: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   id: PropTypes.number.isRequired,
-  isAddNew: PropTypes.bool
-};
-
-CarCard.defaultProps = {
-  isAddNew: true
+  inputInfo: PropTypes.array.isRequired, // eslint-disable-line react/forbid-prop-types
+  updateCarData: PropTypes.func.isRequired
 };
 
 export default CarCard;

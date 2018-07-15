@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import './HistoryWrap.scss';
+import HistoryCard from './HistoryCard/HistoryCard';
 
 class HistoryWrap extends Component {
   render() {
@@ -13,7 +14,8 @@ class HistoryWrap extends Component {
           History
         </p>
         <div className="feedbacks__body">
-          {allHistory.map((historySingle, i) => <p key={i}>{historySingle.name}</p>)}
+          {allHistory.map(({ name, date }, i) => (
+            <HistoryCard key={i} routeName={name} routeDate={date} />))}
         </div>
       </div>
     );
