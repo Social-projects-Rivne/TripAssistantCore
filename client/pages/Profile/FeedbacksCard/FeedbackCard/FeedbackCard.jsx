@@ -48,8 +48,7 @@ class FeedbackCard extends Component {
               <p className="feedback__body-p">{feedback}</p>
               <p className="feedback__body-p2">{userName}</p>
               <p className="feedback__body-p2">{date}</p>
-            </div>
-          )}
+            </div>)}
         </ReactCSSTransitionGroup>
       </div>
     );

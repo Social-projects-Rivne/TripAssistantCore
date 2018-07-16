@@ -36,7 +36,7 @@ class CarsCard extends Component {
         toast({ html: 'New vehicle has been added!' });
         this.setState({ addNew: false });
       })
-      .catch(() => toast({ html: 'New vehicle was not added!' }))
+      .catch(() => toast({ html: 'New vehicle has not been added!' }))
       .then(() => {
         updateCarData();
         toast({ html: 'New vehicle has been added!' });
