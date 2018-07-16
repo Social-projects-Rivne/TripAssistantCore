@@ -1,0 +1,39 @@
+@import 'materialize-css/sass/materialize.scss';
+
+#app {
+  padding-top: 50px;
+  height: 100%;
+}
+
+.main {
+  display: flex;
+  background: grey;
+  height: auto;
+  min-height: calc(100vh - 50px);
+}
+
+.content {
+  flex-grow: 1;
+  padding: 10px 15px;
+  background-color: #ecf0f6;
+}
+
+.online::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 5px;
+  border-radius: 50%;
+  background-color: #4caf50;
+}
+
+.offline::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 5px;
+  border-radius: 50%;
+  background-color: #e53935;
+}
