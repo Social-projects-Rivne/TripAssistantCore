@@ -1,6 +1,7 @@
 import React from 'react';
 import './Info.scss';
 
+
 const Info = () => (
   <div className="main-info">
     <div className="Map">
@@ -25,10 +26,10 @@ const Info = () => (
       <div className="copyright">Copyright</div>
       <div className="footer-menu">
         <ul>
-          <li>icon</li>
-          <li>icon</li>
-          <li>icon</li>
-          <li>icon</li>
+          <li><a href="# ">icon</a></li>
+          <li><a href="# ">icon</a></li>
+          <li><a href="# ">icon</a></li>
+          <li><a href="# ">icon</a></li>
         </ul>
       </div>
     </footer>

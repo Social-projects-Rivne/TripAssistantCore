@@ -25,7 +25,7 @@
 
 footer {
   margin-top: 50px;
-  max-height: 300px;
+  height: 100px;
   width: 100%;
   background-color: rgb(140, 188, 243);
   display: flex;
@@ -34,16 +34,22 @@ footer {
 }
 
 .copyright {
-  border: 1px solid black;
+  margin-top: 40px;
   width: 30%;
 }
 
 .footer-menu {
-  border: 1px solid black;
+  margin-top: 40px;
   width: 30%;
+
+  ul {
+    display: flex;
+    flex-direction: row;
+
+    li {
+      margin-right: 30px;
+      margin-left: 60px;
+    }
+  }
 }
 
-.footer-menu ul {
-  display: flex;
-  flex-direction: row;
-}
