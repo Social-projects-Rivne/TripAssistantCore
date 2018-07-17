@@ -38,8 +38,12 @@ class CarCard extends Component {
   }
 
   componentDidMount() {
+    this.setFirstCarAsActive();
+  }
+
+  setFirstCarAsActive = () => {
     const { id } = this.props;
-    if (id === 0) { this.setState({ isActive: true }); }
+    return id === 0 && this.setState({ isActive: true });
   }
 
   toggleModal = () => {
