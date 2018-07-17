@@ -56,7 +56,13 @@ class FeedbackCard extends Component {
 }
 
 FeedbackCard.propTypes = {
-  feedbackInfo: PropTypes.object.isRequired // eslint-disable-line react/forbid-prop-types
+  feedbackInfo: PropTypes.shape({
+    name: PropTypes.string,
+    rating: PropTypes.number,
+    feedback: PropTypes.string,
+    userName: PropTypes.string,
+    date: PropTypes.string
+  }).isRequired
 };
 
 export default FeedbackCard;

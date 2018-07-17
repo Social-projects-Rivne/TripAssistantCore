@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './Profile.scss';
-import CarsCard from './CarsCard/CarsCard';
-import PersonalInfoCard from './PersonalInfoCard/PersonalInfoCard';
-import FeedbacksCard from './FeedbacksCard/FeedbacksCard';
-import HistoryWrap from './HistoryWrap/HistoryWrap';
+import CarsCard from '../../components/CarsCard';
+import PersonalInfoCard from '../../components/PersonalInfoCard';
+import FeedbacksCard from '../../components/FeedbacksCard';
+import HistoryWrap from '../../components/HistoryWrap';
 
 class Profile extends Component {
   constructor() {

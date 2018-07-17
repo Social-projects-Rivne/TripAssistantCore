@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import FeedbackCard from './FeedbackCard/FeedbackCard';
+import FeedbackCard from './FeedbackCard';
 import './FeedbacksCard.scss';
 
 class FeedbacksCard extends Component {
@@ -15,8 +15,7 @@ class FeedbacksCard extends Component {
         </p>
         <div className="feedbacks__body">
           {feedbacksInfo.map((feedbackInfo, i) => (
-            <FeedbackCard feedbackInfo={feedbackInfo} key={i} id={i} />
-          ))}
+            <FeedbackCard feedbackInfo={feedbackInfo} key={i} id={i} />))}
         </div>
       </div>
     );
@@ -24,7 +23,7 @@ class FeedbacksCard extends Component {
 }
 
 FeedbacksCard.propTypes = {
-  feedbacksInfo: PropTypes.array.isRequired // eslint-disable-line react/forbid-prop-types
+  feedbacksInfo: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default FeedbacksCard;

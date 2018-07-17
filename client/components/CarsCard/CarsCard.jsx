@@ -4,17 +4,29 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import axios from 'axios';
 import { toast } from 'materialize-css';
 
-import CarCard from './CarCard/CarCard';
-import NewCarCard from './CarCard/NewCarCard';
+import CarCard from './CarCard';
+import NewCarCard from './NewCarCard';
 import './CarsCard.scss';
 
 const inputInfo = [
-  ['Car name', 'nameCar', '^[a-zA-Z0-9_.-]*$', 'Please input a string without spaces (no special characters allowed)'],
-  ['Tank Volume', 'tankVolume', '^\\d+$', 'Please input positive integer'],
-  ['Number of passengers', 'maxPassengersCount', '^\\d+$', 'Please input positive integer'],
-  ['Average gas cost', 'avgGasCost', '^\\d+$', 'Please input positive integer'],
-  ['Baggage size, m3', 'baggageVolume', '^\\d+$', 'Please input positive integer'],
-  ['Average speed, km/h', 'avgSpeed', '^\\d+$', 'Please input positive integer']
+  {
+    inputLabel: 'Car name', inputName: 'nameCar', inputPattern: '^[a-zA-Z0-9_.-]*$', inputTitle: 'Please input a string without spaces (no special characters allowed)'
+  },
+  {
+    inputLabel: 'Tank Volume', inputName: 'tankVolume', inputPattern: '^\\d+$', inputTitle: 'Please input positive integer'
+  },
+  {
+    inputLabel: 'Number of passengers', inputName: 'maxPassengersCount', inputPattern: '^\\d+$', inputTitle: 'Please input positive integer'
+  },
+  {
+    inputLabel: 'Average gas cost', inputName: 'avgGasCost', inputPattern: '^\\d+$', inputTitle: 'Please input positive integer'
+  },
+  {
+    inputLabel: 'Baggage size, m3', inputName: 'baggageVolume', inputPattern: '^\\d+$', inputTitle: 'Please input positive integer'
+  },
+  {
+    inputLabel: 'Average speed, km/h', inputName: 'avgSpeed', inputPattern: '^\\d+$', inputTitle: 'Please input positive integer'
+  }
 ];
 
 class CarsCard extends Component {
@@ -29,19 +41,16 @@ class CarsCard extends Component {
     e.preventDefault();
     const { updateCarData } = this.props;
     const newCarinfo = {};
-    inputInfo.forEach((el) => { newCarinfo[el[1]] = e.target.elements[el[1]].value; });
+    inputInfo.forEach((el) => {
+      newCarinfo[el.inputName] = e.target.elements[el.inputName].value;
+    });
     axios.post('localhost/something', { logs: newCarinfo })
       .then(() => {
         updateCarData();
         toast({ html: 'New vehicle has been added!' });
         this.setState({ addNew: false });
       })
-      .catch(() => toast({ html: 'New vehicle has not been added!' }))
-      .then(() => {
-        updateCarData();
-        toast({ html: 'New vehicle has been added!' });
-        this.setState({ addNew: false });
-      });
+      .catch(() => toast({ html: 'New vehicle has NOT been added!' }));
   }
 
   toggleAddNewBtn = () => {
@@ -78,7 +87,7 @@ class CarsCard extends Component {
 }
 
 CarsCard.propTypes = {
-  carsInfo: PropTypes.array.isRequired, // eslint-disable-line react/forbid-prop-types
+  carsInfo: PropTypes.arrayOf(PropTypes.object).isRequired,
   updateCarData: PropTypes.func.isRequired
 };
 

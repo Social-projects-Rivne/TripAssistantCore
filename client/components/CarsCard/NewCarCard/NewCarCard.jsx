@@ -1,20 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './CarCard.scss';
-
-const CarInput = ({ inputAdditionalInfo }) => (
+const CarInput = ({
+  inputAdditionalInfo: {
+    inputLabel, inputName, inputPattern, inputTitle
+  }
+}) => (
   <div className="input-field car-card__col">
     <input
       className="car-card__input"
       type="text"
-      name={inputAdditionalInfo[1]}
-      pattern={inputAdditionalInfo[2]}
-      title={inputAdditionalInfo[3]}
+      name={inputName}
+      pattern={inputPattern}
+      title={inputTitle}
       placeholder="Please enter new value"
       required
     />
-    <label className="car-card__label active">{inputAdditionalInfo[0]}</label>
+    <label className="car-card__label active">{inputLabel}</label>
   </div>
 );
 
@@ -31,12 +33,12 @@ const NewCarCard = ({ submitHandler, inputInfo }) => (
 );
 
 CarInput.propTypes = {
-  inputAdditionalInfo: PropTypes.array.isRequired // eslint-disable-line react/forbid-prop-types
+  inputAdditionalInfo: PropTypes.objectOf(PropTypes.string).isRequired
 };
 
 NewCarCard.propTypes = {
   submitHandler: PropTypes.func.isRequired,
-  inputInfo: PropTypes.array.isRequired // eslint-disable-line react/forbid-prop-types
+  inputInfo: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default NewCarCard;

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import './HistoryWrap.scss';
-import HistoryCard from './HistoryCard/HistoryCard';
+import HistoryCard from './HistoryCard';
 
 class HistoryWrap extends Component {
   render() {
@@ -14,8 +14,8 @@ class HistoryWrap extends Component {
           History
         </p>
         <div className="feedbacks__body">
-          {allHistory.map(({ name, date }, i) => (
-            <HistoryCard key={i} routeName={name} routeDate={date} />))}
+          {allHistory.map(({ name, date, isActive }, i) => (
+            <HistoryCard key={i} routeName={name} routeDate={date} isActive={isActive} />))}
         </div>
       </div>
     );
@@ -23,7 +23,7 @@ class HistoryWrap extends Component {
 }
 
 HistoryWrap.propTypes = {
-  allHistory: PropTypes.array.isRequired // eslint-disable-line react/forbid-prop-types
+  allHistory: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default HistoryWrap;

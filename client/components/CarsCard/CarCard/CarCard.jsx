@@ -5,21 +5,26 @@ import axios from 'axios';
 import { toast } from 'materialize-css';
 
 import arrowDown from 'images/arrow-down.svg';
-import ProfileModal from '../../ProfileModal/ProfileModal';
+import ProfileModal from '../../ProfileModal';
 import './CarCard.scss';
 
-const CarInput = ({ inputDefaultValue, inputAdditionalInfo }) => (
+const CarInput = ({
+  inputDefaultValue,
+  inputAdditionalInfo: {
+    inputLabel, inputName, inputPattern, inputTitle
+  }
+}) => (
   <div className="input-field car-card__col">
     <input
       className="car-card__input"
       type="text"
-      name={inputAdditionalInfo[1]}
-      pattern={inputAdditionalInfo[2]}
-      title={inputAdditionalInfo[3]}
+      name={inputName}
+      pattern={inputPattern}
+      title={inputTitle}
       defaultValue={inputDefaultValue}
       required
     />
-    <label className="car-card__label active">{inputAdditionalInfo[0]}</label>
+    <label className="car-card__label active">{inputLabel}</label>
   </div>
 );
 
@@ -34,7 +39,7 @@ class CarCard extends Component {
 
   componentDidMount() {
     const { id } = this.props;
-    if (id === 0) this.setState({ isActive: true });
+    if (id === 0) { this.setState({ isActive: true }); }
   }
 
   toggleModal = () => {
@@ -46,27 +51,27 @@ class CarCard extends Component {
     e.preventDefault();
     const { carInfo: { idCars }, updateCarData } = this.props;
     axios.post('localhost/something', { logs: idCars })
-      .then(response => console.log(response))
-      .catch(error => console.log(error))
       .then(() => {
-        this.toggleModal();
         updateCarData();
         toast({ html: 'Vehicle has been deleted!' });
-      });
+      })
+      .catch(() => toast({ html: 'Vehicle has NOT been deleted!' }))
+      .then(() => this.toggleModal());
   }
 
   handleUpdateCar = (e) => {
     e.preventDefault();
     const { inputInfo, updateCarData } = this.props;
     const updateCarinfo = { idCars: e.target.elements.idCars.value };
-    inputInfo.forEach((el) => { updateCarinfo[el[1]] = e.target.elements[el[1]].value; });
+    inputInfo.forEach((el) => {
+      updateCarinfo[el.inputName] = e.target.elements[el.inputName].value;
+    });
     axios.post('localhost/something', { logs: updateCarinfo })
-      .then(response => console.log(response))
-      .catch(error => console.log(error))
       .then(() => {
         updateCarData();
         toast({ html: 'Vehicle has been updated!' });
-      });
+      })
+      .catch(() => toast({ html: 'Vehicle has NOT been updated!' }));
   }
 
   toggleCarCardBody = () => {
@@ -113,7 +118,7 @@ class CarCard extends Component {
           )}
         </ReactCSSTransitionGroup>
         <ProfileModal toClose={this.toggleModal} isOpen={isModalOpen}>
-          <div className="deleteCar-modal" onClick={e => e.stopPropagation()}> {/* eslint-disable-line */}
+          <div role="presentation" className="deleteCar-modal" onClick={e => e.stopPropagation()}>
             <p className="deleteCar-heading">Are you sure you want to delete this vehicle?</p>
             <div className="deleteCar-body">
               <button type="button" href="#!" className="car-card__btn-submit" onClick={this.handleDeleteCar}>Delete</button>
@@ -128,13 +133,21 @@ class CarCard extends Component {
 
 CarInput.propTypes = {
   inputDefaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  inputAdditionalInfo: PropTypes.array.isRequired // eslint-disable-line react/forbid-prop-types
+  inputAdditionalInfo: PropTypes.objectOf(PropTypes.string).isRequired
 };
 
 CarCard.propTypes = {
-  carInfo: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  carInfo: PropTypes.shape({
+    idCars: PropTypes.number,
+    nameCar: PropTypes.string,
+    tankVolume: PropTypes.number,
+    maxPassengersCount: PropTypes.number,
+    avgGasCost: PropTypes.number,
+    baggageVolume: PropTypes.number,
+    avgSpeed: PropTypes.number
+  }).isRequired,
   id: PropTypes.number.isRequired,
-  inputInfo: PropTypes.array.isRequired, // eslint-disable-line react/forbid-prop-types
+  inputInfo: PropTypes.arrayOf(PropTypes.object).isRequired,
   updateCarData: PropTypes.func.isRequired
 };
 

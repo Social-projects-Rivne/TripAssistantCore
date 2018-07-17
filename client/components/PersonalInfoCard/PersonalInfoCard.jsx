@@ -7,12 +7,7 @@ class PersonalInfoCard extends Component {
   render() {
     const {
       settings: {
-        name,
-        email,
-        userpic,
-        rating,
-        kmTraveled,
-        tripsCount
+        name, email, userpic, rating, kmTraveled, tripsCount
       }
     } = this.props;
 
@@ -48,7 +43,14 @@ class PersonalInfoCard extends Component {
 }
 
 PersonalInfoCard.propTypes = {
-  settings: PropTypes.object.isRequired // eslint-disable-line react/forbid-prop-types
+  settings: PropTypes.shape({
+    name: PropTypes.string,
+    email: PropTypes.string,
+    userpic: PropTypes.string,
+    rating: PropTypes.number,
+    kmTraveled: PropTypes.number,
+    tripsCount: PropTypes.number
+  }).isRequired
 };
 
 export default PersonalInfoCard;

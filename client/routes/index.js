@@ -1,6 +1,6 @@
 import React from 'react';
 import Map from '../components/Map';
-import Profile from '../pages/Profile/Profile';
+import Profile from '../pages/Profile';
 import Dashbord from '../pages/Dashbord';
 
 
