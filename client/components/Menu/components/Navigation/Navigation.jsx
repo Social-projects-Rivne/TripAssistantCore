@@ -8,9 +8,9 @@ import EnvelopeIco from 'images/envelope.svg';
 import DashbordIco from 'images/dashbord.svg';
 
 const MENU_ITEM = [
-  { name: 'MY PROFILE', path: '/profile', ico: UserMenuIco },
-  { name: 'CONTACT', path: '/contacts', ico: EnvelopeIco },
-  { name: 'DASHBORD', path: '/dashbord', ico: DashbordIco }
+  { name: 'my profile', path: '/profile', ico: UserMenuIco },
+  { name: 'contact', path: '/contacts', ico: EnvelopeIco },
+  { name: 'dashbord', path: '/dashbord', ico: DashbordIco }
 ];
 
 const NavigationItem = ({ name, path, ico }) => (
@@ -28,7 +28,7 @@ const Navigation = ({ sidebar }) => (
       <li>
         <Link className="navigation_item" to="/" onClick={sidebar}>
           <img src={AddIco} alt="add" />
-          NEW TRIP
+          new trip
         </Link>
       </li>
       {MENU_ITEM.map((path, i) => (
