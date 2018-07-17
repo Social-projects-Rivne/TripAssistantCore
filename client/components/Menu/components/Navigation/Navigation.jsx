@@ -9,12 +9,9 @@ import DashbordIco from 'images/dashbord.svg';
 
 const MENU_ITEM = [
   { name: 'MY PROFILE', path: '/profile', ico: UserMenuIco },
-<<<<<<< HEAD
-  { name: 'INFO', path: '/info', ico: EnvelopeIco }
-=======
+  { name: 'INFO', path: '/info', ico: EnvelopeIco },
   { name: 'CONTACT', path: '/contacts', ico: EnvelopeIco },
   { name: 'DASHBORD', path: '/dashbord', ico: DashbordIco }
->>>>>>> dev
 ];
 
 const NavigationItem = ({ name, path, ico }) => (
