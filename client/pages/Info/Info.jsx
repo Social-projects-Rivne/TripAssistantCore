@@ -3,6 +3,9 @@ import './Info.scss';
 
 const Info = () => (
   <div className="main-info">
+    <div className="Map">
+      <p>Here will be map</p>
+    </div>
     <div className="contacts">
       <h1>Contacts</h1>
       <p>Our phone 66-666-666</p>

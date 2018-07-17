@@ -2,6 +2,7 @@ import React from 'react';
 import Map from '../components/Map';
 import Info from '../pages/Info';
 
+
 // Pages example.
 const Profile = () => <h1>Profile</h1>;
 const History = () => <h1>History</h1>;
@@ -31,6 +32,7 @@ const Routes = [
     path: '/info',
     component: Info
   }
+
 ];
 
 export default Routes;
