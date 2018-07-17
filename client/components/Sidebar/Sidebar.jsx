@@ -1,9 +1,20 @@
 import React, { Component } from 'react';
 import './Sidebar.scss';
 
+import { random } from '../../helpers';
 import TripInfo from './components/TripInfo';
 import TripPoint from './components/TripPoint';
 
+const colors = [
+  'red',
+  'pink',
+  'purple',
+  'blue',
+  'teal',
+  'light-green',
+  'lime',
+  'orange'
+];
 
 class Sidebar extends Component {
   constructor(props) {
@@ -14,7 +25,8 @@ class Sidebar extends Component {
         name: 'New Trip',
         duration: undefined,
         time: undefined,
-        fuel: undefined
+        fuel: undefined,
+        color: colors[random(0, colors.length - 1)]
       },
       points: [
         { point: 'Start point', id: 0 },

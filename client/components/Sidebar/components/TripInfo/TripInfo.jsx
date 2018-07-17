@@ -2,23 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './TripInfo.scss';
 
-const colors = [
-  'red',
-  'pink',
-  'purple',
-  'blue',
-  'teal',
-  'light-green',
-  'lime',
-  'orange'
-];
-
-const random = (min, max) => Math.round(min + Math.random() * (max - min));
 
 const TripInfo = ({
-  name, duration, time, fuel, onSave
+  name, duration, time, fuel, color, onSave
 }) => (
-  <div className={`trip-info ${colors[random(0, colors.length - 1)]} accent-1`}>
+  <div className={`trip-info ${color} accent-1`}>
     <h5 contentEditable="true" suppressContentEditableWarning="true" className="trip-info_title" onBlur={onSave}>{name}</h5>
     <div className="trip-info_icon">
       <span>{duration} km</span>
@@ -33,6 +21,7 @@ TripInfo.propTypes = {
   duration: PropTypes.string,
   time: PropTypes.string,
   fuel: PropTypes.string,
+  color: PropTypes.string.isRequired,
   onSave: PropTypes.func.isRequired
 };
 
