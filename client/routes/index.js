@@ -1,8 +1,7 @@
 import React from 'react';
 import Map from '../components/Map';
 import Dashbord from '../pages/Dashbord';
-import Login from '../pages/Login/Login/Login';
-import Register from '../pages/Register/Register/Register';
+import Login from '../pages/Login/Login';
 
 
 // Pages exemple.
@@ -42,10 +41,6 @@ const Routes = [
   {
     path: '/login',
     component: Login
-  },
-  {
-    path: '/register',
-    component: Register
   }
 ];
 

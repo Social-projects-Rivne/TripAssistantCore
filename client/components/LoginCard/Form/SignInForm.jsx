@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import './Form.scss';
 
 class SignInForm extends Component {
   constructor() {
