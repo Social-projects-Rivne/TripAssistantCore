@@ -2,6 +2,7 @@ import React from 'react';
 import Map from '../components/Map';
 import Info from '../pages/Info';
 import Dashbord from '../pages/Dashbord';
+import TripDescription from '../pages/TripDescription/TripDescription';
 
 
 // Pages example.
@@ -33,10 +34,13 @@ const Routes = [
     path: '/info',
     component: Info
   },
-
   {
     path: '/dashbord',
     component: Dashbord
+  },
+  {
+    path: '/tripdescription',
+    component: TripDescription
   }
 
 ];

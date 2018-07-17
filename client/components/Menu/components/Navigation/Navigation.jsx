@@ -10,7 +10,7 @@ import DashbordIco from 'images/dashbord.svg';
 const MENU_ITEM = [
   { name: 'MY PROFILE', path: '/profile', ico: UserMenuIco },
   { name: 'INFO', path: '/info', ico: EnvelopeIco },
-  { name: 'CONTACT', path: '/contacts', ico: EnvelopeIco },
+  { name: 'TRIP_DESCRIPTION', path: '/TripDescription', ico: EnvelopeIco },
   { name: 'DASHBORD', path: '/dashbord', ico: DashbordIco }
 ];
 

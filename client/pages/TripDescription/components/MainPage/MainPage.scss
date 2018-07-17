@@ -1,0 +1,40 @@
+.table {
+  width: 80%;
+  margin: 0 auto;
+
+  table {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 14px;
+    text-align: left;
+    border-collapse: collapse;
+    border-radius: 5px;
+    box-shadow: 0 0 0 3px #f2906b;
+    color: #452f21;
+
+    th {
+      padding: 10px 8px;
+      background: white;
+
+      table th:first-child {
+        border-top-left-radius: 20px;
+      }
+
+      table th:last-child {
+        border-top-right-radius: 20px;
+      }
+
+      td {
+        padding: 8px;
+        background: white;
+      }
+
+      table td:first-child {
+        border-bottom-left-radius: 20px;
+      }
+
+      table td:last-child {
+        border-bottom-right-radius: 20px;
+      }
+    }
+  }
+}
