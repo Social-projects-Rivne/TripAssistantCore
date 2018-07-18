@@ -1,4 +1,5 @@
 import React from 'react';
+import Geosuggest from 'react-geosuggest';
 
 const SearchRouteStart = () => (
   <div className="search-route-start">
@@ -13,6 +14,7 @@ const SearchRouteStart = () => (
           <input className="car-card__input" type="text" name="endPoint" placeholder="Please enter start point here" required />
           <label className="car-card__label active">End point</label>
         </div>
+        <Geosuggest />
         <button type="submit" href="#!" className="search-start__btn-submit">START SEARCH</button>
       </form>
     </div>
