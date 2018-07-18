@@ -6,8 +6,10 @@ import AddIco from 'images/add.svg';
 import UserMenuIco from 'images/user-menu.svg';
 import EnvelopeIco from 'images/envelope.svg';
 import DashbordIco from 'images/dashbord.svg';
+import SearchIco from 'images/search.svg';
 
 const MENU_ITEM = [
+  { name: 'SEARCH ROUTE', path: '/searchRoute', ico: SearchIco },
   { name: 'MY PROFILE', path: '/profile', ico: UserMenuIco },
   { name: 'CONTACT', path: '/contacts', ico: EnvelopeIco },
   { name: 'DASHBORD', path: '/dashbord', ico: DashbordIco }
