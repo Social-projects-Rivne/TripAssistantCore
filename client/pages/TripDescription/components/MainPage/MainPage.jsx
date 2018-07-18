@@ -8,34 +8,39 @@ class MainPage extends Component {
         <div className="table">
           <table>
             <tr>
-              <th>Employee</th>
-              <th>Salary</th>
-              <th>Bonus</th>
-              <th>Supervisor</th>
+              <th>Trip date</th>
+              <th>From</th>
+              <th>To</th>
+              <th>Cost ₴</th>
+              <th>Driver</th>
             </tr>
             <tr>
-              <td>Stephen C. Cox</td>
-              <td>$300</td>
-              <td>$50</td>
-              <td>Bob</td>
+              <td>14.08.2010</td>
+              <td>Chernobul</td>
+              <td>Narnia</td>
+              <td>1488</td>
+              <td>Stalker</td>
             </tr>
             <tr>
-              <td>Josephin Tan</td>
-              <td>$150</td>
-              <td>-</td>
-              <td>Annie</td>
+              <td>14.08.2010</td>
+              <td>Chernobul</td>
+              <td>Narnia</td>
+              <td>1488</td>
+              <td>Stalker</td>
             </tr>
             <tr>
-              <td>Joyce Ming</td>
-              <td>$200</td>
-              <td>$35</td>
-              <td>Andy</td>
+              <td>14.08.2010</td>
+              <td>Chernobul</td>
+              <td>Narnia</td>
+              <td>1488</td>
+              <td>Stalker</td>
             </tr>
             <tr>
-              <td>James A. Pentel</td>
-              <td>$175</td>
-              <td>$25</td>
-              <td>Annie</td>
+              <td>14.08.2010</td>
+              <td>Chernobul</td>
+              <td>Narnia</td>
+              <td>1488</td>
+              <td>Stalker</td>
             </tr>
           </table>
         </div>
