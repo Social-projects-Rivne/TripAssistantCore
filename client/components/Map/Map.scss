@@ -1,8 +1,4 @@
-.map {
-  background-image: url('~@images/map-exemple.png');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+#map {
   margin: -10px -15px;
   height: calc(100vh - 50px);
 }
