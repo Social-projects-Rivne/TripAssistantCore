@@ -1,10 +1,10 @@
 import React from 'react';
 import Map from '../components/Map';
+import Profile from '../pages/Profile';
 import Dashbord from '../pages/Dashbord';
 
 
 // Pages exemple.
-const Profile = () => <h1>Profile</h1>;
 const History = () => <h1>History</h1>;
 const Statistic = () => <h1>Statistic</h1>;
 const Contacts = () => <h1>Contacts</h1>;

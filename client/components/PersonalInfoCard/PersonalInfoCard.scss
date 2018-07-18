@@ -1,0 +1,82 @@
+.personal-info__card {
+  background-color: #f7f8fa;
+  text-align: left;
+  margin-bottom: 35px;
+  width: 100%;
+  border-radius: 3px;
+  box-shadow: 20px 0 40px rgba(74, 77, 101, 0.2);
+}
+
+.personal-info__heading {
+  color: #252d3a;
+  font-size: 14px;
+  line-height: 1em;
+  font-weight: 600;
+  margin-bottom: 0;
+  padding: 32px 15px 31px;
+  box-shadow: 0 20px 40px rgba(89, 100, 191, 0.1);
+  border-radius: 3px 3px 0 0;
+  text-align: center;
+}
+
+.personal-info__body {
+  padding: 20px 15px 10px;
+  text-align: center;
+}
+
+.personal-info__userpic {
+  border-radius: 100%;
+  width: 100%;
+  max-width: 70px;
+  display: block;
+  height: auto;
+  margin: 0 auto 15px;
+}
+
+.personal-info__name {
+  color: #252d3a;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5em;
+  margin-bottom: 5px;
+}
+
+.personal-info__email {
+  color: #252d3a;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5em;
+  margin-bottom: 0;
+}
+
+.personal-info__divider {
+  height: 1px;
+  background-color: rgba(#252d3a, 0.2);
+  max-width: 450px;
+  margin: 20px auto 25px;
+}
+
+.personal-info__stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.personal-indo__stat {
+  margin: 0 10px 15px;
+  color: #252d3a;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5em;
+
+  span {
+    display: block;
+    color: #252d3a;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.2em;
+  }
+}
