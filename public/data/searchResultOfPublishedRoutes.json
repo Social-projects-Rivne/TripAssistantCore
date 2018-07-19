@@ -1,0 +1,123 @@
+[  
+  {  
+    "userPic": null,
+    "name": "Oleksii Iordatii",
+    "rating": 4,
+    "startPoint": "Rivne",
+    "endPoint": "Lviv",
+    "date": "09/07/2018",
+    "seats": 2,
+    "price": 300,
+    "currency": "UAH"
+  },
+  {  
+    "userPic": null,
+    "name": "Serhii Kovach",
+    "rating": 4.5,
+    "startPoint": "Rivne",
+    "endPoint": "Kyiv",
+    "date": "12/11/2018",
+    "seats": 1,
+    "price": 300,
+    "currency": "UAH"
+  },
+  {  
+    "userPic": null,
+    "name": "Olena Kovach",
+    "rating": 4.8,
+    "startPoint": "Rivne",
+    "endPoint": "Luck",
+    "date": "10/12/2018",
+    "seats": 1,
+    "price": 100,
+    "currency": "UAH"
+  },
+  {  
+    "userPic": null,
+    "name": "Vasilii Melnyk",
+    "rating": 3.8,
+    "startPoint": "Rivne",
+    "endPoint": "Luck",
+    "date": "10/13/2018",
+    "seats": 5,
+    "price": 50,
+    "currency": "UAH"
+  },
+  {  
+    "userPic": null,
+    "name": "Claus Green",
+    "rating": 5,
+    "startPoint": "Rivne",
+    "endPoint": "Kyiv",
+    "date": "10/14/2018",
+    "seats": 2,
+    "price": 500,
+    "currency": "UAH"
+  },
+  {  
+    "userPic": null,
+    "name": "Kith Brown",
+    "rating": 4.3,
+    "startPoint": "Rivne",
+    "endPoint": "Kyiv",
+    "date": "10/14/2018",
+    "seats": 2,
+    "price": 500,
+    "currency": "UAH"
+  },
+  {  
+    "userPic": null,
+    "name": "Katie Luw",
+    "rating": 4.6,
+    "startPoint": "Rivne",
+    "endPoint": "Lviv",
+    "date": "10/15/2018",
+    "seats": 1,
+    "price": 200,
+    "currency": "UAH"
+  },
+  {  
+    "userPic": null,
+    "name": "Marry Smith",
+    "rating": 2.5,
+    "startPoint": "Rivne",
+    "endPoint": "Lviv",
+    "date": "10/17/2018",
+    "seats": 2,
+    "price": 150,
+    "currency": "UAH"
+  },
+  {  
+    "userPic": null,
+    "name": "Jake Black",
+    "rating": 5,
+    "startPoint": "Rivne",
+    "endPoint": "Kyiv",
+    "date": "10/18/2018",
+    "seats": 1,
+    "price": 400,
+    "currency": "UAH"
+  },
+  {  
+    "userPic": null,
+    "name": "Sam Harris",
+    "rating": 5,
+    "startPoint": "Rivne",
+    "endPoint": "Lviv",
+    "date": "10/19/2018",
+    "seats": 1,
+    "price": 100,
+    "currency": "UAH"
+  },
+  {  
+    "userPic": null,
+    "name": "Seth Green",
+    "rating": 2,
+    "startPoint": "Rivne",
+    "endPoint": "Lviv",
+    "date": "10/20/2018",
+    "seats": 2,
+    "price": 2000,
+    "currency": "UAH"
+  }
+]

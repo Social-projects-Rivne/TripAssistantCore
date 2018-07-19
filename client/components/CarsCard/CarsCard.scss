@@ -73,3 +73,22 @@
     opacity 0.3s ease-in-out,
     transform 0.3s ease-in-out;
 }
+
+.fadeInOut-enter {
+  opacity: 0;
+}
+
+.fadeInOut-leave {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.fadeInOut-enter.fadeInOut-enter-active {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fadeInOut-leave.fadeInOut-leave-active {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
