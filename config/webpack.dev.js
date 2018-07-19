@@ -8,7 +8,7 @@ module.exports = merge(common, {
   devServer: {
     historyApiFallback: true,
     stats: 'errors-only',
-    port: '8000',
+    port: '8080',
     hot: true,
     open: true,
     overlay:true

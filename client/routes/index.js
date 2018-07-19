@@ -1,14 +1,16 @@
 import React from 'react';
 import Map from '../components/Map';
 import Info from '../pages/Info';
+import Profile from '../pages/Profile';
 import Dashbord from '../pages/Dashbord';
+import Login from '../pages/Login/Login';
 
 
 // Pages example.
 const Profile = () => <h1>Profile</h1>;
 const History = () => <h1>History</h1>;
 const Statistic = () => <h1>Statistic</h1>;
-//
+
 
 
 const Routes = [
@@ -37,6 +39,10 @@ const Routes = [
   {
     path: '/dashbord',
     component: Dashbord
+  },
+  {
+    path: '/login',
+    component: Login
   }
 
 ];

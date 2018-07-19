@@ -1,0 +1,166 @@
+.car-card__wrap {
+  box-shadow: 0 20px 40px rgba(89, 100, 191, 0.1);
+  border-radius: 2px;
+  background-color: #fff;
+  margin-bottom: 5px;
+  position: relative;
+}
+
+.profile button {
+  border-width: 0;
+  border-style: none;
+  border-color: transparent;
+  border-image: none;
+}
+
+.car-card__heading-block {
+  display: flex;
+  align-items: center;
+  padding: 27px 18px 24px 22px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  background-color: #fff;
+  width: 100%;
+  border-width: 0;
+  border-style: none;
+  border-color: transparent;
+  border-image: none;
+
+  &:active {
+    background-color: #fff;
+    border-style: none;
+  }
+
+  &:focus {
+    background-color: #fff;
+    outline: none;
+  }
+}
+
+.car-card__num {
+  text-align: left;
+  display: inline-block;
+  width: 35px;
+  color: #33afe0;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.2em;
+  letter-spacing: 1.5px;
+}
+
+.car-card__arrow-down {
+  flex-shrink: 0;
+  display: block;
+  margin-left: auto;
+  margin-right: 0;
+  transform-origin: 50% 50%;
+  transition: transform 0.15s linear;
+}
+
+.car-card__arrow-up {
+  flex-shrink: 0;
+  display: block;
+  margin-left: auto;
+  margin-right: 0;
+  transform-origin: 50% 50%;
+  transition: transform 0.15s linear;
+  transform: rotate(180deg);
+}
+
+.car-card__name-p {
+  color: #333;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.5em;
+}
+
+.car-card__body {
+  padding: 20px 20px 25px;
+}
+
+.car-card__label {
+  display: block;
+  color: rgba(#252d3a, 0.8);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1em;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+input[type=text]:not(.browser-default).car-card__input:focus:not([readonly]) + label {
+  color: #33afe0;
+}
+
+input[type=text]:not(.browser-default).car-card__input {
+  background-color: #fff;
+  height: 42px;
+  width: 100%;
+  display: block;
+  color: #252d3a;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1em;
+  margin-bottom: 5px;
+  transition:
+    border 0.15s linear,
+    box-shadow 0.15s linear;
+
+  &:focus {
+    outline: 0;
+    outline-offset: 0;
+    border-bottom: 1px solid #33afe0;
+    box-shadow: 0 1px 0 0 #33afe0;
+  }
+}
+
+.car-card__btn-submit {
+  display: inline-block;
+  padding: 17px 35px 16px;
+  margin: 0 10px;
+  border-radius: 3px;
+  background-color: #33afe0;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1em;
+  letter-spacing: 0.6px;
+  cursor: pointer;
+  transition: background-color 0.15s linear;
+
+  &:hover {
+    background-color: #252d3a;
+  }
+}
+
+.car-card__form-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -15px;
+  margin-right: -15px;
+  justify-content: center;
+}
+
+.car-card__col {
+  width: calc(50% - 30px);
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.car-card__delete-link {
+  width: 100%;
+  text-align: right;
+  margin-bottom: 0;
+  padding: 0 15px 15px;
+
+  a {
+    color: #33afe0;
+    text-decoration: underline;
+
+    &:hover,
+    &:focus {
+      color: #33afe0;
+      text-decoration: underline;
+    }
+  }
+}
