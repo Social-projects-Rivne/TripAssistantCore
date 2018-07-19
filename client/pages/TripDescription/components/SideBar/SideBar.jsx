@@ -5,22 +5,22 @@ import './SideBar.scss';
 class SideBar extends Component {
   constructor() {
     super();
-    state = {
-      style: [
-        { display: 'none' }
-      ]
+    this.state = {
+      isPanelOpen: false
     };
-    let showPanelHandler = () => {
+    this.tooggelPanel = this.tooggelPanel.bind(this);
+  }
 
-    };
-    this.showPanelHandler = this.showPanelHandler.bind(this);
+  tooggelPanel() {
+    this.setState(prevState => ({ isPanelOpen: !prevState.isPanelOpen }));
   }
 
   render() {
+    const { isPanelOpen } = this.state;
     return (
       <div className="sideBar">
-        <div id="panel" onClic={this.showPanelHandler}> {'<'}
-          <div id="hidden_panel"> Щось </div>
+        <div id="panel" onClick={this.tooggelPanel} role="presentation"> {'<'}
+          <div className={`hidden_panel ${isPanelOpen ? 'hidden_panel--active' : ''}`}> Щось </div>
         </div>
       </div>
     );
