@@ -1,33 +1,33 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
+import SideBar from '../../components/Sidebar';
+import './NewTrip.scss';
 
 const KEY = 'AIzaSyDOPDY3_XTTcJelWP-84Csj5FcIdPUBcDs';
 
-class Map extends Component {
+
+class NewTrip extends Component {
   constructor() {
     super();
     this.state = {
-      geolocation: {
+      defaultLocation: {
         lat: 50.95,
         lng: 30.33
       },
       defaultZoom: 11,
       startPoint: {
-        name: null,
         latLng: {
-          lat: 50.61771530000001,
-          lng: 28.2738698
+          lat: null,
+          lng: null
         }
       },
       endPoint: {
-        name: null,
         latLng: {
           lat: 52.61771530000001,
           lng: 26.2738698
         }
       }
     };
-    this.containerElement = document.getElementById('map');
     this.google = undefined;
     this.onApiLoad = this.onApiLoad.bind(this);
     this.addMarker = this.addMarker.bind(this);
@@ -36,7 +36,7 @@ class Map extends Component {
   componentDidMount() {
     this.getLocation()
       .then(({ coords }) => this.setState({
-        geolocation: {
+        startPoint: {
           lat: coords.latitude,
           lng: coords.longitude
         }
@@ -44,8 +44,8 @@ class Map extends Component {
   }
 
   componentDidUpdate() {
-    const { geolocation } = this.state;
-    this.addMarker(geolocation);
+    const { startPoint } = this.state;
+    this.addMarker(startPoint);
   }
 
   onApiLoad = (googleApi) => {
@@ -115,19 +115,22 @@ class Map extends Component {
   }
 
   render() {
-    const { geolocation, defaultZoom } = this.state;
+    const { defaultLocation, defaultZoom, startPoint } = this.state;
     return (
-      <div id="map">
-        <GoogleMapReact
-          bootstrapURLKeys={{ key: KEY }}
-          center={geolocation}
-          defaultZoom={defaultZoom}
-          yesIWantToUseGoogleMapApiInternals
-          onGoogleApiLoaded={googleApi => this.onApiLoad(googleApi)}
-        />
+      <div className="new-trip">
+        <SideBar startPoint={startPoint} />
+        <div id="map">
+          <GoogleMapReact
+            bootstrapURLKeys={{ key: KEY }}
+            center={defaultLocation}
+            defaultZoom={defaultZoom}
+            yesIWantToUseGoogleMapApiInternals
+            onGoogleApiLoaded={googleApi => this.onApiLoad(googleApi)}
+          />
+        </div>
       </div>
     );
   }
 }
 
-export default Map;
+export default NewTrip;

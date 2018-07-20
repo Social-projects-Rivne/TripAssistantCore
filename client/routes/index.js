@@ -1,13 +1,14 @@
 import React from 'react';
-import Map from '../components/Map';
 import Profile from '../pages/Profile';
 import Dashbord from '../pages/Dashbord';
+import NewTrip from '../pages/NewTrip';
 
 
 // Pages exemple.
 const History = () => <h1>History</h1>;
 const Statistic = () => <h1>Statistic</h1>;
 const Contacts = () => <h1>Contacts</h1>;
+const Home = () => <h1>List of active routes</h1>;
 //
 
 
@@ -15,7 +16,7 @@ const Routes = [
   {
     path: '/',
     exact: true,
-    component: Map
+    component: Home
   },
   {
     path: '/profile',
@@ -36,6 +37,10 @@ const Routes = [
   {
     path: '/dashbord',
     component: Dashbord
+  },
+  {
+    path: '/new-trip',
+    component: NewTrip
   }
 ];
 

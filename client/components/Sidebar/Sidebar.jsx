@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './Sidebar.scss';
 
 import { random } from '../../helpers';
@@ -29,13 +30,23 @@ class Sidebar extends Component {
         color: colors[random(0, colors.length - 1)]
       },
       points: [
-        { point: 'Start point', id: 0 },
-        { point: 'End point', id: 'last' }
+        { point: 'Start point', id: 0, start: true },
+        { point: 'End point', id: 1, end: true }
       ]
     };
 
     this.eventChangeName = this.eventChangeName.bind(this);
     this.eventAddNewPoint = this.eventAddNewPoint.bind(this);
+  }
+
+  componentDidUpdate() {
+    this.getPointName();
+  }
+
+  getPointName = () => {
+    const { startPoint } = this.props;
+    const geocoder = new window.google.maps.Geocoder();
+    geocoder.geocode({ location: startPoint }, res => console.log(res[0].formatted_address));
   }
 
   eventChangeName({ currentTarget: { textContent } }) {
@@ -51,7 +62,6 @@ class Sidebar extends Component {
     };
     this.setState(points.splice(newId, 0, newPoint));
   }
-
 
   render() {
     const { tripInfo, points } = this.state;
@@ -84,5 +94,12 @@ class Sidebar extends Component {
     );
   }
 }
+
+Sidebar.propTypes = {
+  startPoint: PropTypes.shape({
+    lat: PropTypes.number,
+    lng: PropTypes.number
+  }).isRequired
+};
 
 export default Sidebar;

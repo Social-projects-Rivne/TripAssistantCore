@@ -5,6 +5,12 @@
   height: 100%;
 }
 
+#map {
+  margin: -10px -15px 0 0;
+  flex-grow: 1;
+  height: calc(100vh - 50px);
+}
+
 .main {
   display: flex;
   background-color: #ecf0f6;

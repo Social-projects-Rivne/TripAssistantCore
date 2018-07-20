@@ -8,6 +8,7 @@ import EnvelopeIco from 'images/envelope.svg';
 import DashbordIco from 'images/dashbord.svg';
 
 const MENU_ITEM = [
+  { name: 'new trip', path: '/new-trip', ico: AddIco },
   { name: 'my profile', path: '/profile', ico: UserMenuIco },
   { name: 'contact', path: '/contacts', ico: EnvelopeIco },
   { name: 'dashbord', path: '/dashbord', ico: DashbordIco }
@@ -22,15 +23,9 @@ const NavigationItem = ({ name, path, ico }) => (
   </li>
 );
 
-const Navigation = ({ sidebar }) => (
+const Navigation = () => (
   <nav className="navigation">
     <ul>
-      <li>
-        <Link className="navigation_item" to="/" onClick={sidebar}>
-          <img src={AddIco} alt="add" />
-          new trip
-        </Link>
-      </li>
       {MENU_ITEM.map((path, i) => (
         <NavigationItem {...path} key={i} />
       ))}
@@ -42,10 +37,6 @@ NavigationItem.propTypes = {
   name: PropTypes.string.isRequired,
   path: PropTypes.string.isRequired,
   ico: PropTypes.string.isRequired
-};
-
-Navigation.propTypes = {
-  sidebar: PropTypes.func.isRequired
 };
 
 export default Navigation;
