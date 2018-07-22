@@ -1,0 +1,17 @@
+[  
+  {  
+    "id_user":1,
+    "email":"abc@asdasd.com",
+    "password": "abc"
+  },
+  {  
+    "id_user":2,
+    "email":"def@asdasd.com",
+    "password": "def"
+  },
+  {  
+    "id_user":3,
+    "email":"ghi@asdasd.com",
+    "password": "ghi"
+  }
+]

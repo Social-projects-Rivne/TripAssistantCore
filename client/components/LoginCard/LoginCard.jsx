@@ -4,12 +4,14 @@ import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import './LoginCard.scss';
 import SignUpForm from './Form/SignUpForm';
 import SignInForm from './Form/SignInForm';
+import FacebookAuth from './FacebookAuth';
 
 class LoginCard extends Component {
   render() {
     return (
       <Router basename="/react-auth-ui/">
         <div className="Auth_Card">
+          <FacebookAuth />
           <div className="Auth__Aside" />
           <div className="Auth__Form">
             <div className="PageSwitcher">
