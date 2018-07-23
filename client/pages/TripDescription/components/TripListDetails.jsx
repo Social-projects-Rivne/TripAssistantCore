@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './TripListDetails.scss';
+import PropTypes from 'prop-types';
 
 class TripListDetails extends Component {
   constructor(props) {
@@ -9,15 +10,23 @@ class TripListDetails extends Component {
   }
 
   render() {
-    const { feedbacksData } = this.state;
+    const { feedbackData } = this.props;
     return (
-      <div>
-        <div className="trip-list">
-          {feedbacksData}
+      <div className="triplist-wrapper">
+        <div className="feedback-userName">
+          {feedbackData.userName}
+        </div>
+        <div className="feedback-name">
+          {feedbackData.name}
+        </div>
+        <div className="feedback-rating">
+          {feedbackData.rating}
         </div>
       </div>
     );
   }
 }
-
+TripListDetails.propTypes = {
+  feedbackData: PropTypes.element.isRequired
+};
 export default TripListDetails;

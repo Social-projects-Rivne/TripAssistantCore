@@ -1,19 +1,9 @@
-.trip-map {
-  width: 80%;
-  height: 200px;
-  margin: 0 auto;
-  background-color: aquamarine;
-}
-
-.search {
-  width: 50%;
-  margin: 0 auto;
-  border: 1px solid black;
+.triplist-wrapper {
   display: flex;
-  margin-top: 50px;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.search > input {
-  width: 50%;
-  margin: 0 auto;
+.feedback-rating {
+  border: 1px solid black;
 }

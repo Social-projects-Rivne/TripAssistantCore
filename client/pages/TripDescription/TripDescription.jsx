@@ -22,7 +22,7 @@ class TripDescription extends Component {
             <i className="material-icons left">Submit</i>button
           </a>
         </div>
-        <div className="trip-list">
+        <div className="trips-list">
           {feedbacksData.map((feedbackData, i) => (
             <TripListDetails feedbackData={feedbackData} key={i} id={i} />
           ))}
