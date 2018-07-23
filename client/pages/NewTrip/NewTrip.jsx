@@ -2,10 +2,21 @@ import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import SideBar from '../../components/Sidebar';
 import MapDropdown from '../../components/MapDropdown';
+import { random } from '../../helpers';
 import './NewTrip.scss';
 
 const KEY = 'AIzaSyDOPDY3_XTTcJelWP-84Csj5FcIdPUBcDs';
 
+const colors = [
+  'red',
+  'pink',
+  'purple',
+  'blue',
+  'teal',
+  'light-green',
+  'lime',
+  'orange'
+];
 
 class NewTrip extends Component {
   constructor() {
@@ -21,12 +32,17 @@ class NewTrip extends Component {
       },
       end: {
         name: 'Enter end point'
+      },
+      tripInfo: {
+        name: 'New Trip',
+        color: colors[random(0, colors.length - 1)]
       }
     };
     this.google = undefined;
     this.onApiLoad = this.onApiLoad.bind(this);
     this.addMarker = this.addMarker.bind(this);
     this.showDropdown = this.showDropdown.bind(this);
+    this.eventChangeName = this.eventChangeName.bind(this);
   }
 
   componentDidMount() {
@@ -40,7 +56,7 @@ class NewTrip extends Component {
   }
 
   componentDidUpdate() {
-    const { location, start } = this.state;
+    const { location, start, tripInfo } = this.state;
     if (location && !start.isSetLocalName) {
       this.addMarker(location);
       this.getPointName(location)
@@ -51,6 +67,7 @@ class NewTrip extends Component {
           }
         }));
     }
+    console.log(tripInfo);
   }
 
   onApiLoad = (google) => {
@@ -149,18 +166,37 @@ class NewTrip extends Component {
       directionsService.route(request, (result, status) => {
         if (status === 'OK') {
           directionsDisplay.setDirections(result);
+          this.setState(prevState => ({
+            tripInfo: {
+              ...prevState.tripInfo,
+              duration: result.routes[0].legs[0].distance.text,
+              time: result.routes[0].legs[0].duration.text,
+              distance: {
+                start: prevState.location,
+                end: prevState.end.point
+              }
+            }
+          }));
         }
       });
       this.showDropdown({}, 0);
-      console.log(window.google);
     }
   }
 
+  eventChangeName({ currentTarget: { textContent } }) {
+    this.setState(prevState => ({
+      tripInfo: {
+        ...prevState.tripInfo,
+        name: textContent
+      }
+    }));
+  }
+
   render() {
-    const { defaultLocation, defaultZoom, start, end, dropdownPosition } = this.state;
+    const { defaultLocation, defaultZoom, start, end, dropdownPosition, tripInfo } = this.state;
     return (
       <div className="new-trip">
-        <SideBar start={start} end={end} />
+        <SideBar start={start} end={end} tripInfo={tripInfo} changeName={this.eventChangeName} />
         <div id="map">
           <GoogleMapReact
             bootstrapURLKeys={{ key: KEY }}

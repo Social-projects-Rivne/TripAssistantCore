@@ -9,8 +9,8 @@ const TripInfo = ({
   <div className={`trip-info ${color} accent-1`}>
     <h5 contentEditable="true" suppressContentEditableWarning="true" className="trip-info_title" onBlur={onSave}>{name}</h5>
     <div className="trip-info_icon">
-      <span>{duration} km</span>
-      <span>{time} h</span>
+      <span>{duration}</span>
+      <span>{time}</span>
       <span>$ {fuel}</span>
     </div>
   </div>
@@ -26,7 +26,7 @@ TripInfo.propTypes = {
 };
 
 TripInfo.defaultProps = {
-  duration: '0',
+  duration: '0 км',
   time: '0',
   fuel: '0'
 };

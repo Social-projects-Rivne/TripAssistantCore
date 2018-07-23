@@ -2,45 +2,19 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './Sidebar.scss';
 
-import { random } from '../../helpers';
 import TripInfo from './components/TripInfo';
 import TripPoint from './components/TripPoint';
 
-const colors = [
-  'red',
-  'pink',
-  'purple',
-  'blue',
-  'teal',
-  'light-green',
-  'lime',
-  'orange'
-];
 
 class Sidebar extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      tripInfo: {
-        name: 'New Trip',
-        duration: undefined,
-        time: undefined,
-        fuel: undefined,
-        color: colors[random(0, colors.length - 1)]
-      }
-    };
-
-    this.eventChangeName = this.eventChangeName.bind(this);
     this.eventAddNewPoint = this.eventAddNewPoint.bind(this);
   }
 
   componentDidUpdate() {
 
-  }
-
-  eventChangeName({ currentTarget: { textContent } }) {
-    this.setState({ tripInfo: { name: textContent } });
   }
 
   eventAddNewPoint(elemId) {
@@ -54,14 +28,13 @@ class Sidebar extends Component {
   }
 
   render() {
-    const { tripInfo } = this.state;
-    const { start, end } = this.props;
+    const { tripInfo, changeName, start, end } = this.props;
     return (
       <div className="sidebar z-depth-4">
         <div className="sidebar__header">
           <TripInfo
             className="red accent-1"
-            onSave={this.eventChangeName}
+            onSave={changeName}
             {...tripInfo}
           />
           <div className="trip-info_radius">
@@ -86,7 +59,19 @@ class Sidebar extends Component {
 
 Sidebar.propTypes = {
   start: PropTypes.objectOf(PropTypes.any).isRequired,
-  end: PropTypes.objectOf(PropTypes.any).isRequired
+  end: PropTypes.objectOf(PropTypes.any).isRequired,
+  tripInfo: PropTypes.objectOf(PropTypes.any),
+  changeName: PropTypes.func.isRequired
+};
+
+Sidebar.defaultProps = {
+  tripInfo: {
+    name: 'New Trip',
+    duration: undefined,
+    time: undefined,
+    fuel: undefined,
+    color: '#fff'
+  }
 };
 
 export default Sidebar;
