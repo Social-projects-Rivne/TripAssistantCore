@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const TripPoint = ({ point }) => (
   <div className="trip-point_item collection-item">
-    <h4>{point}</h4>
+    <h4 className="trip-point_title">{point}</h4>
   </div>
 );
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import SideBar from '../../components/Sidebar';
+import MapDropdown from '../../components/MapDropdown';
 import './NewTrip.scss';
 
 const KEY = 'AIzaSyDOPDY3_XTTcJelWP-84Csj5FcIdPUBcDs';
@@ -15,28 +16,23 @@ class NewTrip extends Component {
         lng: 30.33
       },
       defaultZoom: 11,
-      startPoint: {
-        latLng: {
-          lat: null,
-          lng: null
-        }
+      start: {
+        name: 'Enter start point'
       },
-      endPoint: {
-        latLng: {
-          lat: 52.61771530000001,
-          lng: 26.2738698
-        }
+      end: {
+        name: 'Enter end point'
       }
     };
     this.google = undefined;
     this.onApiLoad = this.onApiLoad.bind(this);
     this.addMarker = this.addMarker.bind(this);
+    this.showDropdown = this.showDropdown.bind(this);
   }
 
   componentDidMount() {
     this.getLocation()
       .then(({ coords }) => this.setState({
-        startPoint: {
+        location: {
           lat: coords.latitude,
           lng: coords.longitude
         }
@@ -44,12 +40,23 @@ class NewTrip extends Component {
   }
 
   componentDidUpdate() {
-    const { startPoint } = this.state;
-    this.addMarker(startPoint);
+    const { location, start } = this.state;
+    if (location && !start.isSetLocalName) {
+      this.addMarker(location);
+      this.getPointName(location)
+        .then(locName => this.setState({
+          start: {
+            name: locName,
+            isSetLocalName: true
+          }
+        }));
+    }
   }
 
-  onApiLoad = (googleApi) => {
-    this.google = googleApi;
+  onApiLoad = (google) => {
+    if (google) {
+      // google.maps.event.addListener(google.map, 'click', e => console.log(e));
+    }
   }
 
   getLocation = () => {
@@ -69,40 +76,73 @@ class NewTrip extends Component {
     return location;
   };
 
-  addMarker = (latLgn) => {
-    const geocoder = new this.google.maps.Geocoder();
-    geocoder.geocode({ location: latLgn }, (res) => {
-      const map = new this.google.maps.Map(document.getElementById('map'), {
-        zoom: 11,
-        center: latLgn
-      });
-
-      const marker = new this.google.maps.Marker({
-        position: latLgn,
-        map,
-        title: res[0].formatted_address
-      });
-      return marker;
+  getPointName = (startPoint) => {
+    const name = new Promise((resolve) => {
+      if (window.google) {
+        const geocoder = new window.google.maps.Geocoder();
+        geocoder.geocode({ location: startPoint }, res => resolve(res[0].formatted_address));
+      }
     });
+    return name;
   }
 
-  calculateRoute = (map, maps) => {
-    if (map) {
-      const directionsService = new maps.DirectionsService();
-      const directionsDisplay = new maps.DirectionsRenderer();
-      const { startPoint, endPoint } = this.state;
-      const start = new maps.LatLng(startPoint.latLng);
-      const end = new maps.LatLng(endPoint.latLng);
+  showDropdown = ({ pixel, latLng }, opacity) => {
+    if (pixel) {
+      const endPoint = { lat: latLng.lat(), lng: latLng.lng() };
+      this.getPointName(endPoint).then((localName) => {
+        this.setState({
+          end: {
+            name: localName,
+            point: endPoint,
+            isSetLocalName: true
+          }
+        });
+      });
+      this.setState({ dropdownPosition: { x: pixel.x, y: pixel.y, show: opacity } });
+    } else {
+      this.setState({ dropdownPosition: { x: 0, y: 0, show: opacity } });
+    }
+  }
 
-      const setNewMap = new maps.Map(document.getElementById('map'), {
+  addMarker = (latLgn) => {
+    if (window.google) {
+      const geocoder = new window.google.maps.Geocoder();
+      geocoder.geocode({ location: latLgn }, (res) => {
+        const map = new window.google.maps.Map(document.getElementById('map'), {
+          zoom: 11,
+          center: latLgn
+        });
+
+        map.addListener('rightclick', e => this.showDropdown(e, 1));
+        map.addListener('click', () => this.showDropdown({}, 0));
+
+        const marker = new window.google.maps.Marker({
+          position: latLgn,
+          map,
+          title: res[0].formatted_address
+        });
+        return marker;
+      });
+    }
+  }
+
+  calculateRoute = () => {
+    if (window.google) {
+      const directionsService = new window.google.maps.DirectionsService();
+      const directionsDisplay = new window.google.maps.DirectionsRenderer();
+      const { location, end } = this.state;
+      const startPoint = new window.google.maps.LatLng(location);
+      const endPoint = new window.google.maps.LatLng(end.point);
+
+      const setNewMap = new window.google.maps.Map(document.getElementById('map'), {
         zoom: 7,
-        start
+        startPoint
       });
       directionsDisplay.setMap(setNewMap);
 
       const request = {
-        origin: start,
-        destination: end,
+        origin: startPoint,
+        destination: endPoint,
         travelMode: 'DRIVING'
       };
 
@@ -111,23 +151,27 @@ class NewTrip extends Component {
           directionsDisplay.setDirections(result);
         }
       });
+      this.showDropdown({}, 0);
+      console.log(window.google);
     }
   }
 
   render() {
-    const { defaultLocation, defaultZoom, startPoint } = this.state;
+    const { defaultLocation, defaultZoom, start, end, dropdownPosition } = this.state;
     return (
       <div className="new-trip">
-        <SideBar startPoint={startPoint} />
+        <SideBar start={start} end={end} />
         <div id="map">
           <GoogleMapReact
             bootstrapURLKeys={{ key: KEY }}
+            onClick={this.eventClick}
             center={defaultLocation}
             defaultZoom={defaultZoom}
             yesIWantToUseGoogleMapApiInternals
-            onGoogleApiLoaded={googleApi => this.onApiLoad(googleApi)}
+            onGoogleApiLoaded={google => this.onApiLoad(google)}
           />
         </div>
+        <MapDropdown position={dropdownPosition} calcRouteFn={this.calculateRoute} />
       </div>
     );
   }

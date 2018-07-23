@@ -28,11 +28,7 @@ class Sidebar extends Component {
         time: undefined,
         fuel: undefined,
         color: colors[random(0, colors.length - 1)]
-      },
-      points: [
-        { point: 'Start point', id: 0, start: true },
-        { point: 'End point', id: 1, end: true }
-      ]
+      }
     };
 
     this.eventChangeName = this.eventChangeName.bind(this);
@@ -40,13 +36,7 @@ class Sidebar extends Component {
   }
 
   componentDidUpdate() {
-    this.getPointName();
-  }
 
-  getPointName = () => {
-    const { startPoint } = this.props;
-    const geocoder = new window.google.maps.Geocoder();
-    geocoder.geocode({ location: startPoint }, res => console.log(res[0].formatted_address));
   }
 
   eventChangeName({ currentTarget: { textContent } }) {
@@ -64,8 +54,8 @@ class Sidebar extends Component {
   }
 
   render() {
-    const { tripInfo, points } = this.state;
-
+    const { tripInfo } = this.state;
+    const { start, end } = this.props;
     return (
       <div className="sidebar z-depth-4">
         <div className="sidebar__header">
@@ -80,15 +70,14 @@ class Sidebar extends Component {
           </div>
         </div>
         <div className="trip-point collection">
-          { points.map(({ point, id }) => (
-            <TripPoint
-              point={point}
-              id={id}
-              addPoint={this.eventAddNewPoint}
-              key={id}
-            />
-          ))
-          }
+          <TripPoint
+            point={start.name}
+            addPoint={this.eventAddNewPoint}
+          />
+          <TripPoint
+            point={end.name}
+            addPoint={this.eventAddNewPoint}
+          />
         </div>
       </div>
     );
@@ -96,10 +85,8 @@ class Sidebar extends Component {
 }
 
 Sidebar.propTypes = {
-  startPoint: PropTypes.shape({
-    lat: PropTypes.number,
-    lng: PropTypes.number
-  }).isRequired
+  start: PropTypes.objectOf(PropTypes.any).isRequired,
+  end: PropTypes.objectOf(PropTypes.any).isRequired
 };
 
 export default Sidebar;

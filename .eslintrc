@@ -21,6 +21,7 @@
     "indent": ["error", 2],
     "linebreak-style": "off",
     "import/no-unresolved": "off",
-    "no-console": "off"
+    "no-console": "off",
+    "object-curly-newline": "off"
   }
 }
