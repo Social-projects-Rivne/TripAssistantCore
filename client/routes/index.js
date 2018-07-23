@@ -3,10 +3,11 @@ import Map from '../components/Map';
 import Info from '../pages/Info';
 import Dashbord from '../pages/Dashbord';
 import TripDescription from '../pages/TripDescription/TripDescription';
+import Profile from '../pages/Profile';
+import Login from '../pages/Login/Login';
 
 
-// Pages example.
-const Profile = () => <h1>Profile</h1>;
+// Pages exemple.
 const History = () => <h1>History</h1>;
 const Statistic = () => <h1>Statistic</h1>;
 //
@@ -41,6 +42,10 @@ const Routes = [
   {
     path: '/tripdescription',
     component: TripDescription
+  },
+  {
+    path: '/login',
+    component: Login
   }
 
 ];
