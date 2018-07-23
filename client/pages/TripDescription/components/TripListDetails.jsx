@@ -1,22 +1,19 @@
 import React, { Component } from 'react';
 import './TripListDetails.scss';
-import feedbackData from '../../../../public/data/feedbacksData.json';
-
 
 class TripListDetails extends Component {
-  constructor() {
-    super();
-
+  constructor(props) {
+    super(props);
     this.state = {
     };
   }
 
-
   render() {
+    const { feedbacksData } = this.state;
     return (
       <div>
         <div className="trip-list">
-          <p>some</p>
+          {feedbacksData}
         </div>
       </div>
     );
