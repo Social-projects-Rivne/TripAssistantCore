@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import LoginHOC from 'react-facebook-login-hoc';
 
 const configureLoginProps = {
@@ -14,9 +15,7 @@ class FacebookAuth extends Component {
   constructor(props) {
     super(props);
 
-    this.status = this.props.fb.status;
-    this.login = this.props.fb.login;
-    this.logout = this.props.fb.logout;
+    this.getStatus = this.getStatus.bind(this);
   }
 
   getStatus(response) {
@@ -25,12 +24,13 @@ class FacebookAuth extends Component {
     }
   }
 
-  responseApi(res) {
+  responseApi = (res) => {
     console.log('token:', res.accessToken);
   }
 
   checkLoginState() {
-    this.status(this.getStatus.bind(this));
+    const { fb: { status } } = this.props;
+    status(this.getStatus.bind(this));
   }
 
   loginFacebook() {
@@ -44,12 +44,16 @@ class FacebookAuth extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.checkLoginState.bind(this)}>Get Facebook Login Status</button>
-        <button onClick={this.loginFacebook.bind(this)}>Facebook Login</button>
-        <button onClick={this.logoutFacebook.bind(this)}>Facebook Logout</button>
+        <button onClick={this.checkLoginState} type="button">Get Facebook Login Status</button>
+        <button onClick={this.loginFacebook} type="button">Facebook Login</button>
+        <button onClick={this.logoutFacebook} type="button">Facebook Logout</button>
       </div>
     );
   }
 }
+
+FacebookAuth.propTypes = {
+  fb: PropTypes.objectOf(PropTypes.func).isRequired
+};
 
 export default LoginHOC(configureLoginProps)(FacebookAuth);
