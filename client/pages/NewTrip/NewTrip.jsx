@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import GoogleMapReact from 'google-map-react';
+import GoogleMap from 'google-map-react';
 import SideBar from '../../components/Sidebar';
 import MapDropdown from '../../components/MapDropdown';
 import { random } from '../../helpers';
@@ -184,15 +184,15 @@ class NewTrip extends Component {
     }));
   }
 
+
   render() {
     const { defaultLocation, defaultZoom, start, end, dropdownPosition, tripInfo } = this.state;
     return (
       <div className="new-trip">
         <SideBar start={start} end={end} tripInfo={tripInfo} changeName={this.eventChangeName} />
         <div id="map">
-          <GoogleMapReact
-            bootstrapURLKeys={{ key: KEY }}
-            onClick={this.eventClick}
+          <GoogleMap
+            bootstrapURLKeys={{ key: KEY, language: 'en' }}
             center={defaultLocation}
             defaultZoom={defaultZoom}
             yesIWantToUseGoogleMapApiInternals
