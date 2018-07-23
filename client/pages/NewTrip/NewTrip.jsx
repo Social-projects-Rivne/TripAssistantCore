@@ -38,8 +38,7 @@ class NewTrip extends Component {
         color: colors[random(0, colors.length - 1)]
       }
     };
-    this.google = undefined;
-    this.onApiLoad = this.onApiLoad.bind(this);
+
     this.addMarker = this.addMarker.bind(this);
     this.showDropdown = this.showDropdown.bind(this);
     this.eventChangeName = this.eventChangeName.bind(this);
@@ -56,7 +55,7 @@ class NewTrip extends Component {
   }
 
   componentDidUpdate() {
-    const { location, start, tripInfo } = this.state;
+    const { location, start } = this.state;
     if (location && !start.isSetLocalName) {
       this.addMarker(location);
       this.getPointName(location)
@@ -66,13 +65,6 @@ class NewTrip extends Component {
             isSetLocalName: true
           }
         }));
-    }
-    console.log(tripInfo);
-  }
-
-  onApiLoad = (google) => {
-    if (google) {
-      // google.maps.event.addListener(google.map, 'click', e => console.log(e));
     }
   }
 
@@ -204,7 +196,6 @@ class NewTrip extends Component {
             center={defaultLocation}
             defaultZoom={defaultZoom}
             yesIWantToUseGoogleMapApiInternals
-            onGoogleApiLoaded={google => this.onApiLoad(google)}
           />
         </div>
         <MapDropdown position={dropdownPosition} calcRouteFn={this.calculateRoute} />

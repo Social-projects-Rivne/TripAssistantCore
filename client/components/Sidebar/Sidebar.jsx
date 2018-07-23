@@ -52,6 +52,7 @@ class Sidebar extends Component {
             addPoint={this.eventAddNewPoint}
           />
         </div>
+        {tripInfo.distance && <a href="?#" className="waves-effect waves-light btn" onClick={event => event.preventDefault && console.log(tripInfo)}>Save</a>}
       </div>
     );
   }
