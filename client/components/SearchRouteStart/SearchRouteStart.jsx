@@ -4,7 +4,7 @@ import Geosuggest from 'react-geosuggest';
 
 const SearchRouteStart = ({ setStartPoint, setEndPoint, handleSearchSubmit }) => (
   <div className="search-route-start">
-    <p className="srs-h">Where do you want to start your trip?</p>
+    <p className="srs-h">Where do you want to go?</p>
     <div className="sr-form-wrap">
       <form className="car-card__form-wrap" onSubmit={handleSearchSubmit} autoComplete="off">
         <div className="input-field search-start__col">
@@ -15,7 +15,7 @@ const SearchRouteStart = ({ setStartPoint, setEndPoint, handleSearchSubmit }) =>
           <Geosuggest name="endPoint" onSuggestSelect={setEndPoint} inputClassName="car-card__input" autoComplete="off" />
           <label className="car-card__label active">End point</label>
         </div>
-        <button type="submit" href="#!" className="search-start__btn-submit">START SEARCH</button>
+        <button type="submit" href="#!" className="search-start__btn-submit">SEARCH</button>
       </form>
     </div>
   </div>

@@ -85,10 +85,10 @@
 
 .fadeInOut-enter.fadeInOut-enter-active {
   opacity: 1;
-  transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .fadeInOut-leave.fadeInOut-leave-active {
   opacity: 0;
-  transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
 }

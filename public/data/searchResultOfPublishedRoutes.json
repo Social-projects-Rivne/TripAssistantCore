@@ -1,11 +1,11 @@
-[  
+[ 
   {  
     "userPic": null,
     "name": "Oleksii Iordatii",
     "rating": 4,
     "startPoint": "Rivne",
     "endPoint": "Lviv",
-    "date": "09/07/2018",
+    "date": "9/7/2018",
     "seats": 2,
     "price": 300,
     "currency": "UAH"
@@ -28,7 +28,7 @@
     "startPoint": "Rivne",
     "endPoint": "Luck",
     "date": "10/12/2018",
-    "seats": 1,
+    "seats": 3,
     "price": 100,
     "currency": "UAH"
   },
@@ -61,7 +61,7 @@
     "startPoint": "Rivne",
     "endPoint": "Kyiv",
     "date": "10/14/2018",
-    "seats": 2,
+    "seats": 1,
     "price": 500,
     "currency": "UAH"
   },
@@ -72,7 +72,7 @@
     "startPoint": "Rivne",
     "endPoint": "Lviv",
     "date": "10/15/2018",
-    "seats": 1,
+    "seats": 3,
     "price": 200,
     "currency": "UAH"
   },
@@ -83,7 +83,7 @@
     "startPoint": "Rivne",
     "endPoint": "Lviv",
     "date": "10/17/2018",
-    "seats": 2,
+    "seats": 4,
     "price": 150,
     "currency": "UAH"
   },
@@ -94,7 +94,7 @@
     "startPoint": "Rivne",
     "endPoint": "Kyiv",
     "date": "10/18/2018",
-    "seats": 1,
+    "seats": 4,
     "price": 400,
     "currency": "UAH"
   },
@@ -116,7 +116,7 @@
     "startPoint": "Rivne",
     "endPoint": "Lviv",
     "date": "10/20/2018",
-    "seats": 2,
+    "seats": 5,
     "price": 2000,
     "currency": "UAH"
   }

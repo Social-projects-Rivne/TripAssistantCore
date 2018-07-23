@@ -12,8 +12,15 @@ class SearchRoute extends Component {
     this.state = {
       searchingStageTwo: false,
       searchResultIsReady: false,
-      searchedRouteData: null
+      searchedRouteData: null,
+      filterValues: {
+        date: undefined,
+        passengers: undefined,
+        minPrice: undefined,
+        maxPrice: undefined
+      }
     };
+    this.dataToFilter = null;
     this.searchPoints = { startPoint: null, endPoint: null };
   }
 
@@ -23,6 +30,18 @@ class SearchRoute extends Component {
 
   setEndPoint = ({ location = null } = {}) => {
     this.searchPoints.endPoint = location;
+  }
+
+  updateFilterValues = ({
+    date = undefined, passengers = undefined, minPrice = undefined, maxPrice = undefined
+  }) => {
+    console.log(date, passengers, minPrice, maxPrice);
+    this.setState({
+      filterValues: {
+        date, passengers, minPrice, maxPrice
+      }
+    });
+    setTimeout(() => this.filterData(), 0);
   }
 
   handleSearchSubmit = (e) => {
@@ -41,11 +60,31 @@ class SearchRoute extends Component {
 
   fetchRoutesData = () => {
     axios.get('public/data/searchResultOfPublishedRoutes.json')
-      .then(({ data }) => this.setState({ searchedRouteData: data, searchResultIsReady: true }));
+      .then(({ data }) => {
+        this.dataToFilter = data;
+        this.filterData();
+      });
+  }
+
+  filterData = () => {
+    const {
+      filterValues: {
+        date, passengers, minPrice, maxPrice
+      }
+    } = this.state;
+    let filteredData = this.dataToFilter;
+
+    if (date) filteredData = filteredData.filter(obj => obj.date === date);
+    if (passengers) filteredData = filteredData.filter(obj => obj.seats >= passengers);
+    if (minPrice) filteredData = filteredData.filter(obj => obj.price >= minPrice);
+    if (maxPrice) filteredData = filteredData.filter(obj => obj.price <= maxPrice);
+    this.setState({ searchedRouteData: filteredData, searchResultIsReady: true });
   }
 
   render() {
-    const { searchingStageTwo, searchResultIsReady, searchedRouteData } = this.state;
+    const {
+      searchingStageTwo, searchResultIsReady, searchedRouteData
+    } = this.state;
 
     return (
       <div className="search-route">
@@ -61,6 +100,7 @@ class SearchRoute extends Component {
               <SearchRouteResult
                 routesData={searchedRouteData}
                 isActive={searchResultIsReady}
+                updateFilterValues={this.updateFilterValues}
               />
             )}
           </div>
