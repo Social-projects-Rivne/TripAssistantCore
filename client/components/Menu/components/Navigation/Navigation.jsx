@@ -10,8 +10,8 @@ import DashbordIco from 'images/dashbord.svg';
 const MENU_ITEM = [
   { name: 'new trip', path: '/new-trip', ico: AddIco },
   { name: 'my profile', path: '/profile', ico: UserMenuIco },
-  { name: 'contact', path: '/contacts', ico: EnvelopeIco },
-  { name: 'dashbord', path: '/dashbord', ico: DashbordIco }
+  { name: 'info', path: '/info', ico: EnvelopeIco },
+  { name: 'dashboard', path: '/dashboard', ico: DashbordIco }
 ];
 
 const NavigationItem = ({ name, path, ico }) => (
