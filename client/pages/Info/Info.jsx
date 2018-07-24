@@ -16,8 +16,7 @@ const Info = () => (
       <form>
         <input type="text" name="name" placeholder="input your name\login" required /> <br />
         <input type="email" name="email" placeholder="input your email" required /> <br />
-        <textarea placeholder="your message here">
-          
+        <textarea placeholder="your message here" />
         <a href="# " className="waves-effect waves-light btn-large"><i className="material-icons left">Submit</i></a>
       </form>
     </div>
