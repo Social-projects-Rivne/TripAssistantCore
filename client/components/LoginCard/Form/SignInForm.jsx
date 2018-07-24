@@ -41,7 +41,7 @@ class SignInForm extends Component {
     const { password } = this.state;
     return (
       <div className="FormCenter">
-        <form className="FormFields" onSubmit={this.handleSubmit}>
+        <form className="FormFields" onSubmit={this.handleSubmit} id="loginForm">
           <div className="FormField">
             <label className="FormField__Label">E-Mail Address</label>
             <input
