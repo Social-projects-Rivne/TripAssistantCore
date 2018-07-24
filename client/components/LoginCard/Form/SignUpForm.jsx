@@ -41,7 +41,7 @@ class SignUpForm extends Component {
     const { password } = this.state;
     return (
       <div className="FormCenter">
-        <form className="FormFields" onSubmit={this.handleSubmit}>
+        <form className="FormFields" onSubmit={this.handleSubmit} id="registrationForm">
           <div className="FormField">
             <label className="FormField__Label">Full Name</label>
             <input
@@ -86,12 +86,21 @@ class SignUpForm extends Component {
             </label>
           </div>
           <div className="FormField">
-            <button className="FormField__Button mr-20" type="submit">Sign Up</button>
+            <button className="FormField__Button mr-20" type="submit" onSubmit="storeData()">Sign Up</button>
           </div>
         </form>
       </div>
     );
   }
 }
+
+window.onSubmit = () => {
+  if (localStorage) {
+    document.getElementById('SignUpForm').addEventListener('submit', () => {
+      const data = document.getElementById('registrationForm').value;
+      localStorage.setItem('registrationForm', data);
+    });
+  }
+};
 
 export default SignUpForm;
