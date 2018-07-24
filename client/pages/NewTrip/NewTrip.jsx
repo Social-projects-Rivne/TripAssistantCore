@@ -54,18 +54,12 @@ class NewTrip extends Component {
     }
   }
 
-  onClikEvent = (e) => {
-    console.log(e);
-  }
-
   getLocation = () => {
     const { geolocation } = navigator;
-
     const location = new Promise((resolve, reject) => {
       if (!geolocation) {
         reject(new Error('Not Supported'));
       }
-
       geolocation.getCurrentPosition((position) => {
         resolve(position);
       }, () => {
@@ -75,6 +69,36 @@ class NewTrip extends Component {
     return location;
   };
 
+  getParsetNameFromGeocode = (data) => {
+    const res = [];
+    Object.values(data.address_components).map((item) => {
+      switch (item.types[0]) {
+      case 'street_number':
+        res.push(item.long_name);
+        break;
+      case 'route':
+        if (item.long_name === 'Unnamed Road') {
+          res.toString();
+          break;
+        }
+        res.push(item.long_name);
+        break;
+      case 'locality':
+        res.push(item.long_name);
+        break;
+      case 'administrative_area_level_2':
+        res.push(item.long_name);
+        break;
+      case 'administrative_area_level_1':
+        res.push(item.long_name);
+        break;
+      default: res.toString();
+      }
+      return item;
+    });
+    return res.join(', ');
+  }
+
   getPointName = (startPoint) => {
     const { google } = this.props;
     const name = new Promise((resolve, reject) => {
@@ -82,7 +106,9 @@ class NewTrip extends Component {
         reject(new Error('API is undefined'));
       }
       const geocoder = new google.maps.Geocoder();
-      geocoder.geocode({ location: startPoint }, res => resolve(res[0].formatted_address));
+      geocoder.geocode({ location: startPoint }, res => resolve(
+        this.getParsetNameFromGeocode(res[0])
+      ));
     });
     return name;
   }
@@ -112,25 +138,24 @@ class NewTrip extends Component {
   }
 
   calculateRoute = () => {
-    if (window.google) {
-      const directionsService = new window.google.maps.DirectionsService();
-      const directionsDisplay = new window.google.maps.DirectionsRenderer();
+    const { google } = this.props;
+    if (google) {
       const { location, end } = this.state;
-      const startPoint = new window.google.maps.LatLng(location);
-      const endPoint = new window.google.maps.LatLng(end);
-
-      const setNewMap = new window.google.maps.Map(document.getElementById('map'), {
+      const map = document.getElementById('map');
+      const directionsService = new google.maps.DirectionsService();
+      const directionsDisplay = new google.maps.DirectionsRenderer();
+      const startPoint = new google.maps.LatLng(location);
+      const endPoint = new google.maps.LatLng(end);
+      const setNewMap = new google.maps.Map(map, {
         zoom: 7,
         startPoint
       });
       directionsDisplay.setMap(setNewMap);
-
       const request = {
         origin: startPoint,
         destination: endPoint,
         travelMode: 'DRIVING'
       };
-
       directionsService.route(request, (result, status) => {
         if (status === 'OK') {
           directionsDisplay.setDirections(result);
