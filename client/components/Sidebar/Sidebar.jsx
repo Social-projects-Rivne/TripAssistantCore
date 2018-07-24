@@ -9,26 +9,19 @@ import TripPoint from './components/TripPoint';
 class Sidebar extends Component {
   constructor(props) {
     super(props);
-
-    this.eventAddNewPoint = this.eventAddNewPoint.bind(this);
+    this.state = {
+      start: 'Enter start point',
+      end: 'Enter end point'
+    };
   }
 
   componentDidUpdate() {
 
   }
 
-  eventAddNewPoint(elemId) {
-    const { points } = this.state;
-    const newId = (elemId + 1);
-    const newPoint = {
-      point: 'Sub point',
-      id: newId
-    };
-    this.setState(points.splice(newId, 0, newPoint));
-  }
-
   render() {
-    const { tripInfo, changeName, start, end } = this.props;
+    const { tripInfo, changeName, points } = this.props;
+    const { start, end } = this.state;
     return (
       <div className="sidebar z-depth-4">
         <div className="sidebar__header">
@@ -43,14 +36,10 @@ class Sidebar extends Component {
           </div>
         </div>
         <div className="trip-point collection">
-          <TripPoint
-            point={start.name}
-            addPoint={this.eventAddNewPoint}
-          />
-          <TripPoint
-            point={end.name}
-            addPoint={this.eventAddNewPoint}
-          />
+          {!points.length
+            ? <TripPoint name={start} />
+            : points.map(point => <TripPoint {...point} key={point.name} />) }
+          {points.length < 2 && <TripPoint name={end} />}
         </div>
         {tripInfo.distance && <a href="?#" className="waves-effect waves-light btn" onClick={event => event.preventDefault && console.log(tripInfo)}>Save</a>}
       </div>
@@ -59,8 +48,7 @@ class Sidebar extends Component {
 }
 
 Sidebar.propTypes = {
-  start: PropTypes.objectOf(PropTypes.any).isRequired,
-  end: PropTypes.objectOf(PropTypes.any).isRequired,
+  points: PropTypes.arrayOf(PropTypes.any).isRequired,
   tripInfo: PropTypes.objectOf(PropTypes.any),
   changeName: PropTypes.func.isRequired
 };
