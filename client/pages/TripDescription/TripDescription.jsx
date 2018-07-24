@@ -1,21 +1,39 @@
 import React, { Component } from 'react';
 import './TripDescription.scss';
-import TripListDetails from './components/TripListDetails';
+import TripDescriptionDetails from './components/TripDescriptionDetails';
 import feedbacksData from '../../../public/data/feedbacksData.json';
 
 class TripDescription extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+    };
+    this.updateSearch = this.updateSearch.bind(this);
+    this.clearInput = this.clearInput.bind(this);
+  }
+
+  updateSearch(event) {
+    this.setState({ search: event.target.value });
+  }
+
+  clearInput() {
+    this.setState({ search: '' });
+  }
+
   render() {
+    const { search } = this.state;
     return (
       <div>
         <div className="trip-map">Here will be map</div>
         <div className="search">
           <input
+            value={search}
             type="text"
-            placeholder="Enter a trip which you want to find"
-            onChange={this.inputHandler}
+            onChange={this.updateSearch}
           />
+          <a href="# " className="waves-effect waves-light btn clear" onClick={this.clearInput}>CLEAR</a>
           <a
-            className="waves-effect waves-light btn-large"
+            className="waves-effect waves-light btn-large submit"
             href="# "
             style={this.styles}
           >
@@ -24,7 +42,7 @@ class TripDescription extends Component {
         </div>
         <div className="trips-list">
           {feedbacksData.map((feedbackData, i) => (
-            <TripListDetails feedbackData={feedbackData} key={i} id={i} />
+            <TripDescriptionDetails feedbackData={feedbackData} key={i} id={i} />
           ))}
         </div>
       </div>

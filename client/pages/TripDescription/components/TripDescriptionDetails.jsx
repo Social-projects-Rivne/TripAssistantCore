@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import './TripListDetails.scss';
+import './TripDescriptionDetails.scss';
 import PropTypes from 'prop-types';
 
-class TripListDetails extends Component {
+class TripDescriptionDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,7 +26,7 @@ class TripListDetails extends Component {
     );
   }
 }
-TripListDetails.propTypes = {
-  feedbackData: PropTypes.element.isRequired
+TripDescriptionDetails.propTypes = {
+  feedbackData: PropTypes.string.isRequired
 };
-export default TripListDetails;
+export default TripDescriptionDetails;

@@ -8,12 +8,26 @@
 .search {
   width: 50%;
   margin: 0 auto;
-  border: 1px solid black;
   display: flex;
   margin-top: 50px;
 }
 
 .search > input {
   width: 50%;
+  height: 46px;
   margin: 0 auto;
+}
+
+.submit {
+  height: 46px;
+}
+
+.clear {
+  background-color: red;
+  height: 46px;
+  width: 20%;
+}
+
+.clear:hover {
+  background-color: red;
 }
