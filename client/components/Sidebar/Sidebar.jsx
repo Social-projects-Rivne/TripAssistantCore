@@ -15,8 +15,14 @@ class Sidebar extends Component {
     };
   }
 
-  componentDidUpdate() {
+  componentWillUnmount() {
+    localStorage.removeItem('TripData');
+  }
 
+  saveDataToLocalStorage = (data) => {
+    localStorage.setItem('TripData', JSON.stringify(data));
+    const tripData = localStorage.getItem('TripData');
+    console.log(tripData);
   }
 
   render() {
@@ -41,7 +47,7 @@ class Sidebar extends Component {
             : points.map(point => <TripPoint {...point} key={point.name} />) }
           {points.length < 2 && <TripPoint name={end} />}
         </div>
-        {tripInfo.distance && <a href="?#" className="waves-effect waves-light btn" onClick={event => event.preventDefault && console.log(tripInfo)}>Save</a>}
+        {tripInfo.distance && <a href="?#" className="waves-effect waves-light btn" onClick={event => event.preventDefault && this.saveDataToLocalStorage(tripInfo)}>Save</a>}
       </div>
     );
   }
