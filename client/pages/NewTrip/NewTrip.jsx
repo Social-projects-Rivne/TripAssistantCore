@@ -166,7 +166,7 @@ class NewTrip extends Component {
               time: result.routes[0].legs[0].duration.text,
               distance: {
                 start: prevState.location,
-                end: prevState.end.point
+                end: prevState.end
               }
             }
           }));

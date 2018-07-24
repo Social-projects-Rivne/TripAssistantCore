@@ -20,9 +20,11 @@ class Sidebar extends Component {
   }
 
   saveDataToLocalStorage = (data) => {
+    const { tripInfo } = this.props;
     localStorage.setItem('TripData', JSON.stringify(data));
     const tripData = localStorage.getItem('TripData');
     console.log(tripData);
+    console.log(tripInfo);
   }
 
   render() {
