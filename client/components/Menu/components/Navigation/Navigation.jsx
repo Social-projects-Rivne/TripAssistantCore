@@ -11,7 +11,7 @@ import SearchIco from 'images/search.svg';
 const MENU_ITEM = [
   { name: 'SEARCH ROUTE', path: '/searchRoute', ico: SearchIco },
   { name: 'MY PROFILE', path: '/profile', ico: UserMenuIco },
-  { name: 'CONTACT', path: '/contacts', ico: EnvelopeIco },
+  { name: 'INFO', path: '/info', ico: EnvelopeIco },
   { name: 'DASHBORD', path: '/dashbord', ico: DashbordIco }
 ];
 
