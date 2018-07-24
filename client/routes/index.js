@@ -1,7 +1,7 @@
 import React from 'react';
 import Info from '../pages/Info';
 import Profile from '../pages/Profile';
-import Dashbord from '../pages/Dashbord';
+import Dashboard from '../pages/Dashbord';
 import Login from '../pages/Login/Login';
 import NewTrip from '../pages/NewTrip';
 
@@ -35,8 +35,8 @@ const Routes = [
     component: Info
   },
   {
-    path: '/dashbord',
-    component: Dashbord
+    path: '/dashboard',
+    component: Dashboard
   },
   {
     path: '/new-trip',
