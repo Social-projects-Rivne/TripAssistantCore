@@ -5,16 +5,23 @@
   height: 100%;
 }
 
+#map {
+  margin: -10px -15px 0 0;
+  flex-grow: 1;
+  height: calc(100vh - 50px);
+  position: relative;
+}
+
 .main {
   display: flex;
-  background: grey;
+  background-color: #ecf0f6;
   height: auto;
   min-height: calc(100vh - 50px);
 }
 
 .content {
   flex-grow: 1;
-  padding: 10px 15px;
+  padding: 10px 15px 0;
   background-color: #ecf0f6;
 }
 

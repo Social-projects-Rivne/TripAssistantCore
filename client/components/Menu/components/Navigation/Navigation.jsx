@@ -9,10 +9,11 @@ import DashbordIco from 'images/dashbord.svg';
 import SearchIco from 'images/search.svg';
 
 const MENU_ITEM = [
-  { name: 'SEARCH ROUTE', path: '/searchRoute', ico: SearchIco },
-  { name: 'MY PROFILE', path: '/profile', ico: UserMenuIco },
-  { name: 'INFO', path: '/info', ico: EnvelopeIco },
-  { name: 'DASHBORD', path: '/dashbord', ico: DashbordIco }
+  { name: 'new trip', path: '/new-trip', ico: AddIco },
+  { name: 'search route', path: '/searchRoute', ico: SearchIco },
+  { name: 'my profile', path: '/profile', ico: UserMenuIco },
+  { name: 'info', path: '/info', ico: EnvelopeIco },
+  { name: 'dashbord', path: '/dashbord', ico: DashbordIco }
 ];
 
 const NavigationItem = ({ name, path, ico }) => (
@@ -24,15 +25,9 @@ const NavigationItem = ({ name, path, ico }) => (
   </li>
 );
 
-const Navigation = ({ sidebar }) => (
+const Navigation = () => (
   <nav className="navigation">
     <ul>
-      <li>
-        <Link className="navigation_item" to="/" onClick={sidebar}>
-          <img src={AddIco} alt="add" />
-          NEW TRIP
-        </Link>
-      </li>
       {MENU_ITEM.map((path, i) => (
         <NavigationItem {...path} key={i} />
       ))}
@@ -44,10 +39,6 @@ NavigationItem.propTypes = {
   name: PropTypes.string.isRequired,
   path: PropTypes.string.isRequired,
   ico: PropTypes.string.isRequired
-};
-
-Navigation.propTypes = {
-  sidebar: PropTypes.func.isRequired
 };
 
 export default Navigation;

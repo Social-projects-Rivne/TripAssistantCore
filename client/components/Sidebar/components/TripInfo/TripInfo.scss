@@ -10,6 +10,7 @@
 
   &_title {
     padding-bottom: 0;
+    outline: none;
   }
 
   &_icon {
@@ -20,6 +21,29 @@
 
   &_radius {
     width: 100%;
+    background-color: #252d3a;
+    color: white;
+    padding: 10px 15px 0;
+    text-align: center;
+    text-transform: uppercase;
+
+    input[type="range"] {
+      border: none;
+      color: white;
+      margin-top: 0;
+
+      &::before {
+        content: "-";
+        display: inline;
+        margin-right: 10px;
+      }
+
+      &::after {
+        content: "+";
+        display: inline;
+        margin-left: 10px;
+      }
+    }
 
     &_input {
       width: 100%;
