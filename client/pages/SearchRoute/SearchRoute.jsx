@@ -1,15 +1,30 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { toast } from 'materialize-css';
 import axios from 'axios';
+import scriptLoader from 'react-async-script-loader';
 
 import './SearchRoute.scss';
 import SearchRouteStart from '../../components/SearchRouteStart';
 import SearchRouteResult from '../../components/SearchRouteStart/SearchRouteResult';
 
+const MissingData = () => {
+  const names = ['Oleksii Iordatii', 'Serhii Kovach', 'Olena Kovach', 'Vasilii Melnyk', 'Claus Green', 'Kith Brown', 'Katie Luw', 'Marry Smith', 'Jake Black', 'Sam Harris', 'Seth Green'];
+  return {
+    name: names[Math.floor(Math.random() * names.length)],
+    rating: Number.parseFloat((Math.random() * 5).toFixed(1)),
+    date: `${Math.ceil(Math.random() * 12)}/${Math.ceil(Math.random() * 28)}/2018`,
+    seats: Math.ceil(Math.random() * 5),
+    price: Math.ceil(Math.random() * 10) * 50,
+    currency: 'UAH'
+  };
+};
+
 class SearchRoute extends Component {
   constructor() {
     super();
     this.state = {
+      isGooleApiLoded: false,
       searchingStageTwo: false,
       searchResultIsReady: false,
       searchedRouteData: null,
@@ -22,6 +37,10 @@ class SearchRoute extends Component {
     };
     this.dataToFilter = null;
     this.searchPoints = { startPoint: null, endPoint: null };
+  }
+
+  componentWillReceiveProps({ isScriptLoaded }) {
+    if (isScriptLoaded) this.setState({ isGooleApiLoded: true });
   }
 
   setStartPoint = ({ location = null } = {}) => {
@@ -54,8 +73,45 @@ class SearchRoute extends Component {
 
   handleRouteSearch = () => {
     this.setState({ searchingStageTwo: true, searchResultIsReady: false });
-    console.log(this.searchPoints);
-    setTimeout(() => this.fetchRoutesData(), 1000);
+    setTimeout(() => this.fetchLocalStorageData(), 1000);
+  }
+
+  isNear = (filterVal, dbVal) => (
+    Math.abs(Number.parseFloat(filterVal) - Number.parseFloat(dbVal)).toFixed(1) <= 0.1
+  )
+
+  fetchLocalStorageData = () => {
+    const { startPoint, endPoint } = this.searchPoints;
+    const allRoutes = JSON.parse(localStorage.getItem('ActiveRoutes'));
+    if (!allRoutes) {
+      this.setState({ searchedRouteData: null, searchResultIsReady: true });
+      return;
+    }
+    const RoutesToReturn = allRoutes
+      .filter((route) => {
+        const {
+          start: { lat: startLat, lng: startLng },
+          end: { lat: endLat, lng: endLng }
+        } = route.distance;
+
+        const shouldReturnStart = startPoint
+          ? (this.isNear(startPoint.lat, startLat) && this.isNear(startPoint.lng, startLng))
+          : true;
+
+        const shouldReturnEnd = endPoint
+          ? (this.isNear(endPoint.lat, endLat) && this.isNear(endPoint.lng, endLng))
+          : true;
+
+        return (shouldReturnStart && shouldReturnEnd);
+      })
+      .map(({ start_address: startAddress, end_address: endAddress }) => {
+        const missingData = MissingData();
+        missingData.startPoint = startAddress;
+        missingData.endPoint = endAddress;
+        return missingData;
+      });
+    this.dataToFilter = RoutesToReturn;
+    this.filterData();
   }
 
   fetchRoutesData = () => {
@@ -83,7 +139,7 @@ class SearchRoute extends Component {
 
   render() {
     const {
-      searchingStageTwo, searchResultIsReady, searchedRouteData
+      searchingStageTwo, searchResultIsReady, searchedRouteData, isGooleApiLoded
     } = this.state;
 
     return (
@@ -92,6 +148,7 @@ class SearchRoute extends Component {
         <div className="sr-wrap">
           <div className="sr-inner">
             <SearchRouteStart
+              isGooleApiLoded={isGooleApiLoded}
               setStartPoint={this.setStartPoint}
               setEndPoint={this.setEndPoint}
               handleSearchSubmit={this.handleSearchSubmit}
@@ -110,4 +167,10 @@ class SearchRoute extends Component {
   }
 }
 
-export default SearchRoute;
+SearchRoute.propTypes = {
+  isScriptLoaded: PropTypes.bool.isRequired
+};
+
+export default scriptLoader(
+  ['https://maps.googleapis.com/maps/api/js?key=AIzaSyDOPDY3_XTTcJelWP-84Csj5FcIdPUBcDs&libraries=places']
+)(SearchRoute);

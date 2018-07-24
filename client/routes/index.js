@@ -6,10 +6,7 @@ import Login from '../pages/Login/Login';
 import SearchRoute from '../pages/SearchRoute';
 import NewTrip from '../pages/NewTrip';
 
-
-
 const Home = () => <h1>List of active routes</h1>;
-
 
 const Routes = [
   {

@@ -16,7 +16,7 @@ class RoutersFilters extends Component {
 
   componentDidMount() {
     Datepicker.init(this.datepicker.current, {
-      format: 'mm/dd/yyyy', onSelect: this.handleDataPickerSelect, autoClose: true, showClearBtn: true
+      format: 'mm/dd/yyyy', onSelect: this.handleDataPickerSelect, autoClose: true
     });
     this.timer = null;
   }

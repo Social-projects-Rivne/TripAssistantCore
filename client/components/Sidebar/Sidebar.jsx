@@ -15,16 +15,11 @@ class Sidebar extends Component {
     };
   }
 
-  componentWillUnmount() {
-    localStorage.removeItem('TripData');
-  }
-
   saveDataToLocalStorage = (data) => {
-    const { tripInfo } = this.props;
-    localStorage.setItem('TripData', JSON.stringify(data));
-    const tripData = localStorage.getItem('TripData');
-    console.log(tripData);
-    console.log(tripInfo);
+    let tripData = JSON.parse(localStorage.getItem('ActiveRoutes'));
+    if (!tripData) tripData = [];
+    tripData.push(data);
+    localStorage.setItem('ActiveRoutes', JSON.stringify(tripData));
   }
 
   render() {
