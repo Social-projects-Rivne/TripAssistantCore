@@ -6,12 +6,18 @@ class TripSearch extends Component {
     this.state = {
     };
     this.clearInput = this.clearInput.bind(this);
+    this.filterUpdate = this.filterUpdate.bind(this);
   }
 
   clearInput() {
     this.setState = ({
       search: ''
     });
+  }
+
+  filterUpdate() {
+    const val = this.myValue.value;
+    console.log(val);
   }
 
   render() {
