@@ -1,53 +1,38 @@
 import React, { Component } from 'react';
 import './TripDescription.scss';
-import TripDescriptionDetails from './components/TripDescriptionDetails';
-import feedbacksData from '../../../public/data/feedbacksData.json';
+import TripDescriptionDetails from './components/TripDescriptionDetails/TripDescriptionDetails';
+import TripSearch from './components/TripSearch/TripSearch';
+import TripShortList from './components/TripShortList/TripShortList';
 
 class TripDescription extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      filterText: ''
     };
-    this.updateSearch = this.updateSearch.bind(this);
-    this.clearInput = this.clearInput.bind(this);
+    this.filterUpdate = this.filterUpdate.bind(this);
   }
 
-  updateSearch(event) {
-    this.setState({ search: event.target.value });
-  }
-
-  clearInput() {
-    this.setState({ search: '' });
+  filterUpdate(value) {
+    this.setState({
+      filterText: value
+    });
   }
 
   render() {
-    const { search } = this.state;
+    const { filterText } = this.state;
     return (
       <div>
-        <div className="trip-map">Here will be map</div>
-        <div className="search">
-          <input
-            value={search}
-            type="text"
-            onChange={this.updateSearch}
-          />
-          <a href="# " className="waves-effect waves-light btn clear" onClick={this.clearInput}>CLEAR</a>
-          <a
-            className="waves-effect waves-light btn-large submit"
-            href="# "
-            style={this.styles}
-          >
-            <i className="material-icons left">Submit</i>button
-          </a>
-        </div>
-        <div className="trips-list">
-          {feedbacksData.map((feedbackData, i) => (
-            <TripDescriptionDetails feedbackData={feedbackData} key={i} id={i} />
-          ))}
-        </div>
+        <TripSearch
+          filterText={filterText}
+          filterUpdate={this.filterUpdate}
+        />
+        <main>
+          <TripShortList />
+          <TripDescriptionDetails />
+        </main>
       </div>
     );
   }
 }
-
 export default TripDescription;

@@ -5,29 +5,28 @@
   background-color: aquamarine;
 }
 
-.search {
-  width: 50%;
-  margin: 0 auto;
-  display: flex;
-  margin-top: 50px;
+ul {
+  padding: 0;
 }
 
-.search > input {
-  width: 50%;
-  height: 46px;
-  margin: 0 auto;
+li {
+  position: relative;
+  list-style: none;
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  margin: 2px;
+  border-radius: 3px;
 }
 
-.submit {
-  height: 46px;
+li:hover {
+  cursor: pointer;
 }
 
-.clear {
-  background-color: red;
-  height: 46px;
-  width: 20%;
+li.filteredItem {
+  background: #a0cfee;
+  color: #16527a;
 }
 
-.clear:hover {
-  background-color: red;
+li.filteredItem:hover {
+  background: #8bc4ea;
 }

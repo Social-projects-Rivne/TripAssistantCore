@@ -1,0 +1,22 @@
+.triplist-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+div.search {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.filter {
+  width: 50%;
+}
+
+.clear {
+  height: 46px;
+}
