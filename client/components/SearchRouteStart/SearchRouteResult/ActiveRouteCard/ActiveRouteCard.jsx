@@ -8,7 +8,7 @@ const ActiveRouteCard = ({
 }) => (
   <a href="#!" className="active-route-card">
     <div className="route-card-inner1">
-      <p className="route-card-points">{startPoint} - {endPoint}</p>
+      <p className="route-card-points">{startPoint} <br /> {endPoint}</p>
       <p className="route-card-date">{date}</p>
       <p><span className="route-card-name">{name},</span> <span className="route-card-rating">{rating}</span> <span className="route-card-sec">out of 5</span></p>
     </div>

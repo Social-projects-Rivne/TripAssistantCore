@@ -12,7 +12,7 @@ const MissingData = () => {
   const names = ['Oleksii Iordatii', 'Serhii Kovach', 'Olena Kovach', 'Vasilii Melnyk', 'Claus Green', 'Kith Brown', 'Katie Luw', 'Marry Smith', 'Jake Black', 'Sam Harris', 'Seth Green'];
   return {
     name: names[Math.floor(Math.random() * names.length)],
-    rating: Number.parseFloat((Math.random() * 5).toFixed(1)),
+    rating: Number.parseFloat((Math.random() * 2).toFixed(1)) + 3,
     date: `${Math.ceil(Math.random() * 12)}/${Math.ceil(Math.random() * 28)}/2018`,
     seats: Math.ceil(Math.random() * 5),
     price: Math.ceil(Math.random() * 10) * 50,
