@@ -5,6 +5,7 @@ import Routes from './routes';
 import Header from './components/Header';
 import Menu from './components/Menu';
 import Sidebar from './components/Sidebar';
+import Login from './pages/Login';
 
 class App extends Component {
   constructor(props) {
@@ -27,6 +28,9 @@ class App extends Component {
     return (
       <Fragment>
         <Header />
+        <Switch>
+          <Route path="/login" component={Login} />
+        </Switch>
         <div className="main">
           <Menu sidebar={this.toggleSidebar} />
           {sidebarActive && <Sidebar />}
