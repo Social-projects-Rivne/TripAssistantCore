@@ -12,7 +12,7 @@ const MapDropdown = ({ position, calcRouteFn }) => {
 
   return (
     <ul id="dropdown2" className="map-dropdown dropdown-content" style={style}>
-      <li><a className="map-dropdown_item" href="?#" onClick={event => event.preventDefault && calcRouteFn()}>End here</a></li>
+      <li><a className="map-dropdown_item" href="#!" onClick={() => calcRouteFn()}>End here</a></li>
     </ul>
   );
 };

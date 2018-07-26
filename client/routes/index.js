@@ -3,14 +3,10 @@ import Info from '../pages/Info';
 import Profile from '../pages/Profile';
 import Dashboard from '../pages/Dashbord';
 import Login from '../pages/Login/Login';
+import SearchRoute from '../pages/SearchRoute';
 import NewTrip from '../pages/NewTrip';
 
-// Pages example.
-const History = () => <h1>History</h1>;
-const Statistic = () => <h1>Statistic</h1>;
 const Home = () => <h1>List of active routes</h1>;
-//
-
 
 const Routes = [
   {
@@ -19,16 +15,12 @@ const Routes = [
     component: Home
   },
   {
+    path: '/searchRoute',
+    component: SearchRoute
+  },
+  {
     path: '/profile',
     component: Profile
-  },
-  {
-    path: '/history',
-    component: History
-  },
-  {
-    path: '/statistic',
-    component: Statistic
   },
   {
     path: '/info',
