@@ -9,11 +9,11 @@ import DashbordIco from 'images/dashbord.svg';
 import SearchIco from 'images/search.svg';
 
 const MENU_ITEM = [
-  { name: 'new trip', path: '/new-trip?#', ico: AddIco },
+  { name: 'new trip', path: '/new-trip', ico: AddIco },
   { name: 'search route', path: '/searchRoute', ico: SearchIco },
   { name: 'my profile', path: '/profile', ico: UserMenuIco },
   { name: 'info', path: '/info', ico: EnvelopeIco },
-  { name: 'dashbord', path: '/dashbord', ico: DashbordIco }
+  { name: 'dashboard', path: '/dashboard', ico: DashbordIco }
 ];
 
 const NavigationItem = ({ name, path, ico }) => (
