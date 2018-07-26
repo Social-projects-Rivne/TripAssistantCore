@@ -6,7 +6,7 @@ import MapDropdown from '../../components/MapDropdown';
 import { random } from '../../helpers';
 import './NewTrip.scss';
 
-const KEY = 'AIzaSyDOPDY3_XTTcJelWP-84Csj5FcIdPUBcDs';
+const KEY = 'AIzaSyBPo6m3oLTozHOupA5V_kbBtxwgqbiVmOs';
 
 const colors = [
   'red',
