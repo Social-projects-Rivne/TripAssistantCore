@@ -1,8 +1,20 @@
 .trip-point {
-  background: white;
-  border: 2px solid black;
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin: 0;
+
+  &_item {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  &_title {
+    font-size: 1.28em;
+    margin: 0;
+  }
+
+  .btn-floating {
+    text-align: center;
+  }
 }

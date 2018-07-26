@@ -1,16 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Navigation from './components/Navigation';
 import './Menu.scss';
 
-const Menu = ({ sidebar }) => (
+const Menu = () => (
   <div className="menu">
-    <Navigation sidebar={sidebar} />
+    <Navigation />
   </div>
 );
-
-Menu.propTypes = {
-  sidebar: PropTypes.func.isRequired
-};
 
 export default Menu;
