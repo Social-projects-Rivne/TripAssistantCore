@@ -25,7 +25,6 @@ class UserList extends Component {
         <div className="main-card__wrap">
           <div className="userlist__header main-card__heading">
             <span>User</span>
-            <span>Account Status</span>
             <span>Actions</span>
           </div>
           <div className="userlist main-card__body">

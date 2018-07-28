@@ -12,7 +12,7 @@ const ListItem = ({
   online,
   acount_status: acountStatus
 }) => (
-  <div className="userlist__item main-card__wrap">
+  <div className={`userlist__item main-card__wrap ${acountStatus ? '' : 'red lighten-4'}`}>
     <div className="userlist__info">
       <div className="userlist__img">
         <img src={picture} alt={first} />
@@ -21,9 +21,6 @@ const ListItem = ({
         <h4>{`${first} ${last}`}</h4>
         <OnlineStatus status={online} />
       </div>
-    </div>
-    <div className="userlist__column userlist__column--margin">
-      <span><b>{acountStatus ? 'Active' : 'Block'}</b></span>
     </div>
     <div className="userlist__actions">
       <a href="/#" className="main-btn">View</a>
