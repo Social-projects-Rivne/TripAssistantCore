@@ -28,7 +28,7 @@ class UserList extends Component {
             <span>Actions</span>
           </div>
           <div className="userlist main-card__body">
-            {userList.map(user => <ListItem {...user} key={user.id} />)}
+            {userList.map((user, i) => <ListItem {...user} key={i} />)}
           </div>
         </div>
       </div>
