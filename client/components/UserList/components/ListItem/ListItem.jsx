@@ -12,7 +12,7 @@ const ListItem = ({
   online,
   acount_status: acountStatus
 }) => (
-  <li className="userlist__item main-card__body">
+  <div className="userlist__item main-card__wrap">
     <div className="userlist__info">
       <div className="userlist__img">
         <img src={picture} alt={first} />
@@ -30,7 +30,7 @@ const ListItem = ({
       <a href="/#" className="main-btn">{acountStatus ? 'Block' : 'Unblock'}</a>
       <a href="/#" className="main-btn">Delete</a>
     </div>
-  </li>
+  </div>
 );
 
 OnlineStatus.propTypes = {

@@ -27,9 +27,9 @@
   &__wrapper {
     margin-right: auto;
     margin-left: auto;
+    padding-right: 15px;
+    padding-left: 15px;
     width: 100%;
-    padding: 0 15px 1px;
-    margin-bottom: 35px;
     max-width: 1240px;
   }
 }
@@ -111,15 +111,15 @@ h1 {
   }
 
   &__wrap {
-    box-shadow: 0 20px 40px rgba(89, 100, 191, 0.1);
-    border-radius: 2px;
-    background-color: #fff;
-    margin-bottom: 5px;
-    position: relative;
+    background-color: #f7f8fa;
+    margin-bottom: 35px;
+    width: 100%;
+    border-radius: 3px;
+    box-shadow: 20px 0 40px rgba(74, 77, 101, 0.2);
   }
 
   &__body {
-    padding: 30px 15px;
+    padding: 15px;
     text-align: center;
   }
 }

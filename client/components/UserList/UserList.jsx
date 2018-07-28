@@ -22,14 +22,16 @@ class UserList extends Component {
     return (
       <div className="content__wrapper">
         {/* <a href="/#" className="waves-effect waves-light btn purple darken-4">Add user</a> */}
-        <ul className="userlist main-card">
-          <li className="userlist__header main-card__heading">
+        <div className="main-card__wrap">
+          <div className="userlist__header main-card__heading">
             <span>User</span>
             <span>Account Status</span>
             <span>Actions</span>
-          </li>
-          {userList.map(user => <ListItem {...user} key={user.id} />)}
-        </ul>
+          </div>
+          <div className="userlist main-card__body">
+            {userList.map(user => <ListItem {...user} key={user.id} />)}
+          </div>
+        </div>
       </div>
     );
   }
