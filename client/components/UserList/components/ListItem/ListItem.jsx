@@ -3,19 +3,7 @@ import PropTypes from 'prop-types';
 
 
 const OnlineStatus = ({ status }) => (
-  <span className={`userlist-status ${status ? 'online' : 'offline'}`}>{status ? 'Online' : 'Offline'}</span>
-);
-
-const AccountStatus = ({ status }) => (
-  <span className={`new badge ${status ? 'blue' : 'red darken-4'}`} data-badge-caption={status ? 'Active' : 'Block'} />
-);
-
-const UserRole = ({ isModerator }) => (
-  <span title="Change user role" className="userlist-role new badge" data-badge-caption={isModerator ? 'Moderator' : 'User'} />
-);
-
-const BlockButton = ({ isActive }) => (
-  <a href="/#" className={`userlist-block waves-effect waves-light btn-large yellow ${isActive ? 'darken-3' : 'darken-1'}`}>{isActive ? 'Block' : 'Unblock'}</a>
+  <span className={`userlist__status ${status ? 'online' : 'offline'}`}>{status ? 'Online' : 'Offline'}</span>
 );
 
 const ListItem = ({
@@ -24,23 +12,23 @@ const ListItem = ({
   online,
   acount_status: acountStatus
 }) => (
-  <li className="collection-item">
-    <div className="userlist-info">
-      <div className="userlist-img">
+  <li className="userlist__item main-card__body">
+    <div className="userlist__info">
+      <div className="userlist__img">
         <img src={picture} alt={first} />
       </div>
-      <div className="userlist-column">
+      <div className="userlist__column">
         <h4>{`${first} ${last}`}</h4>
         <OnlineStatus status={online} />
       </div>
     </div>
-    <div className="userlist-column">
-      <span>Account Status: <AccountStatus status={acountStatus} /></span>
+    <div className="userlist__column userlist__column--margin">
+      <span><b>{acountStatus ? 'Active' : 'Block'}</b></span>
     </div>
-    <div className="userlist-actions">
-      <a href="/#" className="waves-effect waves-light btn-large">View</a>
-      <BlockButton isActive={acountStatus} />
-      <a href="/#" className="waves-effect waves-light btn-large red darken-2">Delete</a>
+    <div className="userlist__actions">
+      <a href="/#" className="main-btn">View</a>
+      <a href="/#" className="main-btn">{acountStatus ? 'Block' : 'Unblock'}</a>
+      <a href="/#" className="main-btn">Delete</a>
     </div>
   </li>
 );
@@ -51,22 +39,6 @@ OnlineStatus.propTypes = {
 
 OnlineStatus.defaultProps = {
   status: false
-};
-
-AccountStatus.propTypes = {
-  status: PropTypes.bool.isRequired
-};
-
-UserRole.propTypes = {
-  isModerator: PropTypes.bool
-};
-
-UserRole.defaultProps = {
-  isModerator: false
-};
-
-BlockButton.propTypes = {
-  isActive: PropTypes.bool.isRequired
 };
 
 ListItem.propTypes = {

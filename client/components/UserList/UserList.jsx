@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import ListItem from './components/ListItem';
 import './UserList.scss';
@@ -20,10 +20,17 @@ class UserList extends Component {
   render() {
     const { userList } = this.state;
     return (
-      <Fragment>
-        <a href="/#" className="waves-effect waves-light btn purple darken-4">Add user</a>
-        {userList.length ? <ul className="userlist collection">{userList.map(user => <ListItem {...user} key={user.id} />)}</ul> : <p>No users</p>}
-      </Fragment>
+      <div className="content__wrapper">
+        {/* <a href="/#" className="waves-effect waves-light btn purple darken-4">Add user</a> */}
+        <ul className="userlist main-card">
+          <li className="userlist__header main-card__heading">
+            <span>User</span>
+            <span>Account Status</span>
+            <span>Actions</span>
+          </li>
+          {userList.map(user => <ListItem {...user} key={user.id} />)}
+        </ul>
+      </div>
     );
   }
 }

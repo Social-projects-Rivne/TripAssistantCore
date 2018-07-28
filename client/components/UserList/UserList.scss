@@ -1,29 +1,47 @@
 .userlist {
-  .collection-item {
+  &__header {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+
+    span {
+      min-width: 30%;
+    }
   }
 
-  &-info {
+  &__item {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 5px;
+
+    & > div {
+      min-width: 30%;
+    }
+  }
+
+  &__info {
     display: flex;
     width: 35%;
     align-items: center;
   }
 
-  &-img {
+  &__img {
     margin-right: 30px;
     border-radius: 50%;
     height: 55px;
     overflow: hidden;
   }
 
-  &-column {
+  &__column {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+
+    &--margin {
+      margin-left: -5%;
+    }
   }
 
-  &-actions {
+  &__actions {
     display: flex;
     align-items: center;
 
@@ -32,7 +50,7 @@
     }
   }
 
-  &-status {
+  &__status {
     display: flex;
     align-items: center;
     margin-left: 5px;
@@ -40,17 +58,8 @@
     margin-bottom: 14px;
   }
 
-  &-city {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  &-role {
-    cursor: pointer;
-  }
-
-  &-block {
-    min-width: 130px;
+  .main-btn {
+    min-width: 100px;
   }
 }
 

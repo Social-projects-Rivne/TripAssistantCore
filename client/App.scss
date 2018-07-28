@@ -14,7 +14,6 @@
 
 .main {
   display: flex;
-  background-color: #ecf0f6;
   height: auto;
   min-height: calc(100vh - 50px);
 }
@@ -22,7 +21,17 @@
 .content {
   width: calc(100% - 110px);
   padding: 10px 15px 0;
-  background-color: #ecf0f6;
+  background: url('~@images/profile-page-bg.jpg') top;
+  background-size: cover;
+
+  &__wrapper {
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    padding: 0 15px 1px;
+    margin-bottom: 35px;
+    max-width: 1240px;
+  }
 }
 
 .online::before {
@@ -57,9 +66,18 @@ $blue: #33afe0;
 $darkblue: #252d3a;
 $green: #2ab7a9;
 
-.main-bg {
-  background: url('~@images/profile-page-bg.jpg') top;
-  background-size: cover;
+p {
+  color: rgba($darkblue, 0.8);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5em;
+}
+
+h1 {
+  color: #252d3a;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.2em;
 }
 
 .main-header {
@@ -69,14 +87,13 @@ $green: #2ab7a9;
   line-height: 1em;
   padding: 40px 15px 30px;
   background-color: rgba(#fff, 0.5);
-  margin-bottom: 20px;
-  margin-top: 0;
+  text-align: center;
+  margin: -15px -10px 20px;
 }
 
 .main-card {
   background-color: #f7f8fa;
   text-align: left;
-  margin-bottom: 35px;
   width: 100%;
   border-radius: 3px;
   box-shadow: 20px 0 40px rgba(74, 77, 101, 0.2);
@@ -91,6 +108,14 @@ $green: #2ab7a9;
     box-shadow: 0 20px 40px rgba(89, 100, 191, 0.1);
     border-radius: 3px 3px 0 0;
     text-align: center;
+  }
+
+  &__wrap {
+    box-shadow: 0 20px 40px rgba(89, 100, 191, 0.1);
+    border-radius: 2px;
+    background-color: #fff;
+    margin-bottom: 5px;
+    position: relative;
   }
 
   &__body {
@@ -116,18 +141,4 @@ $green: #2ab7a9;
   &:hover {
     background-color: $darkblue;
   }
-}
-
-p {
-  color: rgba($darkblue, 0.8);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.5em;
-}
-
-h1 {
-  color: #252d3a;
-  font-size: 30px;
-  font-weight: 600;
-  line-height: 1.2em;
 }
