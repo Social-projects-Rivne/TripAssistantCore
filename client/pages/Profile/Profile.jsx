@@ -28,7 +28,16 @@ class Profile extends Component {
     axios.get('public/data/allHistory.json')
       .then(({ data }) => this.setState({ allHistory: data }));
 
+    this.fetchUserData();
+
     this.updateCarData();
+  }
+
+  fetchUserData = () => {
+    const id = 1;
+    fetch(`api/users/${id}`)
+      .then(res => res.json())
+      .then(json => console.log(json));
   }
 
   updateCarData = () => {
