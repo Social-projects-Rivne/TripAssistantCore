@@ -22,7 +22,6 @@ const ListItem = ({
   picture,
   name: { first, last },
   online,
-  home_point: { city },
   acount_status: acountStatus
 }) => (
   <li className="collection-item">
@@ -36,9 +35,7 @@ const ListItem = ({
       </div>
     </div>
     <div className="userlist-column">
-      <span className="userlist-city">City: <b>{city}</b></span>
       <span>Account Status: <AccountStatus status={acountStatus} /></span>
-      <span>Role:<UserRole /></span>
     </div>
     <div className="userlist-actions">
       <a href="/#" className="waves-effect waves-light btn-large">View</a>
@@ -79,9 +76,6 @@ ListItem.propTypes = {
     last: PropTypes.string.isRequired
   }).isRequired,
   online: PropTypes.bool.isRequired,
-  home_point: PropTypes.shape({
-    city: PropTypes.string.isRequired
-  }).isRequired,
   acount_status: PropTypes.bool.isRequired
 };
 
