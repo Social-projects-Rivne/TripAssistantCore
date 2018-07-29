@@ -15,6 +15,18 @@ class SignInForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  onSubmit(e) {
+    e.preventDefault();
+    const { email, password } = this.state;
+    const { history, store } = this.props;
+    this.setState({ error: false });
+    if (!(email === 'bob@gmail.com' && password === 'bob')) {
+      return this.setState({ error: true });
+    }
+    store.set('loggedIn', true);
+    history.push('/dashbord');
+  }
+
   handleChange({
     target: {
       type,
@@ -41,7 +53,7 @@ class SignInForm extends Component {
     const { password } = this.state;
     return (
       <div className="FormCenter">
-        <form className="FormFields" onSubmit={this.handleSubmit}>
+        <form className="FormFields" onSubmit={this.handleSubmit} id="loginForm">
           <div className="FormField">
             <label className="FormField__Label">E-Mail Address</label>
             <input

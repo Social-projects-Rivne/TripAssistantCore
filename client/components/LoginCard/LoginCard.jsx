@@ -1,6 +1,8 @@
 
 import React, { Component } from 'react';
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import {
+  HashRouter as Router, Route, Link
+} from 'react-router-dom';
 import './LoginCard.scss';
 import SignUpForm from './Form/SignUpForm';
 import SignInForm from './Form/SignInForm';

@@ -8,7 +8,8 @@ class SignUpForm extends Component {
     this.state = {
       email: '',
       password: '',
-      name: ''
+      fname: '',
+      lname: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -30,26 +31,44 @@ class SignUpForm extends Component {
   }
 
   handleSubmit(e) {
-    e.preventDefault();
+    e.preventDefault(
+      localStorage.setItem({}, JSON.stringify(this.state))
+    );
 
     console.log('The form was submitted with the following data:');
     console.log(this.state);
   }
 
   render() {
+    const { fname } = this.state;
+    const { lname } = this.state;
     const { email } = this.state;
     const { password } = this.state;
     return (
       <div className="FormCenter">
-        <form className="FormFields" onSubmit={this.handleSubmit}>
+        <form className="FormFields" onSubmit={this.handleSubmit} id="registrationForm">
           <div className="FormField">
-            <label className="FormField__Label">Full Name</label>
+            <label className="FormField__Label">First Name</label>
             <input
               type="text"
-              id="name"
+              id="fname"
               className="FormField__Input"
-              placeholder="Enter your full name"
-              name="name"
+              placeholder="Enter your first name"
+              name="fname"
+              value={fname}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="FormField">
+            <label className="FormField__Label">Last Name</label>
+            <input
+              type="text"
+              id="lname"
+              className="FormField__Input"
+              placeholder="Enter your last name"
+              name="lname"
+              value={lname}
+              onChange={this.handleChange}
             />
           </div>
           <div className="FormField">

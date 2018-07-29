@@ -4,15 +4,32 @@ import './App.scss';
 import Routes from './routes';
 import Header from './components/Header';
 import Menu from './components/Menu';
-
+import Sidebar from './components/Sidebar';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      sidebarActive: false
+    };
+
+    this.toggleSidebar = this.toggleSidebar.bind(this);
+  }
+
+  toggleSidebar() {
+    this.setState(prevState => ({ sidebarActive: !prevState.sidebarActive }));
+  }
+
+
   render() {
+    const { sidebarActive } = this.state;
     return (
       <Fragment>
         <Header />
         <div className="main">
-          <Menu />
+          <Menu sidebar={this.toggleSidebar} />
+          {sidebarActive && <Sidebar />}
           <div className="content">
             <Switch>
               {Routes.map((route, i) => <Route {...route} key={i} />)}
