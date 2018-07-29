@@ -1,0 +1,17 @@
+[  
+  {  
+    "name": "Lviv - Paris",
+    "date": "07/08/2018",
+    "isActive": true
+  },
+  {  
+    "name": "Lviv - Rivne",
+    "date": "07/09/2018",
+    "isActive": false
+  },
+  {  
+    "name": "Rivne - Lviv",
+    "date": "07/10/2018",
+    "isActive": false
+  }
+]

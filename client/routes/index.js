@@ -1,42 +1,38 @@
 import React from 'react';
-import Map from '../components/Map';
-import Dashbord from '../pages/Dashbord';
+import Info from '../pages/Info';
+import Profile from '../pages/Profile';
+import Dashboard from '../pages/Dashbord';
 import Login from '../pages/Login/Login';
+import SearchRoute from '../pages/SearchRoute';
+import NewTrip from '../pages/NewTrip';
 
-
-// Pages exemple.
-const Profile = () => <h1>Profile</h1>;
-const History = () => <h1>History</h1>;
-const Statistic = () => <h1>Statistic</h1>;
-const Contacts = () => <h1>Contacts</h1>;
-//
-
+const Home = () => <h1>List of active routes</h1>;
 
 const Routes = [
   {
     path: '/',
     exact: true,
-    component: Map
+    component: Home
+  },
+  {
+    path: '/searchRoute',
+    component: SearchRoute
   },
   {
     path: '/profile',
     component: Profile
   },
   {
-    path: '/history',
-    component: History
+    path: '/info',
+    component: Info
   },
   {
-    path: '/statistic',
-    component: Statistic
+    path: '/dashboard',
+    component: Dashboard
   },
   {
-    path: '/contacts',
-    component: Contacts
-  },
-  {
-    path: '/dashbord',
-    component: Dashbord
+    path: '/new-trip',
+    component: NewTrip
   },
   {
     path: '/login',

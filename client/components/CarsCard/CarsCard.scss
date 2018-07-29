@@ -1,0 +1,94 @@
+.cars-card__wrap {
+  background-color: #f7f8fa;
+  text-align: left;
+  margin-bottom: 35px;
+  width: 100%;
+  border-radius: 3px;
+  box-shadow: 20px 0 40px rgba(74, 77, 101, 0.2);
+}
+
+.cars-card__heading {
+  position: relative;
+  color: #252d3a;
+  font-size: 14px;
+  line-height: 1em;
+  font-weight: 600;
+  margin-bottom: 0;
+  padding: 32px 125px 31px;
+  box-shadow: 0 20px 40px rgba(89, 100, 191, 0.1);
+  border-radius: 3px 3px 0 0;
+  text-align: center;
+}
+
+.cars-card__body {
+  padding: 8px 10px 10px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.cars-card__add-car {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  display: inline-block;
+  padding: 17px 15px 16px;
+  border-radius: 3px;
+  background-color: #252d3a;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1em;
+  letter-spacing: 0.6px;
+  transition: background-color 0.15s linear;
+
+  &:hover,
+  &:focus {
+    background-color: #33afe0;
+  }
+}
+
+.slideInOut-enter {
+  transform: translateY(-20px);
+  opacity: 0;
+}
+
+.slideInOut-leave {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.slideInOut-enter.slideInOut-enter-active {
+  transform: translateY(0);
+  opacity: 1;
+  transition:
+    opacity 0.3s ease-in-out,
+    transform 0.3s ease-in-out;
+}
+
+.slideInOut-leave.slideInOut-leave-active {
+  transform: translateY(-20px);
+  opacity: 0;
+  transition:
+    opacity 0.3s ease-in-out,
+    transform 0.3s ease-in-out;
+}
+
+.fadeInOut-enter {
+  opacity: 0;
+}
+
+.fadeInOut-leave {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.fadeInOut-enter.fadeInOut-enter-active {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.fadeInOut-leave.fadeInOut-leave-active {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
