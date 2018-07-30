@@ -3,6 +3,7 @@ import { GoogleApiWrapper, Map, Marker } from 'google-maps-react';
 import PropTypes from 'prop-types';
 import SideBar from '../../components/Sidebar';
 import MapDropdown from '../../components/MapDropdown';
+import PreLoader from '../../components/PreLoader';
 import { random } from '../../helpers';
 import './NewTrip.scss';
 
@@ -24,6 +25,7 @@ class NewTrip extends Component {
   constructor() {
     super();
     this.state = {
+      load: true,
       markers: [],
       defaultZoom: 11,
       tripInfo: {
@@ -35,6 +37,7 @@ class NewTrip extends Component {
     this.showDropdown = this.showDropdown.bind(this);
     this.addMarkers = this.addMarkers.bind(this);
     this.eventChangeName = this.eventChangeName.bind(this);
+    this.eventLoader = this.eventLoader.bind(this);
   }
 
   componentDidMount() {
@@ -139,6 +142,7 @@ class NewTrip extends Component {
 
   calculateRoute = () => {
     const { google } = this.props;
+    this.eventLoader();
     if (google) {
       const { location, end } = this.state;
       const map = document.getElementById('map');
@@ -170,12 +174,17 @@ class NewTrip extends Component {
                 start: prevState.location,
                 end: prevState.end
               }
-            }
+            },
+            load: false
           }));
         }
       });
       this.showDropdown({}, 0);
     }
+  }
+
+  eventLoader = () => {
+    this.setState(prevState => ({ load: !prevState.load }));
   }
 
   eventChangeName({ currentTarget: { textContent } }) {
@@ -190,16 +199,19 @@ class NewTrip extends Component {
 
   render() {
     const { google } = this.props;
-    const { markers, location, defaultZoom, dropdownPosition, tripInfo } = this.state;
+    const { load, markers, location, defaultZoom, dropdownPosition, tripInfo } = this.state;
     return (
       <div className="new-trip">
         <SideBar points={markers} tripInfo={tripInfo} changeName={this.eventChangeName} />
+        {load && <PreLoader /> }
         <div id="map">
           <Map
             google={google}
             center={location}
             zoom={defaultZoom}
             onClick={(t, map, event) => this.showDropdown(event, 1)}
+            onChange={() => this.eventLoader()}
+            onReady={() => this.eventLoader()}
           >
             {markers && markers.map(marker => <Marker {...marker} key={marker.name} />)}
           </Map>
