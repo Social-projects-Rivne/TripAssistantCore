@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class TripSearch extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
     };
     this.clearInput = this.clearInput.bind(this);
@@ -16,14 +17,15 @@ class TripSearch extends Component {
   }
 
   filterUpdate() {
-    const val = this.myValue.value;
-    console.log(val);
+    const { filterUpdate: propsFilterUpdate } = this.props;
+    const val = this.myValue.calue;
+    propsFilterUpdate(val);
   }
 
   render() {
     const { search } = this.state;
     const filterText = this.props;
-    console.log(filterText);
+    console.log('child component', filterText);
     return (
       <div>
         <div className="search">
@@ -44,5 +46,8 @@ class TripSearch extends Component {
   }
 }
 
+TripSearch.propTypes = {
+  filterUpdate: PropTypes.string.isRequired
+};
 
 export default TripSearch;

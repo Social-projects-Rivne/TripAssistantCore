@@ -1,36 +1,36 @@
 import React, { Component } from 'react';
 import './TripDescription.scss';
-import TripDescriptionDetails from './components/TripDescriptionDetails/TripDescriptionDetails';
-import TripSearch from './components/TripSearch/TripSearch';
-import TripShortList from './components/TripShortList/TripShortList';
+import feedbacksData from '../../../public/data/feedbacksData.json';
 
 class TripDescription extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
-      filterText: ''
+      feedbackData: feedbacksData
     };
-    this.filterUpdate = this.filterUpdate.bind(this);
-  }
-
-  filterUpdate(value) {
-    this.setState({
-      filterText: value
-    });
   }
 
   render() {
-    const { filterText } = this.state;
+    const { feedbackData } = this.state;
     return (
       <div>
-        <TripSearch
-          filterText={filterText}
-          filterUpdate={this.filterUpdate}
-        />
-        <main>
-          <TripShortList />
-          <TripDescriptionDetails />
-        </main>
+        <div className="search">
+          <form onSubmit={this.clearInput}>
+            <input
+              type="text"
+            />
+            <button
+              type="submit"
+            >
+              <a href="# " className="waves-effect waves-light btn clear">CLEAR</a>
+            </button>
+          </form>
+        </div>
+        <div className="feedbacksData">
+          {
+            feedbackData.map(feed => <div key={feed.id}><h3>{feed.name}</h3></div>)
+          }
+        </div>
       </div>
     );
   }
