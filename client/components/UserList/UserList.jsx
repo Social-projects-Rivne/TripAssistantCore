@@ -20,7 +20,7 @@ class UserList extends Component {
   render() {
     const { userList } = this.state;
     return (
-      <div className="content__wrapper">
+      <div className="content__wrapper userlist__content">
         {/* <a href="/#" className="waves-effect waves-light btn purple darken-4">Add user</a> */}
         <div className="main-card__wrap">
           <div className="userlist__header main-card__heading">

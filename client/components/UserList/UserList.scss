@@ -18,6 +18,10 @@
     }
   }
 
+  &__content {
+    max-width: 1024px;
+  }
+
   &__info {
     display: flex;
     align-items: center;
@@ -42,7 +46,7 @@
 
   &__actions {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
 
     & > :not(:last-child) {
