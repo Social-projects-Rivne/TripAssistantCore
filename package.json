@@ -5,6 +5,9 @@
   "main": "index.js",
   "scripts": {
     "express": "nodemon server/app.js",
+    "dropAllTables": "node server/db/dropAllTables.js",
+    "createTables": "node server/db/createTables.js",
+    "dbseed": "node server/db/dbseed.js",
     "dev": "webpack-dev-server --config ./config/webpack.dev.js",
     "build": "webpack --config ./config/webpack.prod.js",
     "lint": "eslint client"
@@ -22,6 +25,7 @@
   "homepage": "https://github.com/Social-projects-Rivne/TripAssistantCore#readme",
   "dependencies": {
     "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "express-promise-router": "^3.0.3",
     "google-maps-react": "^2.0.2",
