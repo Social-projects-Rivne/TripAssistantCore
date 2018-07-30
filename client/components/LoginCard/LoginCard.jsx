@@ -10,19 +10,16 @@ import SignInForm from './Form/SignInForm';
 class LoginCard extends Component {
   render() {
     return (
-      <Router basename="/react-auth-ui/">
+      <Router>
         <div className="Auth_Card">
           <div className="Auth__Aside" />
           <div className="Auth__Form">
             <div className="PageSwitcher">
-              <Link to="/login" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign In</Link>
-              <Link exact to="/" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign Up</Link>
+              <Link to="/login" className="PageSwitcher__Item">Sign In</Link>
+              <Link exact to="/" className="PageSwitcher__Item">Sign Up</Link>
             </div>
             <Route exact path="/" component={SignUpForm} />
             <Route path="/login" component={SignInForm} />
-            <div className="FormTitle">
-              <Link to="/login" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign In</Link> or <Link exact to="/" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign Up</Link>
-            </div>
           </div>
         </div>
       </Router>

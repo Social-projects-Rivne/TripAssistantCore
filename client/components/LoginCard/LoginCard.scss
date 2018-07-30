@@ -1,19 +1,21 @@
 .Auth_Card {
-  height: 90vh;
   display: flex;
   color: white;
-  border-radius: 10px;
   margin: -10px -15px;
+  background-image: url('~@images/direction.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: calc(100vh - 50px);
 }
 
 .Auth__Aside {
-  width: 50%;
-  background-color: #66dac7;
+  width: 80%;
 }
 
 .Auth__Form {
   width: 50%;
-  background-color: #2e4158;
+  background-color: #edf5f4;
   padding: 25px 20px;
   overflow: auto;
 }
@@ -24,8 +26,8 @@
   margin-bottom: 10%;
 
   &__Item {
-    background-color: #4c5d72;
-    color: #9da6b1;
+    background-color: #4c5768;
+    color: #fff;
     padding: 10px 25px;
     cursor: pointer;
     font-size: 0.9em;
@@ -47,30 +49,6 @@
     &__Item--Active {
       background-color: #5ed0c0;
       color: white;
-    }
-  }
-}
-
-.FormTitle {
-  color: #707c8b;
-  font-weight: 100;
-  margin-bottom: 20px;
-
-  &__Link {
-    color: #707c8b;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 1.7em;
-    margin: 0 10px;
-    padding-bottom: 5px;
-
-    &:first-child {
-      margin-left: 0;
-    }
-
-    &__Link--Active {
-      color: white;
-      border-bottom: 1px solid #199087;
     }
   }
 }

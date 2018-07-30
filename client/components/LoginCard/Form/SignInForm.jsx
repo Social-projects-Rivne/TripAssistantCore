@@ -15,18 +15,6 @@ class SignInForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  onSubmit(e) {
-    e.preventDefault();
-    const { email, password } = this.state;
-    const { history, store } = this.props;
-    this.setState({ error: false });
-    if (!(email === 'bob@gmail.com' && password === 'bob')) {
-      return this.setState({ error: true });
-    }
-    store.set('loggedIn', true);
-    history.push('/dashbord');
-  }
-
   handleChange({
     target: {
       type,
@@ -42,7 +30,9 @@ class SignInForm extends Component {
   }
 
   handleSubmit(e) {
-    e.preventDefault();
+    e.preventDefault(
+      localStorage.setItem({}, JSON.stringify(this.state))
+    );
 
     console.log('The form was submitted with the following data:');
     console.log(this.state);
