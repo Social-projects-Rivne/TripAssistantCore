@@ -1,32 +1,26 @@
-.trip-map {
-  width: 80%;
-  height: 200px;
+
+
+div.search {
   margin: 0 auto;
-  background-color: aquamarine;
+  margin-bottom: 50px;
+  width: 70%;
 }
 
-ul {
-  padding: 0;
+div.search > form {
+  display: flex;
+  flex-direction: row;
 }
 
-li {
-  position: relative;
-  list-style: none;
-  display: inline-block;
-  padding: 0.25rem 0.75rem;
-  margin: 2px;
-  border-radius: 3px;
+div.search > form > input {
+  width: 50%;
 }
 
-li:hover {
-  cursor: pointer;
+div.search > form > button {
+  text-align: center;
+  height: 45px;
 }
 
-li.filteredItem {
-  background: #a0cfee;
-  color: #16527a;
-}
-
-li.filteredItem:hover {
-  background: #8bc4ea;
+.data {
+  border: 2px solid black;
+  margin-bottom: 50px;
 }

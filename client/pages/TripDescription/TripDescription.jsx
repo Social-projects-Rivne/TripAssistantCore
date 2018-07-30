@@ -29,19 +29,22 @@ class TripDescription extends Component {
   render() {
     const { feedbackData, term } = this.state;
     return (
-      <div>
+      <div className="main-trip">
         <div className="search">
           <form>
             <input
+              required
+              placeholder="Type which route you want to find"
               type="text"
               onChange={this.searchHandler}
               value={term}
             />
             <button
+              className="waves-effect waves-light btn clear"
               type="submit"
               onClick={this.resetHandler}
             >
-              <a href="# " className="waves-effect waves-light btn clear">CLEAR</a>
+              Clear!
             </button>
           </form>
         </div>
@@ -50,7 +53,11 @@ class TripDescription extends Component {
             feedbackData.filter(searchingFor(term)).map(feed => (
               <div key={feed.id} className="data">
                 <h4>{feed.name}</h4>
-                <p>Rating: {feed.rating}</p>
+                <ul>
+                  <li>Rating: {feed.rating}</li>
+                  <li>Trip date: {feed.date}</li>
+                  <li>Driver/User: {feed.userName}</li>
+                </ul>
               </div>
             ))
           }
