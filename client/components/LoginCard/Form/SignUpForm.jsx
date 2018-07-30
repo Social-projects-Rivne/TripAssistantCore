@@ -40,10 +40,9 @@ class SignUpForm extends Component {
   }
 
   render() {
-    const { fname } = this.state;
-    const { lname } = this.state;
-    const { email } = this.state;
-    const { password } = this.state;
+    const {
+      fname, lname, email, password
+    } = this.state;
     return (
       <div className="FormCenter">
         <form className="FormFields" onSubmit={this.handleSubmit} id="registrationForm">

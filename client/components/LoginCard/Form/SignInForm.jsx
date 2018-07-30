@@ -39,8 +39,7 @@ class SignInForm extends Component {
   }
 
   render() {
-    const { email } = this.state;
-    const { password } = this.state;
+    const { email, password } = this.state;
     return (
       <div className="FormCenter">
         <form className="FormFields" onSubmit={this.handleSubmit} id="loginForm">
