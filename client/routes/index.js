@@ -1,23 +1,22 @@
 import React from 'react';
-import Map from '../components/Map';
 import Info from '../pages/Info';
-import Dashbord from '../pages/Dashbord';
-import TripDescription from '../pages/TripDescription/TripDescription';
 import Profile from '../pages/Profile';
+import Dashboard from '../pages/Dashbord';
 import Login from '../pages/Login/Login';
+import NewTrip from '../pages/NewTrip';
+import TripDescription from '../pages/TripDescription';
 
-
-// Pages exemple.
+// Pages example.
 const History = () => <h1>History</h1>;
 const Statistic = () => <h1>Statistic</h1>;
-//
+const Home = () => <h1>List of active routes</h1>;
 
 
 const Routes = [
   {
     path: '/',
     exact: true,
-    component: Map
+    component: Home
   },
   {
     path: '/profile',
@@ -36,8 +35,12 @@ const Routes = [
     component: Info
   },
   {
-    path: '/dashbord',
-    component: Dashbord
+    path: '/dashboard',
+    component: Dashboard
+  },
+  {
+    path: '/new-trip',
+    component: NewTrip
   },
   {
     path: '/tripdescription',
@@ -47,7 +50,6 @@ const Routes = [
     path: '/login',
     component: Login
   }
-
 ];
 
 export default Routes;
