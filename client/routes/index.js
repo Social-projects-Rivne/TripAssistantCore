@@ -22,7 +22,11 @@ const Routes = [
   },
   {
     path: '/profile',
-    component: Profile
+    component: Profile,
+    routes: [{
+      path: 'profile/tripdescription',
+      component: TripDescription
+    }]
   },
   {
     path: '/info',

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import { Link } from 'react-router-dom';
 import './HistoryCard.scss';
 
 const HistoryCard = ({ routeName, routeDate, isActive }) => (
@@ -10,7 +10,7 @@ const HistoryCard = ({ routeName, routeDate, isActive }) => (
       <span className="historyCard__p--date">{routeDate}</span>
       {isActive && <span className="historyCard__p--is-active">Active</span>}
     </p>
-    <button type="button" href="#" className="historyCard__btn">VIEW</button>
+    <Link type="button" to="profile/tripdescription" className="historyCard__btn">VIEW</Link>
   </div>
 );
 
