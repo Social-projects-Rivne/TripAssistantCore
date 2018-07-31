@@ -28,7 +28,7 @@ const Info = () => (
       <div className="copyright">Copyright</div>
       <div className="footer-menu">
         <ul>
-          <li><a href="# "><img src="./img/icons8-slack-48.png" alt="slack" /></a></li>
+          <li><a href="# "><img src="img/slack.png" alt="slack" /></a></li>
           <li><a href="# ">icon</a></li>
           <li><a href="# ">icon</a></li>
           <li><a href="# ">icon</a></li>
