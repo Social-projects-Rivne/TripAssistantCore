@@ -1,19 +1,33 @@
 
 .main-info {
-  background-color: #f7f8fa;
   display: flex;
   flex-direction: column;
+  background: url('~@images/profile-page-bg.jpg') top;
 }
 
-.Map {
+.team {
+  width: 50%;
+  margin: 0 auto;
+
+  h1 {
+    text-align: center;
+  }
+
+  p {
+    text-align: center;
+  }
+}
+
+.map {
   width: 80%;
   height: 300px;
-  border: 1px, solid, black;
+  border: 1px solid black;
   margin: 0 auto;
-  background-color: lightblue;
+  margin-top: 50px;
 }
 
 .contacts {
+  margin-top: 100px;
   text-align: center;
 }
 
@@ -27,7 +41,6 @@ footer {
   margin-top: 50px;
   height: 100px;
   width: 100%;
-  background-color: rgb(140, 188, 243);
   display: flex;
   justify-content: center;
   flex-wrap: nowrap;
