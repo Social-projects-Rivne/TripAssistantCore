@@ -5,7 +5,7 @@ const pool = new Pool({
   database: 'tadb',
   password: 'password',
   host: 'localhost',
-  port: '5433'
+  port: '5432'
 });
 
 module.exports = {
