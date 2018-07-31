@@ -16,7 +16,7 @@ class LoginCard extends Component {
           <div className="Auth__Form">
             <div className="PageSwitcher">
               <Link to="/login" className="PageSwitcher__Item">Sign In</Link>
-              <Link exact to="/" className="PageSwitcher__Item">Sign Up</Link>
+              <Link exact="true" to="/" className="PageSwitcher__Item">Sign Up</Link>
             </div>
             <Route exact path="/" component={SignUpForm} />
             <Route path="/login" component={SignInForm} />

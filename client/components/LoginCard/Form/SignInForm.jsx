@@ -30,9 +30,7 @@ class SignInForm extends Component {
   }
 
   handleSubmit(e) {
-    e.preventDefault(
-      localStorage.setItem({}, JSON.stringify(this.state))
-    );
+    e.preventDefault();
 
     console.log('The form was submitted with the following data:');
     console.log(this.state);
