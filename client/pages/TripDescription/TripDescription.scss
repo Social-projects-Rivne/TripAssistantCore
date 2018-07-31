@@ -1,9 +1,12 @@
-
+.main-trip {
+  background: url('~@images/profile-page-bg.jpg') top;
+}
 
 div.search {
   margin: 0 auto;
   margin-bottom: 50px;
   width: 70%;
+  background-color: lightyellow;
 }
 
 div.search > form {
