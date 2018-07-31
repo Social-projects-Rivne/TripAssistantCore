@@ -1,5 +1,8 @@
 import React from 'react';
 import './Info.scss';
+import slack from '../../../public/images/slack.svg';
+import facebook from '../../../public/images/facebook.svg';
+import github from '../../../public/images/github-logo.svg';
 
 
 const Info = () => (
@@ -28,10 +31,9 @@ const Info = () => (
       <div className="copyright">Copyright</div>
       <div className="footer-menu">
         <ul>
-          <li><a href="# "><img src="img/slack.png" alt="slack" /></a></li>
-          <li><a href="# ">icon</a></li>
-          <li><a href="# ">icon</a></li>
-          <li><a href="# ">icon</a></li>
+          <li><a href="# "><img src={slack} alt="slack" /></a></li>
+          <li><a href="# "><img src={facebook} alt="slack" /></a></li>
+          <li><a href="# "><img src={github} alt="slack" /></a></li>
         </ul>
       </div>
     </footer>

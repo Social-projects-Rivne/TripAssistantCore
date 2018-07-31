@@ -11,8 +11,24 @@ class Profile extends Component {
     super();
 
     this.state = {
-      userInfo: {}
+      userInfo: {},
+      carsInfo: [],
+      feedbacksInfo: [],
+      allHistory: []
     };
+  }
+
+  componentDidMount() {
+    axios.get('public/data/profileUserData.json')
+      .then(({ data }) => this.setState({ userInfo: data[0] }));
+
+    axios.get('public/data/feedbacksData.json')
+      .then(({ data }) => this.setState({ feedbacksInfo: data }));
+
+    axios.get('public/data/allHistory.json')
+      .then(({ data }) => this.setState({ allHistory: data }));
+
+    this.updateCarData();
   }
 
   updateCarData = () => {

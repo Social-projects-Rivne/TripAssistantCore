@@ -6,7 +6,8 @@
 }
 
 .team {
-  width: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 100%;
   margin: 0 auto;
 
   h1 {
@@ -60,16 +61,20 @@ footer {
     flex-direction: row;
 
     li {
-      margin-right: 30px;
+      margin-right: 20px;
       margin-left: 60px;
-      padding: 5px;
+      padding: 10px;
     }
 
     li:hover {
-      background-color: chocolate;
-      padding: 5px;
-      transition: 0.2s;
+      background-color: aquamarine;
+      transition: 0.5s;
+      padding: 10px;
     }
+  }
+
+  img {
+    width: 30px;
   }
 }
 
