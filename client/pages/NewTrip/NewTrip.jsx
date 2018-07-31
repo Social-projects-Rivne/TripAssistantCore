@@ -6,7 +6,7 @@ import MapDropdown from '../../components/MapDropdown';
 import { random } from '../../helpers';
 import './NewTrip.scss';
 
-const KEY = 'AIzaSyDOPDY3_XTTcJelWP-84Csj5FcIdPUBcDs';
+const KEY = 'AIzaSyBPo6m3oLTozHOupA5V_kbBtxwgqbiVmOs';
 
 const colors = [
   'red',
@@ -164,6 +164,8 @@ class NewTrip extends Component {
               ...prevState.tripInfo,
               duration: result.routes[0].legs[0].distance.text,
               time: result.routes[0].legs[0].duration.text,
+              start_address: result.routes[0].legs[0].start_address,
+              end_address: result.routes[0].legs[0].end_address,
               distance: {
                 start: prevState.location,
                 end: prevState.end

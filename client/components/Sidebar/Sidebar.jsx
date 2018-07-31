@@ -15,16 +15,11 @@ class Sidebar extends Component {
     };
   }
 
-  componentWillUnmount() {
-    localStorage.removeItem('TripData');
-  }
-
   saveDataToLocalStorage = (data) => {
-    const { tripInfo } = this.props;
-    localStorage.setItem('TripData', JSON.stringify(data));
-    const tripData = localStorage.getItem('TripData');
-    console.log(tripData);
-    console.log(tripInfo);
+    let tripData = JSON.parse(localStorage.getItem('ActiveRoutes'));
+    if (!tripData) tripData = [];
+    tripData.push(data);
+    localStorage.setItem('ActiveRoutes', JSON.stringify(tripData));
   }
 
   render() {
@@ -49,7 +44,7 @@ class Sidebar extends Component {
             : points.map(point => <TripPoint {...point} key={point.name} />) }
           {points.length < 2 && <TripPoint name={end} />}
         </div>
-        {tripInfo.distance && <a href="?#" className="waves-effect waves-light btn" onClick={event => event.preventDefault && this.saveDataToLocalStorage(tripInfo)}>Save</a>}
+        {tripInfo.distance && <a href="#!" className="waves-effect waves-light btn" onClick={event => event.preventDefault() && this.saveDataToLocalStorage(tripInfo)}>Save</a>}
       </div>
     );
   }
