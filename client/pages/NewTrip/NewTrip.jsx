@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { GoogleApiWrapper, Map, Marker } from 'google-maps-react';
+import { toast } from 'materialize-css';
 import PropTypes from 'prop-types';
 import SideBar from '../../components/Sidebar';
 import MapDropdown from '../../components/MapDropdown';
@@ -38,6 +39,7 @@ class NewTrip extends Component {
     this.addMarkers = this.addMarkers.bind(this);
     this.eventChangeName = this.eventChangeName.bind(this);
     this.eventLoader = this.eventLoader.bind(this);
+    this.setPoints = this.setPoints.bind(this);
   }
 
   componentDidMount() {
@@ -52,7 +54,7 @@ class NewTrip extends Component {
 
   componentDidUpdate() {
     const { location, markers } = this.state;
-    if (!markers.length) {
+    if (!markers.length && location) {
       this.addMarkers(location);
     }
   }
@@ -66,11 +68,30 @@ class NewTrip extends Component {
       geolocation.getCurrentPosition((position) => {
         resolve(position);
       }, () => {
-        reject(new Error('Permission denied'));
+        toast({ html: 'Your geolocation is desible <br> Please enter your start point' });
       });
     });
     return location;
   };
+
+  setPoints = (latlng, point) => {
+    if (point === 'A') {
+      this.setState({
+        location: {
+          lat: latlng.lat,
+          lng: latlng.lng
+        }
+      });
+    }
+    if (point === 'B') {
+      this.setState({
+        end: {
+          lat: latlng.lat,
+          lng: latlng.lng
+        }
+      });
+    }
+  }
 
   getParsetNameFromGeocode = (data) => {
     const res = [];
@@ -116,17 +137,33 @@ class NewTrip extends Component {
     return name;
   }
 
-  addMarkers = (latLng) => {
+  addMarkers = (latLng, pointFlag) => {
     const { markers } = this.state;
-    if (markers.length > 1) {
-      this.setState(prevState => prevState.markers.pop());
+    let flag = markers.length ? 'B' : 'A';
+    if (pointFlag) {
+      flag = pointFlag;
+      this.setPoints(latLng, pointFlag);
     }
-    const localName = this.getPointName(latLng);
-    localName.then(res => this.setState(prevState => prevState.markers.push({
-      name: res,
-      title: res,
-      position: latLng
-    })));
+    if (pointFlag === 'A') {
+      this.getPointName(latLng)
+        .then(res => this.setState(prevState => prevState.markers.splice(0, 1, {
+          name: res,
+          title: res,
+          position: latLng,
+          point: flag
+        })));
+    } else {
+      if (markers.length > 1) {
+        this.setState(prevState => prevState.markers.pop());
+      }
+      this.getPointName(latLng)
+        .then(res => this.setState(prevState => prevState.markers.push({
+          name: res,
+          title: res,
+          position: latLng,
+          point: flag
+        })));
+    }
   }
 
   showDropdown = ({ pixel, latLng }, opacity) => {
@@ -202,7 +239,14 @@ class NewTrip extends Component {
     const { load, markers, location, defaultZoom, dropdownPosition, tripInfo } = this.state;
     return (
       <div className="new-trip">
-        <SideBar points={markers} tripInfo={tripInfo} changeName={this.eventChangeName} />
+        <SideBar
+          points={markers}
+          tripInfo={tripInfo}
+          changePoint={this.addMarkers}
+          changeName={this.eventChangeName}
+          create={markers.length === 2}
+          calcRouteFn={this.calculateRoute}
+        />
         {load && <PreLoader /> }
         <div id="map">
           <Map
