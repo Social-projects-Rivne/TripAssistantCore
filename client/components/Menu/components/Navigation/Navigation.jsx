@@ -13,7 +13,6 @@ const MENU_ITEM = [
   { name: 'search route', path: '/searchRoute', ico: SearchIco },
   { name: 'my profile', path: '/profile', ico: UserMenuIco },
   { name: 'info', path: '/info', ico: EnvelopeIco },
-  { name: 'tripdescription', path: '/tripdescription', ico: EnvelopeIco },
   { name: 'dashboard', path: '/dashboard', ico: DashbordIco }
 ];
 
