@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "express": "nodemon server/app.js",
+    "express": "node server/app.js",
     "dropAllTables": "node server/db/dropAllTables.js",
     "createTables": "node server/db/createTables.js",
     "dbseed": "node server/db/dbseed.js",
@@ -29,6 +29,7 @@
     "express": "^4.16.3",
     "google-maps-react": "^2.0.2",
     "materialize-css": "^1.0.0-rc.2",
+    "sha.js": "^2.4.11",
     "pg": "^7.4.3",
     "prop-types": "^15.6.2",
     "react": "^16.3.2",
@@ -36,6 +37,7 @@
     "react-async-script-loader": "^0.3.0",
     "react-dom": "^16.3.2",
     "react-geosuggest": "^2.8.0",
+    "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
@@ -68,6 +70,7 @@
     "stylelint": "^9.3.0",
     "stylelint-config-standard": "^18.2.0",
     "stylelint-webpack-plugin": "^0.10.5",
+    "uuid": "^3.1.0",
     "webpack": "^4.14.0",
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.4",
