@@ -28,11 +28,20 @@ class Profile extends Component {
     axios.get('public/data/allHistory.json')
       .then(({ data }) => this.setState({ allHistory: data }));
 
+    this.fetchUserData();
+
     this.updateCarData();
   }
 
+  fetchUserData = () => {
+    const id = 1;
+    fetch(`api/user/${id}`)
+      .then(res => res.json());
+  }
+
   updateCarData = () => {
-    axios.get('public/data/userCarsData.json')
+    const id = 1;
+    axios.get(`api/user/${id}/cars`)
       .then(({ data }) => this.setState({ carsInfo: data }));
   }
 

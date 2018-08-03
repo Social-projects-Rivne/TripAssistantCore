@@ -11,6 +11,9 @@ module.exports = merge(common, {
     port: '8000',
     hot: true,
     open: true,
-    overlay:true
+    overlay:true,
+    proxy: {
+      '/api': 'http://localhost:3000'
+    }
   }
 })
