@@ -38,7 +38,7 @@ class Sidebar extends Component {
             <input className="trip-info_radius_input" type="range" min="0" max="100" />
           </div>
         </div>
-        <div className="trip-point collection">
+        <div className="trip-point">
           {!points.length
             ? <TripPoint name={start} point="A" onSave={changePoint} />
             : points.map(point => <TripPoint {...point} key={point.name} onSave={changePoint} />) }

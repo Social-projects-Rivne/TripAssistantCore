@@ -5,22 +5,10 @@ import PropTypes from 'prop-types';
 import SideBar from '../../components/Sidebar';
 import MapDropdown from '../../components/MapDropdown';
 import PreLoader from '../../components/PreLoader';
-import { random } from '../../helpers';
+import { random, colors } from '../../helpers';
 import './NewTrip.scss';
 
 const KEY = 'AIzaSyBPo6m3oLTozHOupA5V_kbBtxwgqbiVmOs';
-
-const colors = [
-  'red',
-  'pink',
-  'purple',
-  'blue',
-  'teal',
-  'light-green',
-  'lime',
-  'orange'
-];
-
 
 class NewTrip extends Component {
   constructor() {
@@ -97,9 +85,6 @@ class NewTrip extends Component {
     const res = [];
     Object.values(data.address_components).map((item) => {
       switch (item.types[0]) {
-      case 'street_number':
-        res.push(item.long_name);
-        break;
       case 'route':
         if (item.long_name === 'Unnamed Road') {
           res.toString();
@@ -253,6 +238,7 @@ class NewTrip extends Component {
             google={google}
             center={location}
             zoom={defaultZoom}
+            mapType="Terrain"
             onClick={(t, map, event) => this.showDropdown(event, 1)}
             onChange={() => this.eventLoader()}
             onReady={() => this.eventLoader()}

@@ -4,7 +4,7 @@ import './TripPoint.scss';
 import PropTypes from 'prop-types';
 
 const TripPoint = ({ name, point, onSave }) => (
-  <div className="trip-point__item">
+  <div className="trip-point__item main-card__wrap">
     {window.google
       ? <Geosuggest name="points" className="trip-point__wrapper" inputClassName="trip-point__input car-card__input" initialValue={name} onSuggestSelect={({ location }) => onSave(location, point)} autoComplete="off" />
       : <h4 className="trip-point__title">{name}</h4>}
