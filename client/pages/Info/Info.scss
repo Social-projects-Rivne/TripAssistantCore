@@ -48,8 +48,9 @@ footer {
 }
 
 .copyright {
-  margin-top: 40px;
+  margin-top: 50px;
   width: 30%;
+  text-align: center;
 }
 
 .footer-menu {
@@ -63,13 +64,13 @@ footer {
     li {
       margin-right: 20px;
       margin-left: 60px;
-      padding: 10px;
+      padding: 5px;
     }
 
     li:hover {
       background-color: aquamarine;
-      transition: 0.5s;
-      padding: 10px;
+      transition: 0.8s;
+      padding: 5px;
     }
   }
 
