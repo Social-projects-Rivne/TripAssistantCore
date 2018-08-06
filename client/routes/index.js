@@ -22,15 +22,15 @@ const Routes = [
   },
   {
     path: '/profile',
-    component: Profile,
-    routes: [{
-      path: 'profile/tripdescription',
-      component: TripDescription
-    }]
+    component: Profile
   },
   {
     path: '/info',
     component: Info
+  },
+  {
+    path: '/tripdescription',
+    component: TripDescription
   },
   {
     path: '/dashboard',
@@ -39,10 +39,6 @@ const Routes = [
   {
     path: '/new-trip',
     component: NewTrip
-  },
-  {
-    path: '/tripdescription',
-    component: TripDescription
   },
   {
     path: '/login',

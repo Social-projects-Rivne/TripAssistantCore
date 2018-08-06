@@ -10,7 +10,7 @@ const HistoryCard = ({ routeName, routeDate, isActive }) => (
       <span className="historyCard__p--date">{routeDate}</span>
       {isActive && <span className="historyCard__p--is-active">Active</span>}
     </p>
-    <Link type="button" to="profile/tripdescription" className="historyCard__btn">VIEW</Link>
+    <Link to="tripdescription" className="historyCard__btn">VIEW</Link>
   </div>
 );
 
