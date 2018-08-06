@@ -144,7 +144,7 @@ class SearchRoute extends Component {
 
     return (
       <div className="search-route">
-        <h1 className="search-route__header">Search</h1>
+        <h1 className="search-route__header">Find Your Trip</h1>
         <div className="sr-wrap">
           <div className="sr-inner">
             <SearchRouteStart
