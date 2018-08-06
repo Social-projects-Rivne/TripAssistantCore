@@ -1,6 +1,7 @@
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import React from 'react';
 import PropTypes from 'prop-types';
+import './InfoMap.scss';
 
 
 const KEY = 'AIzaSyBPo6m3oLTozHOupA5V_kbBtxwgqbiVmOs';

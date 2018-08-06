@@ -27,9 +27,17 @@
   margin-top: 50px;
 }
 
+.map div:first-child {
+  position: relative !important;
+  height: 100% !important;
+  width: 100% !important;
+  border: 1px solid black;
+}
+
 .contacts {
   margin-top: 100px;
   text-align: center;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .form {
@@ -64,18 +72,17 @@ footer {
     li {
       margin-right: 20px;
       margin-left: 60px;
-      padding: 5px;
+      padding: 10px;
     }
 
     li:hover {
       background-color: aquamarine;
+      padding: 10px;
       transition: 0.8s;
-      padding: 5px;
+    }
+
+    img {
+      width: 30px;
     }
   }
-
-  img {
-    width: 30px;
-  }
 }
-
