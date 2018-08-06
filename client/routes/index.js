@@ -22,25 +22,15 @@ const Routes = [
   },
   {
     path: '/profile',
-<<<<<<< HEAD
-    component: Profile
-=======
     component: Profile,
-    routes: [
-      {
-        path: 'profile/tripdescription',
-        component: TripDescription
-      }
-    ]
->>>>>>> 8c0d8844eb99631ab5297ee81b2774a348f083e4
+    routes: [{
+      path: 'profile/tripdescription',
+      component: TripDescription
+    }]
   },
   {
     path: '/info',
     component: Info
-  },
-  {
-    path: '/tripdescription',
-    component: TripDescription
   },
   {
     path: '/dashboard',
@@ -49,6 +39,10 @@ const Routes = [
   {
     path: '/new-trip',
     component: NewTrip
+  },
+  {
+    path: '/tripdescription',
+    component: TripDescription
   },
   {
     path: '/login',
