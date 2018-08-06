@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "express": "node server/app.js",
+    "express": "nodemon server/app.js",
     "dropAllTables": "node server/db/dropAllTables.js",
     "createTables": "node server/db/createTables.js",
     "dbseed": "node server/db/dbseed.js",
@@ -25,11 +25,13 @@
   "homepage": "https://github.com/Social-projects-Rivne/TripAssistantCore#readme",
   "dependencies": {
     "axios": "^0.18.0",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
     "express": "^4.16.3",
     "google-maps-react": "^2.0.2",
+    "knex": "^0.15.2",
     "materialize-css": "^1.0.0-rc.2",
-    "sha.js": "^2.4.11",
     "pg": "^7.4.3",
     "prop-types": "^15.6.2",
     "react": "^16.3.2",

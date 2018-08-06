@@ -1,70 +1,64 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class SignUpForm extends Component {
-  constructor() {
-    super();
-
+class SignUpForm extends React.Component {
+  constructor(props) {
+    super(props);
     this.state = {
-      email: '',
-      password: '',
-      fname: '',
-      lname: ''
+      Email: '',
+      Password: '',
+      Name: ''
     };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange({
-    target: {
-      type,
-      checked,
-      value,
-      name
-    }
-  }) {
-    const valueChecked = type === 'checkbox' ? checked : value;
-    this.setState({
-      [name]: valueChecked
-    });
+  onNameChange = (event) => {
+    this.setState({ Name: event.target.value });
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
+  onEmailChange = (event) => {
+    this.setState({ Email: event.target.value });
+  }
 
-    console.log('The form was submitted with the following data:');
-    console.log(this.state);
+  onPasswordChange = (event) => {
+    this.setState({ Password: event.target.value });
+  }
+
+  onSubmitSignIn = () => {
+    const { Name, Email, Password, loadUser, onRouteChange } = this.state;
+    fetch('http://localhost:3000/register', {
+      method: 'post',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: Email,
+        password: Password,
+        name: Name
+      })
+    })
+      .then(response => response.json())
+      .then((user) => {
+        if (user) {
+          loadUser(user);
+          onRouteChange('home');
+        }
+      });
   }
 
   render() {
     const {
-      fname, lname, email, password
+      name, email, password
     } = this.state;
     return (
       <div className="FormCenter">
         <form className="FormFields" onSubmit={this.handleSubmit} id="registrationForm">
           <div className="FormField">
-            <label className="FormField__Label">First Name</label>
+            <label className="FormField__Label">Name</label>
             <input
               type="text"
-              id="fname"
+              id="name"
               className="FormField__Input"
-              placeholder="Enter your first name"
-              name="fname"
-              value={fname}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="FormField">
-            <label className="FormField__Label">Last Name</label>
-            <input
-              type="text"
-              id="lname"
-              className="FormField__Input"
-              placeholder="Enter your last name"
-              name="lname"
-              value={lname}
-              onChange={this.handleChange}
+              placeholder="Enter your name"
+              name="name"
+              value={name}
+              onChange={this.onNameChange}
             />
           </div>
           <div className="FormField">
@@ -76,7 +70,7 @@ class SignUpForm extends Component {
               placeholder="Enter your email"
               name="email"
               value={email}
-              onChange={this.handleChange}
+              onChange={this.onEmailChange}
             />
           </div>
           <div className="FormField">
@@ -88,7 +82,7 @@ class SignUpForm extends Component {
               placeholder="Enter your password"
               name="password"
               value={password}
-              onChange={this.handleChange}
+              onChange={this.onPasswordChange}
             />
           </div>
           <div className="FormField">
@@ -101,7 +95,7 @@ class SignUpForm extends Component {
             </label>
           </div>
           <div className="FormField">
-            <button className="FormField__Button mr-20" type="submit">Sign Up</button>
+            <button className="FormField__Button mr-20" onClick={this.onSubmitSignIn} type="submit">Sign Up</button>
           </div>
         </form>
       </div>

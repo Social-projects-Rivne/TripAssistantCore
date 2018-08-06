@@ -4,9 +4,9 @@ const tablesData = [
     column: `
       idUser serial NOT NULL PRIMARY KEY,
       name json NOT NULL,
-      login char(20) NOT NULL,
-      passwordHash text NOT NULL,
-      email char(50) NOT NULL,
+      login char(20),
+      password text NOT NULL,
+      email char(50) UNIQUE NOT NULL,
       homePoint json,
       driveHoursPerDay double precision,
       driveStopPeriod double precision,
