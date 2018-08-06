@@ -5,7 +5,7 @@ import Dashboard from '../pages/Dashbord';
 import Login from '../pages/Login/Login';
 import SearchRoute from '../pages/SearchRoute';
 import NewTrip from '../pages/NewTrip';
-import TripDescription from '../pages/TripDescription';
+import TripDescription from '../components/TripDescription/TripDescription';
 
 const Home = () => <h1>List of active routes</h1>;
 
@@ -22,7 +22,17 @@ const Routes = [
   },
   {
     path: '/profile',
+<<<<<<< HEAD
     component: Profile
+=======
+    component: Profile,
+    routes: [
+      {
+        path: 'profile/tripdescription',
+        component: TripDescription
+      }
+    ]
+>>>>>>> 8c0d8844eb99631ab5297ee81b2774a348f083e4
   },
   {
     path: '/info',
