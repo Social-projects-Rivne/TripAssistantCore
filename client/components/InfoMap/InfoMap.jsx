@@ -25,7 +25,7 @@ export class InfoMap extends React.Component {
 
         <InfoWindow onClose={this.onInfoWindowClose}>
           <div>
-            <h1>somet</h1>
+            <h1>something</h1>
           </div>
         </InfoWindow>
       </Map>

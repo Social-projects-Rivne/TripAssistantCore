@@ -22,7 +22,7 @@ const Info = () => (
         <input type="text" name="name" placeholder="your name\login" required /> <br />
         <input type="email" name="email" placeholder="your email" required /> <br />
         <textarea placeholder="your message here" required />
-        <a href="# " className="waves-effect waves-light btn-large"><i className="material-icons left">Submit</i></a>
+        <button type="submit" className="waves-effect waves-light btn-large"><i className="material-icons left">Submit</i></button>
       </form>
     </div>
     <div className="map">
