@@ -30,3 +30,4 @@ benchmarks/graphs
 
 # Other
 build
+server/.env
