@@ -1,7 +1,7 @@
 # TripAssistantCore
 
-Start Express server: npm run express;<br>
-<i style="color: red;">NOTE: Edit database config before starting API server. Path: server/.env.sample (delete .sample and add your credential)</i><br>
+Start Express server: npm run express;<br><br>
+<i>NOTE: Edit database config before starting API server. Path: server/.env.sample (delete .sample and add your credential)</i><br><br>
 Database setup:<br>
 1: <i>npm run createTables</i>;<br>
 2: <i>npm run dbseed</i>.<br>
