@@ -1,5 +1,7 @@
 const { Pool } = require('pg');
-require('colors')
+require('colors');
+
+
 const pool = new Pool();
 
 // the pool with emit an error on behalf of any idle clients
@@ -15,10 +17,11 @@ module.exports = {
     return new Promise((resolve, reject) => {
       pool.connect()
         .then(client => {
-          return client.query(sql,params)
+          return client.query(sql, params)
             .then(res => {
               client.release();
-              console.log('SQL:'.green, `${sql.text}`.blue, '\nPARAMS:'.green, `${params}`.yellow);
+              console.log('SQL:'.green, `${sql.text || sql}`.blue);
+              params && console.log('\nPARAMS:'.green, `${params}`.yellow)
               res.rowCount > 0 && resolve(res);
             })
             .catch(err => {

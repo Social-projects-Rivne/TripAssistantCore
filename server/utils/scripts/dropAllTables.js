@@ -1,4 +1,4 @@
-const Query = require('../helpers/utils.js');
+const Query = require('../PgBaseUtils');
 
 module.exports = (function drop() {
     Query.dropAllTables();

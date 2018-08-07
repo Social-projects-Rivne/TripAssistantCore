@@ -4,6 +4,7 @@ const userRoutes = require('./routes/user');
 const bodyParser = require('body-parser');
 require('dotenv').config({path: 'server/.env'})
 
+
 const app = express();
 
 app.use(bodyParser.json());

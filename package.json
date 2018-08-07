@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "express": "nodemon server/app.js",
-    "dropAllTables": "node server/db/dropAllTables.js",
-    "createTables": "node server/db/createTables.js",
-    "dbseed": "node server/db/dbseed.js",
+    "dropAllTables": "node server/utils/scripts/dropAllTables.js",
+    "createTables": "node server/utils/scripts/createTables.js",
+    "dbseed": "node server/utils/scripts/dbSeed.js",
     "dev": "webpack-dev-server --config ./config/webpack.dev.js",
     "build": "webpack --config ./config/webpack.prod.js",
     "lint": "eslint client"
