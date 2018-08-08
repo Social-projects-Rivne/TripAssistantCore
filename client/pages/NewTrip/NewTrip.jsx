@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-import { GoogleApiWrapper, Map, Marker } from 'google-maps-react';
+import { Map, Marker } from 'google-maps-react';
 import { toast } from 'materialize-css';
-import PropTypes from 'prop-types';
 import SideBar from '../../components/Sidebar';
 import MapDropdown from '../../components/MapDropdown';
 import PreLoader from '../../components/PreLoader';
 import { random, colors } from '../../helpers';
 import './NewTrip.scss';
 
-const KEY = 'AIzaSyBPo6m3oLTozHOupA5V_kbBtxwgqbiVmOs';
 
 class NewTrip extends Component {
   constructor() {
@@ -109,12 +107,11 @@ class NewTrip extends Component {
   }
 
   getPointName = (startPoint) => {
-    const { google } = this.props;
     const name = new Promise((resolve, reject) => {
-      if (!google) {
+      if (!window.google) {
         reject(new Error('API is undefined'));
       }
-      const geocoder = new google.maps.Geocoder();
+      const geocoder = new window.google.maps.Geocoder();
       geocoder.geocode({ location: startPoint }, res => resolve(
         this.getParsetNameFromGeocode(res[0])
       ));
@@ -163,16 +160,15 @@ class NewTrip extends Component {
   }
 
   calculateRoute = () => {
-    const { google } = this.props;
     this.eventLoader();
-    if (google) {
+    if (window.google) {
       const { location, end } = this.state;
       const map = document.getElementById('map');
-      const directionsService = new google.maps.DirectionsService();
-      const directionsDisplay = new google.maps.DirectionsRenderer();
-      const startPoint = new google.maps.LatLng(location);
-      const endPoint = new google.maps.LatLng(end);
-      const setNewMap = new google.maps.Map(map, {
+      const directionsService = new window.google.maps.DirectionsService();
+      const directionsDisplay = new window.google.maps.DirectionsRenderer();
+      const startPoint = new window.google.maps.LatLng(location);
+      const endPoint = new window.google.maps.LatLng(end);
+      const setNewMap = new window.google.maps.Map(map, {
         zoom: 7,
         startPoint
       });
@@ -220,7 +216,6 @@ class NewTrip extends Component {
 
 
   render() {
-    const { google } = this.props;
     const { load, markers, location, defaultZoom, dropdownPosition, tripInfo } = this.state;
     return (
       <div className="new-trip">
@@ -235,7 +230,7 @@ class NewTrip extends Component {
         {load && <PreLoader /> }
         <div id="map">
           <Map
-            google={google}
+            google={window.google}
             center={location}
             zoom={defaultZoom}
             mapType="Terrain"
@@ -252,11 +247,5 @@ class NewTrip extends Component {
   }
 }
 
-NewTrip.propTypes = {
-  google: PropTypes.objectOf(PropTypes.any).isRequired
-};
 
-export default GoogleApiWrapper({
-  apiKey: (KEY),
-  language: 'en'
-})(NewTrip);
+export default NewTrip;

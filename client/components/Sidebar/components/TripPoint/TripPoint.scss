@@ -15,6 +15,10 @@
     background-color: transparent;
     margin: 0;
     border-color: transparent;
+
+    &::placeholder {
+      color: #252d3a;
+    }
   }
 
   .geosuggest__suggests {
