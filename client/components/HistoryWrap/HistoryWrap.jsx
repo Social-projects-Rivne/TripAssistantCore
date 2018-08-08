@@ -18,7 +18,6 @@ class HistoryWrap extends Component {
           {allHistory.map(({ name, date, isActive }, i) => (
             <HistoryCard key={i} routeName={name} routeDate={date} isActive={isActive} />
           ))}
-
         </div>
       </div>
     );

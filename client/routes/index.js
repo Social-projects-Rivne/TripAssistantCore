@@ -37,12 +37,12 @@ const Routes = [
     component: Dashboard
   },
   {
-    path: '/new-trip',
-    component: NewTrip
-  },
-  {
     path: '/tripdescription',
     component: TripDescription
+  },
+  {
+    path: '/new-trip',
+    component: NewTrip
   },
   {
     path: '/login',
