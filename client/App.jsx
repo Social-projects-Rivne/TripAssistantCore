@@ -6,7 +6,7 @@ import Routes from './routes';
 import Header from './components/Header';
 import Menu from './components/Menu';
 
-const KEY = 'AIzaSyDOPDY3_XTTcJelWP-84Csj5FcIdPUBcDs';
+const KEY = 'AIzaSyDWfF4B8J4mmrLGltJfU9XqEauLS8PCarg';
 
 
 class App extends Component {
