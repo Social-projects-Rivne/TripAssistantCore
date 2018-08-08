@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "express": "nodemon server/app.js",
+    "express": "node server/app.js",
     "dropAllTables": "node server/db/dropAllTables.js",
     "createTables": "node server/db/createTables.js",
     "dbseed": "node server/db/dbseed.js",

@@ -17,14 +17,12 @@ const db = knex({
 
 const app = express();
 
+app.use(cors())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(userRoutes);
-app.use(cors())
 
-app.get('/', (req, res)=> {
-    res.send(database.users);
-})
+
 
 app.post('/signin', (req, res) => {
    db.select('email', 'password').from('users')
@@ -35,7 +33,7 @@ app.post('/signin', (req, res) => {
             return db.select('*').from('users')
               .where('email', '=', req.body.email)
               .then(user => {
-                res.json(user[0].name + 'signed in succesfuly')
+                res.json(user[0])
               })
             .catch(err => res.status(400).json('unable to get user'))
         } else {
@@ -62,8 +60,3 @@ app.post('/register', (req, res) => {
 })
 
 app.listen(3000, () => console.log('API server listening on 3000 port'));
-
-
-    // bcrypt.hash(password, null, null, function(err, hash) {
-    //     console.log(hash);
-    // })

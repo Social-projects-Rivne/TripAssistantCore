@@ -33,7 +33,7 @@ class SignInForm extends React.Component {
       .then((user) => {
         if (user.id) {
           loadUser(user);
-          onRouteChange('home');
+          onRouteChange('/');
         }
       });
   }
