@@ -5,8 +5,11 @@ Start Express server: npm run express;<br><br>
 Database setup:<br>
 1: <i>npm run createTables</i>;<br>
 2: <i>npm run dbseed</i>.<br>
+For recreate all project tables with empty data use:<br>
+<i>npm run reCreateTables</i><br>
 For clearing all tables use:<br>
-<i>npm run dropAllTables</i><br>
+<i>npm run clearAllTabless</i><br>
+<br>
 <br>
 <br>
 For dev Server: npm run dev;<br>

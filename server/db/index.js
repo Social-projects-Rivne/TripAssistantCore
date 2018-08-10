@@ -20,12 +20,13 @@ module.exports = {
           return client.query(sql, params)
             .then(res => {
               client.release();
-              console.log('SQL:'.green, `${sql.text || sql}`.blue);
-              params && console.log('\nPARAMS:'.green, `${params}`.yellow)
+              console.info('SQL:'.green, `${sql.text || sql}`.blue);
+              params && console.info('\nPARAMS:'.green, `${params}`.yellow)
               res.rowCount > 0 && resolve(res);
             })
             .catch(err => {
               client.release();
+              console.error(err.stack);
               reject(err.stack);
             })
         })

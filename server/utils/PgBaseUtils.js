@@ -7,15 +7,15 @@ module.exports = {
     data.forEach(({ tableName, column }) => db.query(`${query} ${tableName} (${column});`));
   },  
   insert: (data) => {
-    const { table, fields } = data;
-    data.values.forEach(val => db.query(`INSERT INTO ${table} (${fields}) VALUES (${val})`)); 
+    const { table, fields, values } = data;
+    values.forEach(val => db.query(`INSERT INTO ${table} (${fields}) VALUES (${val})`)); 
   },
-  dropAllTables: () => {
+  reCreate: () => {
+    const { PGDEFAULTSCHEMA, USER } = process.env;
     const SQL = `
-      DROP SCHEMA public CASCADE;
-      CREATE SCHEMA public;
-      GRANT ALL ON SCHEMA public TO dimapro;
-      GRANT ALL ON SCHEMA public TO public;
+      DROP SCHEMA ${PGDEFAULTSCHEMA} CASCADE;
+      CREATE SCHEMA ${PGDEFAULTSCHEMA};
+      GRANT ALL ON SCHEMA ${PGDEFAULTSCHEMA} TO ${USER};
       `
     db.query(SQL)
       .catch(e => console.error(e));
