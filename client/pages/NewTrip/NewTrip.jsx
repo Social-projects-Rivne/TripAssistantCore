@@ -193,7 +193,7 @@ class NewTrip extends Component {
     this.setState(prevState => ({ load: !prevState.load }));
   }
 
-  eventChangeName({ currentTarget: { textContent } }) {
+  eventChangeName = ({ currentTarget: { textContent } }) => {
     this.setState(prevState => ({
       tripInfo: {
         ...prevState.tripInfo,
