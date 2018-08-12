@@ -30,7 +30,8 @@ module.exports = [
   {
     tableName: 'trips',
     column: `
-    idTrip SERIAL PRIMARY KEY NOT NULL,
+    id SERIAL PRIMARY KEY NOT NULL,
+    user_id INT NOT NULL,
     name CHAR(30),
     color CHAR(15),
     distance json,
