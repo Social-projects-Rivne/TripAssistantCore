@@ -1,7 +1,8 @@
 const Query = require('../PgBaseUtils');
-const data = require('./insertData');
+const tablesData = require('./insertData');
 
 module.exports = (function seed() {
-    Query.insert(data.users);
-    Query.insert(data.cars);
+    tablesData.forEach(data => {
+        Query.insert(data)
+    });
 }());
