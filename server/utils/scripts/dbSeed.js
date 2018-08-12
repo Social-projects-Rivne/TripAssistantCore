@@ -1,4 +1,4 @@
-const Query = require('../helpers/utils');
+const Query = require('../PgBaseUtils');
 const data = require('./insertData');
 
 module.exports = (function seed() {

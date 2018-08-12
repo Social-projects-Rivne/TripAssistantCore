@@ -1,36 +1,51 @@
-const db = require('../db/db');
+const db = require('../db');
 const UserModel = require('../models/userModel');
 
 const userController = {};
 
-userController.getUser = (req, res) => {
-  const idUser = req.params.id;
-  db.query(UserModel.getUser(idUser), (err, result) => {
-    err ? res.sendStatus(500) : res.json(result.rows[0]);
-  })
+userController.getUser = ({ params: { id } }, res) => {
+  db.query(UserModel.getUser(id))
+    .then(({ rows }) => res.json(rows))
+    .catch(err => {
+      res.status(500).end();
+      console.error(err);
+    });
 };
 
-userController.getUserCars = (req, res) => {
-  const idUser = req.params.id;
-  db.query(UserModel.getUserCars(idUser), (err, result) => {
-    err ? res.sendStatus(500) : res.json(result.rows);
-  })
+userController.getUserCars = ({ params: { id } }, res) => {
+  db.query(UserModel.getUserCars(id))
+    .then(({ rows }) => res.json(rows))
+    .catch(err => {
+      res.status(500).end();
+      console.error(err);
+    });
 };
 
-userController.addNewCar = (req, res) => {
-  const idUser = req.params.id;
-  const newData = req.body.formData;
-  db.query(UserModel.addNewCar(newData, idUser), () => res.send());
+userController.addNewCar = ({ params: { id }, body: { formData } }, res) => {
+  db.query(UserModel.addNewCar(formData, id))
+    .then(res.send())
+    .catch(err => {
+      res.status(500).end();
+      console.error(err);
+    });
 };
 
-userController.deleteCar = (req, res) => {
-  const idCar = req.body.data;
-  db.query(UserModel.deleteCar(idCar), () => res.send());
+userController.deleteCar = ({ body: { data } }, res) => {
+  db.query(UserModel.deleteCar(data))
+    .then(res.send())
+    .catch(err => {
+      res.status(500).end();
+      console.error(err);
+    });
 };
 
-userController.updateCar = (req, res) => {
-  const newCarData = req.body.newCarData;
-  db.query(UserModel.updateCar(newCarData), () => res.send());
+userController.updateCar = ({ body: { newCarData } }, res) => {
+  db.query(UserModel.updateCar(newCarData))
+  .then(res.send())
+  .catch(err => {
+    res.status(500).end();
+    console.error(err);
+  });
 };
 
 module.exports = userController;
