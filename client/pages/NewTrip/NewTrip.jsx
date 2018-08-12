@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Map, Marker } from 'google-maps-react';
 import { toast } from 'materialize-css';
 import SideBar from '../../components/Sidebar';
-import MapDropdown from '../../components/MapDropdown';
 import PreLoader from '../../components/PreLoader';
 import { random, colors } from '../../helpers';
 import './NewTrip.scss';
@@ -20,12 +19,11 @@ class NewTrip extends Component {
         color: colors[random(0, colors.length - 1)]
       }
     };
-
-    this.showDropdown = this.showDropdown.bind(this);
-    this.addMarkers = this.addMarkers.bind(this);
-    this.eventChangeName = this.eventChangeName.bind(this);
-    this.eventLoader = this.eventLoader.bind(this);
-    this.setPoints = this.setPoints.bind(this);
+    this.FLAGS = {
+      A: 'A',
+      B: 'B'
+    };
+    this.MAX_POINT_NUMBERS = 2;
   }
 
   componentDidMount() {
@@ -61,7 +59,8 @@ class NewTrip extends Component {
   };
 
   setPoints = (latlng, point) => {
-    if (point === 'A') {
+    const { A, B } = this.FLAGS;
+    if (point === A) {
       this.setState({
         location: {
           lat: latlng.lat,
@@ -69,7 +68,7 @@ class NewTrip extends Component {
         }
       });
     }
-    if (point === 'B') {
+    if (point === B) {
       this.setState({
         end: {
           lat: latlng.lat,
@@ -121,12 +120,13 @@ class NewTrip extends Component {
 
   addMarkers = (latLng, pointFlag) => {
     const { markers } = this.state;
-    let flag = markers.length ? 'B' : 'A';
+    const { A, B } = this.FLAGS;
+    let flag = !markers.length ? A : B;
     if (pointFlag) {
       flag = pointFlag;
       this.setPoints(latLng, pointFlag);
     }
-    if (pointFlag === 'A') {
+    if (pointFlag === A) {
       this.getPointName(latLng)
         .then(res => this.setState(prevState => prevState.markers.splice(0, 1, {
           name: res,
@@ -145,17 +145,6 @@ class NewTrip extends Component {
           position: latLng,
           point: flag
         })));
-    }
-  }
-
-  showDropdown = ({ pixel, latLng }, opacity) => {
-    if (pixel) {
-      const endPoint = { lat: latLng.lat(), lng: latLng.lng() };
-      this.addMarkers(endPoint);
-      this.setState({ end: endPoint });
-      this.setState({ dropdownPosition: { x: pixel.x, y: pixel.y, show: opacity } });
-    } else {
-      this.setState({ dropdownPosition: { x: 0, y: 0, show: opacity } });
     }
   }
 
@@ -197,7 +186,6 @@ class NewTrip extends Component {
           }));
         }
       });
-      this.showDropdown({}, 0);
     }
   }
 
@@ -216,7 +204,7 @@ class NewTrip extends Component {
 
 
   render() {
-    const { load, markers, location, defaultZoom, dropdownPosition, tripInfo } = this.state;
+    const { load, markers, location, defaultZoom, tripInfo } = this.state;
     return (
       <div className="new-trip">
         <SideBar
@@ -224,7 +212,7 @@ class NewTrip extends Component {
           tripInfo={tripInfo}
           changePoint={this.addMarkers}
           changeName={this.eventChangeName}
-          create={markers.length === 2}
+          create={markers.length === this.MAX_POINT_NUMBERS}
           calcRouteFn={this.calculateRoute}
         />
         {load && <PreLoader /> }
@@ -234,14 +222,12 @@ class NewTrip extends Component {
             center={location}
             zoom={defaultZoom}
             mapType="Terrain"
-            onClick={(t, map, event) => this.showDropdown(event, 1)}
             onChange={() => this.eventLoader()}
             onReady={() => this.eventLoader()}
           >
             {markers && markers.map(marker => <Marker {...marker} key={marker.name} />)}
           </Map>
         </div>
-        <MapDropdown position={dropdownPosition} calcRouteFn={this.calculateRoute} />
       </div>
     );
   }
