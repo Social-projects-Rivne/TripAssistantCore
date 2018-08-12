@@ -4,7 +4,6 @@ const tablesData = [
     column: `
       idUser serial NOT NULL PRIMARY KEY,
       name json NOT NULL,
-      login char(20) NOT NULL,
       passwordHash text NOT NULL,
       email char(50) NOT NULL,
       homePoint json,
@@ -13,6 +12,8 @@ const tablesData = [
       eatStopPeriod double precision,
       online boolean,
       acountStatus boolean,
+      is_activated boolean,
+      activation_id text,
       avatar char(100)`
   },
   {

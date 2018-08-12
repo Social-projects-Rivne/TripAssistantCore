@@ -29,7 +29,7 @@ const Routes = [
     component: NewTrip
   },
   {
-    path: '/login',
+    path: '/(login|register)',
     component: Login
   }
 ];

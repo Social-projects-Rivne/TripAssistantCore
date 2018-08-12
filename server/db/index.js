@@ -22,7 +22,7 @@ module.exports = {
               client.release();
               console.info('SQL:'.green, `${sql.text || sql}`.blue);
               params && console.info('\nPARAMS:'.green, `${params}`.yellow)
-              res.rowCount > 0 && resolve(res);
+              resolve(res);
             })
             .catch(err => {
               client.release();

@@ -2,7 +2,7 @@ const UserModel = {};
 
 UserModel.getUser = (idUser) => {
   const query = {
-    text: `SELECT name, email, homePoint, driveHoursPerDay, driveStopPeriod, eatStopPeriod, online, acountStatus, avatar FROM users WHERE idUser=${idUser}`,
+    text: `SELECT name, email, homePoint, driveHoursPerDay, driveStopPeriod, eatStopPeriod, online, acountStatus, is_activated, activation_id, avatar FROM users WHERE idUser=${idUser}`,
   };
   return query;
 };

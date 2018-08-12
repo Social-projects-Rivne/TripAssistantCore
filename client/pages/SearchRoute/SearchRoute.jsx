@@ -172,5 +172,5 @@ SearchRoute.propTypes = {
 };
 
 export default scriptLoader(
-  ['https://maps.googleapis.com/maps/api/js?key=AIzaSyBPo6m3oLTozHOupA5V_kbBtxwgqbiVmOs&libraries=places']
+  ['https://maps.googleapis.com/maps/api/js?key=AIzaSyBA3gUpJSVxQ3Hu51l3XB7C6fcpObXSQ80&libraries=places']
 )(SearchRoute);
