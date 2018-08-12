@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { toast } from 'materialize-css';
 import axios from 'axios';
-import scriptLoader from 'react-async-script-loader';
 
 import './SearchRoute.scss';
 import SearchRouteStart from '../../components/SearchRouteStart';
@@ -39,8 +37,8 @@ class SearchRoute extends Component {
     this.searchPoints = { startPoint: null, endPoint: null };
   }
 
-  componentWillReceiveProps({ isScriptLoaded }) {
-    if (isScriptLoaded) this.setState({ isGooleApiLoded: true });
+  componentDidMount() {
+    if (window.google) this.setState({ isGooleApiLoded: true });
   }
 
   setStartPoint = ({ location = null } = {}) => {
@@ -167,10 +165,5 @@ class SearchRoute extends Component {
   }
 }
 
-SearchRoute.propTypes = {
-  isScriptLoaded: PropTypes.bool.isRequired
-};
 
-export default scriptLoader(
-  ['https://maps.googleapis.com/maps/api/js?key=AIzaSyBPo6m3oLTozHOupA5V_kbBtxwgqbiVmOs&libraries=places']
-)(SearchRoute);
+export default SearchRoute;
