@@ -24,7 +24,7 @@ const Routes = [
     path: '/profile',
     component: Profile,
     routes: [{
-      path: 'profile/tripdescription',
+      path: 'profile/view/:id',
       component: TripDescription
     }]
   },
