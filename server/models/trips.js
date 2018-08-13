@@ -1,6 +1,6 @@
 module.exports = {
   getAll: () => {
-    return `SELECT * FROM trips`
+    return `SELECT * FROM trips;`
   },
 
   addNew: ({

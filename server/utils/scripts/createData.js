@@ -32,13 +32,13 @@ module.exports = [
     column: `
     id SERIAL PRIMARY KEY NOT NULL,
     user_id INT NOT NULL,
-    name CHAR(30),
-    color CHAR(15),
+    name TEXT,
+    color TEXT,
     distance json,
-    start_address CHAR(200),
-    end_address CHAR(200),
-    duration CHAR(30),
-    time CHAR(50)
+    start_address TEXT,
+    end_address TEXT,
+    duration TEXT,
+    time TEXT
     `
   }
 ];
