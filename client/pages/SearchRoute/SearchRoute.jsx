@@ -168,11 +168,4 @@ class SearchRoute extends Component {
   }
 }
 
-
-<<<<<<< HEAD
-export default scriptLoader(
-  ['https://maps.googleapis.com/maps/api/js?key=AIzaSyBA3gUpJSVxQ3Hu51l3XB7C6fcpObXSQ80&libraries=places']
-)(SearchRoute);
-=======
 export default SearchRoute;
->>>>>>> dev

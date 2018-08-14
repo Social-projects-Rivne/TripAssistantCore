@@ -6,23 +6,6 @@ import PreLoader from '../../components/PreLoader';
 import { random, colors } from '../../helpers';
 import './NewTrip.scss';
 
-<<<<<<< HEAD
-const KEY = 'AIzaSyBA3gUpJSVxQ3Hu51l3XB7C6fcpObXSQ80';
-
-const colors = [
-  'red',
-  'pink',
-  'purple',
-  'blue',
-  'teal',
-  'light-green',
-  'lime',
-  'orange'
-];
-
-=======
->>>>>>> dev
-
 class NewTrip extends Component {
   constructor() {
     super();

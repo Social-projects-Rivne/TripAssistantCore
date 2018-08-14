@@ -9,6 +9,8 @@ import Login from './pages/Login';
 import Header from './components/Header';
 import Menu from './components/Menu';
 
+const KEY = 'AIzaSyDWfF4B8J4mmrLGltJfU9XqEauLS8PCarg';
+
 const PrivateRoute = ({ component: Component, isAuth, ...rest }) => (
   <Route
     {...rest}
