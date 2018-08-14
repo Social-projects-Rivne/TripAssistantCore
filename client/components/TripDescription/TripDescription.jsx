@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
+
 class TripDescription extends React.Component {
   constructor() {
     super();
@@ -19,8 +20,9 @@ class TripDescription extends React.Component {
     const { allHistory } = this.state;
     return (
       <div>
-        {allHistory.map(({ name, date, isActive }, i) => (
+        {allHistory.map(({ name, date, isActive, id }, i) => (
           <div key={i}>
+            <p>{id}</p>
             <p>{name}</p>
             <p>{date}</p>
             <p>{isActive}</p>
@@ -31,6 +33,5 @@ class TripDescription extends React.Component {
     );
   }
 }
-
 
 export default TripDescription;

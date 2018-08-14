@@ -15,8 +15,8 @@ class HistoryWrap extends Component {
           History
         </p>
         <div className="feedbacks__body">
-          {allHistory.map(({ name, date, isActive }, i) => (
-            <HistoryCard key={i} routeName={name} routeDate={date} isActive={isActive} />
+          {allHistory.map(({ name, date, isActive, id }, i) => (
+            <HistoryCard key={i} routeName={name} routeDate={date} isActive={isActive} id={id} />
           ))}
         </div>
       </div>
