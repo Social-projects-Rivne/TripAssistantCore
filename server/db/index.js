@@ -21,7 +21,7 @@ module.exports = {
             .then(res => {
               client.release();
               console.info('SQL:'.green, `${sql.text || sql}`.blue);
-              params && console.info('\nPARAMS:'.green, `${params}`.yellow)
+              params || sql.values && console.info('\nPARAMS:'.green, `${params || sql.values}`.yellow)
               res.rowCount > 0 && resolve(res);
             })
             .catch(err => {

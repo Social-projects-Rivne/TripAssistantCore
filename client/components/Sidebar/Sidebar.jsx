@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
+import { toast } from 'materialize-css';
 import './Sidebar.scss';
 
 import TripInfo from './components/TripInfo';
@@ -15,11 +17,13 @@ class Sidebar extends Component {
     };
   }
 
-  saveDataToLocalStorage = (data) => {
-    let tripData = JSON.parse(localStorage.getItem('ActiveRoutes'));
-    if (!tripData) tripData = [];
-    tripData.push(data);
-    localStorage.setItem('ActiveRoutes', JSON.stringify(tripData));
+  saveTrip = (data) => {
+    const id = 1;
+    axios.post(`/api/trips/${id}/addTrip`, { data })
+      .then(() => {
+        toast({ html: `Your trip ${data.name} has been added!` });
+      })
+      .catch(() => toast({ html: `Your trip ${data.name} has NOT been added!` }));
   }
 
   render() {
@@ -45,7 +49,7 @@ class Sidebar extends Component {
           {points.length < 2 && <TripPoint name={end} point="B" onSave={changePoint} />}
         </div>
         {!tripInfo.distance && create && <a href="#!" className="waves-effect waves-light btn" onClick={calcRouteFn}>Create</a>}
-        {tripInfo.distance && <a href="#!" className="waves-effect waves-light btn" onClick={event => event.preventDefault() && this.saveDataToLocalStorage(tripInfo)}>Save</a>}
+        {tripInfo.distance && <a href="#!" className="waves-effect waves-light btn" onClick={() => this.saveTrip(tripInfo)}>Save</a>}
       </div>
     );
   }

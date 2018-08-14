@@ -80,36 +80,39 @@ class SearchRoute extends Component {
 
   fetchLocalStorageData = () => {
     const { startPoint, endPoint } = this.searchPoints;
-    const allRoutes = JSON.parse(localStorage.getItem('ActiveRoutes'));
-    if (!allRoutes) {
-      this.setState({ searchedRouteData: null, searchResultIsReady: true });
-      return;
-    }
-    const RoutesToReturn = allRoutes
-      .filter((route) => {
-        const {
-          start: { lat: startLat, lng: startLng },
-          end: { lat: endLat, lng: endLng }
-        } = route.distance;
+    axios.get('api/trips/all')
+      .then(({ data }) => {
+        const RoutesToReturn = data
+          .filter((route) => {
+            const {
+              start: { lat: startLat, lng: startLng },
+              end: { lat: endLat, lng: endLng }
+            } = route.distance;
 
-        const shouldReturnStart = startPoint
-          ? (this.isNear(startPoint.lat, startLat) && this.isNear(startPoint.lng, startLng))
-          : true;
+            const shouldReturnStart = startPoint
+              ? (this.isNear(startPoint.lat, startLat) && this.isNear(startPoint.lng, startLng))
+              : true;
 
-        const shouldReturnEnd = endPoint
-          ? (this.isNear(endPoint.lat, endLat) && this.isNear(endPoint.lng, endLng))
-          : true;
+            const shouldReturnEnd = endPoint
+              ? (this.isNear(endPoint.lat, endLat) && this.isNear(endPoint.lng, endLng))
+              : true;
 
-        return (shouldReturnStart && shouldReturnEnd);
+            return (shouldReturnStart && shouldReturnEnd);
+          })
+          .map(({ start_address: startAddress, end_address: endAddress }) => {
+            const missingData = MissingData();
+            missingData.startPoint = startAddress;
+            missingData.endPoint = endAddress;
+            return missingData;
+          });
+        this.dataToFilter = RoutesToReturn;
+        this.filterData();
       })
-      .map(({ start_address: startAddress, end_address: endAddress }) => {
-        const missingData = MissingData();
-        missingData.startPoint = startAddress;
-        missingData.endPoint = endAddress;
-        return missingData;
+      .catch((e) => {
+        this.setState({ searchedRouteData: null, searchResultIsReady: true });
+        toast({ html: 'Bad connection, please try again later!' });
+        console.error(e);
       });
-    this.dataToFilter = RoutesToReturn;
-    this.filterData();
   }
 
   fetchRoutesData = () => {
