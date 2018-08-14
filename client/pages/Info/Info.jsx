@@ -1,9 +1,9 @@
 import React from 'react';
+import slack from 'images/slack.svg';
+import facebook from 'images/facebook.svg';
+import github from 'images/github-logo.svg';
 import { InfoMap } from '../../components/InfoMap/InfoMap';
 import './Info.scss';
-import slack from '../../../public/images/slack.svg';
-import facebook from '../../../public/images/facebook.svg';
-import github from '../../../public/images/github-logo.svg';
 
 
 const Info = () => (
