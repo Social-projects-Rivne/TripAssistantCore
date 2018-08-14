@@ -9,7 +9,7 @@ UserModel.getUser = (idUser) => {
 
 UserModel.getUserCars = (idUser) => {
   const query = {
-    text: `SELECT cars.idCar, cars.nameCar, cars.tankVolume, cars.maxPassengersCount, cars.avgGasCost, cars.baggageVolume, cars.avgSpeed FROM cars, users WHERE cars.userId = ${idUser} ORDER BY cars.idCar DESC`
+    text: `SELECT cars.idCar, cars.nameCar, cars.tankVolume, cars.maxPassengersCount, cars.avgGasCost, cars.baggageVolume, cars.avgSpeed FROM cars WHERE cars.userId = ${idUser} ORDER BY cars.idCar DESC`
   };
   return query;
 };

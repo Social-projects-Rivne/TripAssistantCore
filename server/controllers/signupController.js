@@ -1,7 +1,7 @@
 const db = require('../db');
 const SignupModel = require('../models/signupModel');
 var uuid = require('uuid-v4');
-const nodemailer = require('nodemailer')
+const nodemailer = require('nodemailer');
 
 const signupController = {};
 
@@ -48,6 +48,19 @@ signupController.register = (req, res) => {
       res.status(500).end();
       console.error(err);
     })
-}
+};
+
+signupController.confirmEmail = ({ params: { confirmEmail } }, res) => {
+  db.query(SignupModel.updateIsActivated(confirmEmail))
+    .then(({ rowCount }) => {
+      rowCount
+        ? res.redirect('/login')
+        : res.redirect('/')
+    })
+    .catch(err => {
+      res.sendFile(path.resolve(__dirname, '..', '..', 'dist', 'index.html'));
+      console.error(err);
+    })
+};
 
 module.exports = signupController;

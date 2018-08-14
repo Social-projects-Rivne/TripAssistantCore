@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import axios from 'axios';
+import { sha256 } from 'hash.js';
 import './Form.scss';
 
 class SignInForm extends Component {
@@ -8,36 +11,42 @@ class SignInForm extends Component {
 
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      loginSuccess: false,
+      errorMsg: ''
     };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange({
-    target: {
-      type,
-      checked,
-      value,
-      name
-    }
-  }) {
-    const valueChecked = type === 'checkbox' ? checked : value;
-    this.setState({
-      [name]: valueChecked
-    });
+  handleChange = ({ target: { value, name } }) => {
+    this.setState({ [name]: value });
   }
 
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     e.preventDefault();
+    const { updateIsAuth } = this.props;
+    const { email, password } = this.state;
+    const passwordHash = sha256().update(password).digest('hex');
 
-    console.log('The form was submitted with the following data:');
-    console.log(this.state);
+    this.setState({ errorMsg: '' });
+
+    axios.post('/api/login', { email, passwordHash })
+      .then(({ data }) => {
+        if (data === 'ok') {
+          updateIsAuth();
+          setTimeout(() => this.setState({ loginSuccess: true }), 1000);
+        } else {
+          this.setState({ errorMsg: `*${data}` });
+        }
+      });
   }
 
   render() {
-    const { email, password } = this.state;
+    const { email, password, loginSuccess, errorMsg } = this.state;
+
+    if (loginSuccess) {
+      return (<Redirect to="/profile" />);
+    }
+
     return (
       <div className="FormCenter">
         <form className="FormFields" onSubmit={this.handleSubmit} id="loginForm">
@@ -51,6 +60,7 @@ class SignInForm extends Component {
               name="email"
               value={email}
               onChange={this.handleChange}
+              required
             />
           </div>
 
@@ -64,6 +74,7 @@ class SignInForm extends Component {
               name="password"
               value={password}
               onChange={this.handleChange}
+              required
             />
           </div>
 
@@ -71,9 +82,14 @@ class SignInForm extends Component {
             <button className="FormField__Button mr-20" type="submit">Sign In</button> <Link to="/register" className="FormField__Link">Create an account</Link>
           </div>
         </form>
+        {errorMsg && <span className="helper-text red-helper-text">{errorMsg}</span>}
       </div>
     );
   }
 }
+
+SignInForm.propTypes = {
+  updateIsAuth: PropTypes.func.isRequired
+};
 
 export default SignInForm;

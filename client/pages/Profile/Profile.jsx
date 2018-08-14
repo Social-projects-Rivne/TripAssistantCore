@@ -34,14 +34,13 @@ class Profile extends Component {
   }
 
   fetchUserData = () => {
-    const id = 1;
-    fetch(`api/user/${id}`)
-      .then(res => res.json());
+    fetch('api/user/')
+      .then(res => res.json())
+      .then(j => console.log(j));
   }
 
   updateCarData = () => {
-    const id = 1;
-    axios.get(`api/user/${id}/cars`)
+    axios.get('api/user/cars')
       .then(({ data }) => this.setState({ carsInfo: data }));
   }
 

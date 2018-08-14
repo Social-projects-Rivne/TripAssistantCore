@@ -65,9 +65,8 @@ class CarCard extends Component {
 
   handleUpdateCar = (e) => {
     e.preventDefault();
-    const idUsers = 1;
     const { inputInfo, updateCarData } = this.props;
-    const updateCarinfo = { idCar: e.target.elements.idCars.value, idUser: idUsers };
+    const updateCarinfo = { idCar: e.target.elements.idCars.value };
     inputInfo.forEach((el) => {
       updateCarinfo[el.inputName] = e.target.elements[el.inputName].value;
     });
@@ -100,7 +99,7 @@ class CarCard extends Component {
     } = this.props;
     const { isActive, isModalOpen } = this.state;
     const carInfoArr = [
-      nameCar, tankVolume, maxPassengersCount, avgGasCost, baggageVolume, avgSpeed
+      nameCar.trim(), tankVolume, maxPassengersCount, avgGasCost, baggageVolume, avgSpeed
     ];
 
     return (

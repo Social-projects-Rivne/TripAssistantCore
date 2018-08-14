@@ -1,7 +1,6 @@
 import Info from '../pages/Info';
 import Profile from '../pages/Profile';
 import Dashboard from '../pages/Dashbord';
-import Login from '../pages/Login/Login';
 import SearchRoute from '../pages/SearchRoute';
 import NewTrip from '../pages/NewTrip';
 
@@ -27,10 +26,6 @@ const Routes = [
   {
     path: '/new-trip',
     component: NewTrip
-  },
-  {
-    path: '/(login|register)',
-    component: Login
   }
 ];
 
