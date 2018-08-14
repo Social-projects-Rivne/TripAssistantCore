@@ -1,4 +1,4 @@
-const tablesData = [
+module.exports = [
   {
     tableName: 'users',
     column: `
@@ -27,9 +27,19 @@ const tablesData = [
       avgGasCost DECIMAL,
       baggageVolume INT,
       avgSpeed INT`
+  },
+  {
+    tableName: 'trips',
+    column: `
+    id SERIAL PRIMARY KEY NOT NULL,
+    user_id INT NOT NULL,
+    name TEXT,
+    color TEXT,
+    distance json,
+    start_address TEXT,
+    end_address TEXT,
+    duration TEXT,
+    time TEXT
+    `
   }
 ];
-
-module.exports = {
-  tablesData
-};

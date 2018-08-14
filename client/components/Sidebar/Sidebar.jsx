@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
+import { toast } from 'materialize-css';
 import './Sidebar.scss';
 
 import TripInfo from './components/TripInfo';
@@ -15,15 +17,17 @@ class Sidebar extends Component {
     };
   }
 
-  saveDataToLocalStorage = (data) => {
-    let tripData = JSON.parse(localStorage.getItem('ActiveRoutes'));
-    if (!tripData) tripData = [];
-    tripData.push(data);
-    localStorage.setItem('ActiveRoutes', JSON.stringify(tripData));
+  saveTrip = (data) => {
+    const id = 1;
+    axios.post(`/api/trips/${id}/addTrip`, { data })
+      .then(() => {
+        toast({ html: `Your trip ${data.name} has been added!` });
+      })
+      .catch(() => toast({ html: `Your trip ${data.name} has NOT been added!` }));
   }
 
   render() {
-    const { tripInfo, changeName, points } = this.props;
+    const { tripInfo, changeName, points, changePoint, create, calcRouteFn } = this.props;
     const { start, end } = this.state;
     return (
       <div className="sidebar z-depth-4">
@@ -38,13 +42,14 @@ class Sidebar extends Component {
             <input className="trip-info_radius_input" type="range" min="0" max="100" />
           </div>
         </div>
-        <div className="trip-point collection">
+        <div className="trip-point">
           {!points.length
-            ? <TripPoint name={start} />
-            : points.map(point => <TripPoint {...point} key={point.name} />) }
-          {points.length < 2 && <TripPoint name={end} />}
+            ? <TripPoint name={start} point="A" onSave={changePoint} />
+            : points.map(point => <TripPoint {...point} key={point.name} onSave={changePoint} />) }
+          {points.length < 2 && <TripPoint name={end} point="B" onSave={changePoint} />}
         </div>
-        {tripInfo.distance && <a href="#!" className="waves-effect waves-light btn" onClick={() => this.saveDataToLocalStorage(tripInfo)}>Save</a>}
+        {!tripInfo.distance && create && <a href="#!" className="waves-effect waves-light btn" onClick={calcRouteFn}>Create</a>}
+        {tripInfo.distance && <a href="#!" className="waves-effect waves-light btn" onClick={() => this.saveTrip(tripInfo)}>Save</a>}
       </div>
     );
   }
@@ -53,7 +58,10 @@ class Sidebar extends Component {
 Sidebar.propTypes = {
   points: PropTypes.arrayOf(PropTypes.any).isRequired,
   tripInfo: PropTypes.objectOf(PropTypes.any),
-  changeName: PropTypes.func.isRequired
+  changeName: PropTypes.func.isRequired,
+  changePoint: PropTypes.func.isRequired,
+  create: PropTypes.bool.isRequired,
+  calcRouteFn: PropTypes.func.isRequired
 };
 
 Sidebar.defaultProps = {

@@ -1,20 +1,31 @@
 .trip-point {
-  margin: 0;
+  margin: 10px;
 
-  &_item {
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  &__wrapper {
+    padding: 20px 10px;
     position: relative;
   }
 
-  &_title {
-    font-size: 1.28em;
-    margin: 0;
+  &__item {
+    margin-bottom: 10px;
   }
 
-  .btn-floating {
-    text-align: center;
+  input[type=text]:not(.browser-default) {
+    font-size: 1.2em;
+    background-color: transparent;
+    margin: 0;
+    border-color: transparent;
+
+    &::placeholder {
+      color: #252d3a;
+    }
+  }
+
+  .geosuggest__suggests {
+    background: #f7f8fa;
+    top: calc(100% - 19px);
+    border-top: 1px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 }

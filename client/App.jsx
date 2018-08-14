@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import PropTypes from 'prop-types';
+import { GoogleApiWrapper } from 'google-maps-react';
 import './App.scss';
 import Routes from './routes';
 import Login from './pages/Login';
@@ -66,4 +67,7 @@ PrivateRoute.propTypes = {
   isAuth: PropTypes.bool.isRequired
 };
 
-export default App;
+export default GoogleApiWrapper({
+  apiKey: (KEY),
+  language: 'en'
+})(App);

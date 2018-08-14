@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { GoogleApiWrapper, Map, Marker } from 'google-maps-react';
-import PropTypes from 'prop-types';
+import { Map, Marker } from 'google-maps-react';
+import { toast } from 'materialize-css';
 import SideBar from '../../components/Sidebar';
-import MapDropdown from '../../components/MapDropdown';
-import { random } from '../../helpers';
+import PreLoader from '../../components/PreLoader';
+import { random, colors } from '../../helpers';
 import './NewTrip.scss';
 
+<<<<<<< HEAD
 const KEY = 'AIzaSyBA3gUpJSVxQ3Hu51l3XB7C6fcpObXSQ80';
 
 const colors = [
@@ -19,11 +20,14 @@ const colors = [
   'orange'
 ];
 
+=======
+>>>>>>> dev
 
 class NewTrip extends Component {
   constructor() {
     super();
     this.state = {
+      load: true,
       markers: [],
       defaultZoom: 11,
       tripInfo: {
@@ -31,10 +35,11 @@ class NewTrip extends Component {
         color: colors[random(0, colors.length - 1)]
       }
     };
-
-    this.showDropdown = this.showDropdown.bind(this);
-    this.addMarkers = this.addMarkers.bind(this);
-    this.eventChangeName = this.eventChangeName.bind(this);
+    this.FLAGS = {
+      A: 'A',
+      B: 'B'
+    };
+    this.MAX_POINT_NUMBERS = 2;
   }
 
   componentDidMount() {
@@ -49,7 +54,7 @@ class NewTrip extends Component {
 
   componentDidUpdate() {
     const { location, markers } = this.state;
-    if (!markers.length) {
+    if (!markers.length && location) {
       this.addMarkers(location);
     }
   }
@@ -63,19 +68,36 @@ class NewTrip extends Component {
       geolocation.getCurrentPosition((position) => {
         resolve(position);
       }, () => {
-        reject(new Error('Permission denied'));
+        toast({ html: 'Your geolocation is desible <br> Please enter your start point' });
       });
     });
     return location;
   };
 
+  setPoints = (latlng, point) => {
+    const { A, B } = this.FLAGS;
+    if (point === A) {
+      this.setState({
+        location: {
+          lat: latlng.lat,
+          lng: latlng.lng
+        }
+      });
+    }
+    if (point === B) {
+      this.setState({
+        end: {
+          lat: latlng.lat,
+          lng: latlng.lng
+        }
+      });
+    }
+  }
+
   getParsetNameFromGeocode = (data) => {
     const res = [];
     Object.values(data.address_components).map((item) => {
       switch (item.types[0]) {
-      case 'street_number':
-        res.push(item.long_name);
-        break;
       case 'route':
         if (item.long_name === 'Unnamed Road') {
           res.toString();
@@ -100,12 +122,11 @@ class NewTrip extends Component {
   }
 
   getPointName = (startPoint) => {
-    const { google } = this.props;
     const name = new Promise((resolve, reject) => {
-      if (!google) {
+      if (!window.google) {
         reject(new Error('API is undefined'));
       }
-      const geocoder = new google.maps.Geocoder();
+      const geocoder = new window.google.maps.Geocoder();
       geocoder.geocode({ location: startPoint }, res => resolve(
         this.getParsetNameFromGeocode(res[0])
       ));
@@ -113,40 +134,46 @@ class NewTrip extends Component {
     return name;
   }
 
-  addMarkers = (latLng) => {
+  addMarkers = (latLng, pointFlag) => {
     const { markers } = this.state;
-    if (markers.length > 1) {
-      this.setState(prevState => prevState.markers.pop());
+    const { A, B } = this.FLAGS;
+    let flag = !markers.length ? A : B;
+    if (pointFlag) {
+      flag = pointFlag;
+      this.setPoints(latLng, pointFlag);
     }
-    const localName = this.getPointName(latLng);
-    localName.then(res => this.setState(prevState => prevState.markers.push({
-      name: res,
-      title: res,
-      position: latLng
-    })));
-  }
-
-  showDropdown = ({ pixel, latLng }, opacity) => {
-    if (pixel) {
-      const endPoint = { lat: latLng.lat(), lng: latLng.lng() };
-      this.addMarkers(endPoint);
-      this.setState({ end: endPoint });
-      this.setState({ dropdownPosition: { x: pixel.x, y: pixel.y, show: opacity } });
+    if (pointFlag === A) {
+      this.getPointName(latLng)
+        .then(res => this.setState(prevState => prevState.markers.splice(0, 1, {
+          name: res,
+          title: res,
+          position: latLng,
+          point: flag
+        })));
     } else {
-      this.setState({ dropdownPosition: { x: 0, y: 0, show: opacity } });
+      if (markers.length > 1) {
+        this.setState(prevState => prevState.markers.pop());
+      }
+      this.getPointName(latLng)
+        .then(res => this.setState(prevState => prevState.markers.push({
+          name: res,
+          title: res,
+          position: latLng,
+          point: flag
+        })));
     }
   }
 
   calculateRoute = () => {
-    const { google } = this.props;
-    if (google) {
+    this.eventLoader();
+    if (window.google) {
       const { location, end } = this.state;
       const map = document.getElementById('map');
-      const directionsService = new google.maps.DirectionsService();
-      const directionsDisplay = new google.maps.DirectionsRenderer();
-      const startPoint = new google.maps.LatLng(location);
-      const endPoint = new google.maps.LatLng(end);
-      const setNewMap = new google.maps.Map(map, {
+      const directionsService = new window.google.maps.DirectionsService();
+      const directionsDisplay = new window.google.maps.DirectionsRenderer();
+      const startPoint = new window.google.maps.LatLng(location);
+      const endPoint = new window.google.maps.LatLng(end);
+      const setNewMap = new window.google.maps.Map(map, {
         zoom: 7,
         startPoint
       });
@@ -170,15 +197,19 @@ class NewTrip extends Component {
                 start: prevState.location,
                 end: prevState.end
               }
-            }
+            },
+            load: false
           }));
         }
       });
-      this.showDropdown({}, 0);
     }
   }
 
-  eventChangeName({ currentTarget: { textContent } }) {
+  eventLoader = () => {
+    this.setState(prevState => ({ load: !prevState.load }));
+  }
+
+  eventChangeName = ({ currentTarget: { textContent } }) => {
     this.setState(prevState => ({
       tripInfo: {
         ...prevState.tripInfo,
@@ -189,32 +220,34 @@ class NewTrip extends Component {
 
 
   render() {
-    const { google } = this.props;
-    const { markers, location, defaultZoom, dropdownPosition, tripInfo } = this.state;
+    const { load, markers, location, defaultZoom, tripInfo } = this.state;
     return (
       <div className="new-trip">
-        <SideBar points={markers} tripInfo={tripInfo} changeName={this.eventChangeName} />
+        <SideBar
+          points={markers}
+          tripInfo={tripInfo}
+          changePoint={this.addMarkers}
+          changeName={this.eventChangeName}
+          create={markers.length === this.MAX_POINT_NUMBERS}
+          calcRouteFn={this.calculateRoute}
+        />
+        {load && <PreLoader /> }
         <div id="map">
           <Map
-            google={google}
+            google={window.google}
             center={location}
             zoom={defaultZoom}
-            onClick={(t, map, event) => this.showDropdown(event, 1)}
+            mapType="Terrain"
+            onChange={() => this.eventLoader()}
+            onReady={() => this.eventLoader()}
           >
             {markers && markers.map(marker => <Marker {...marker} key={marker.name} />)}
           </Map>
         </div>
-        <MapDropdown position={dropdownPosition} calcRouteFn={this.calculateRoute} />
       </div>
     );
   }
 }
 
-NewTrip.propTypes = {
-  google: PropTypes.objectOf(PropTypes.any).isRequired
-};
 
-export default GoogleApiWrapper({
-  apiKey: (KEY),
-  language: 'en'
-})(NewTrip);
+export default NewTrip;
