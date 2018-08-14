@@ -26,9 +26,7 @@ const Info = () => (
       </form>
     </div>
     <div className="map">
-      {
-        <InfoMap />
-      }
+      <InfoMap />
     </div>
     <footer>
       <div className="copyright">Copyright &#169; by RV-034Web/UI</div>
