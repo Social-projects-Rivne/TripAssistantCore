@@ -3,7 +3,7 @@ const UserModel = require('../models/userModel');
 
 const userController = {};
 
-userController.getUser = ({ signedCookies: { iduser } }, res) => {
+userController.getUser = ({ params: { iduser } }, res) => {
   db.query(UserModel.getUser(iduser))
     .then(({ rows }) => res.json(rows))
     .catch(err => {
@@ -12,7 +12,7 @@ userController.getUser = ({ signedCookies: { iduser } }, res) => {
     });
 };
 
-userController.getUserCars = ({ signedCookies: { iduser } }, res) => {
+userController.getUserCars = ({ params: { iduser } }, res) => {
   db.query(UserModel.getUserCars(iduser))
     .then(({ rows }) => res.json(rows))
     .catch(err => {
@@ -21,8 +21,8 @@ userController.getUserCars = ({ signedCookies: { iduser } }, res) => {
     });
 };
 
-userController.addNewCar = ({ signedCookies: { iduser }, body: { formData } }, res) => {
-  db.query(UserModel.addNewCar(formData, iduser))
+userController.addNewCar = ({ body: { formData } }, res) => {
+  db.query(UserModel.addNewCar(formData))
     .then(res.send())
     .catch(err => {
       res.status(500).end();

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { browserHistory } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import { sha256 } from 'hash.js';
 import { toast } from 'materialize-css';
@@ -13,7 +13,8 @@ class SignUpForm extends Component {
       password: '',
       fname: '',
       lname: '',
-      isEmailExist: false
+      isEmailExist: false,
+      goLogin: false
     };
   }
 
@@ -45,7 +46,7 @@ class SignUpForm extends Component {
       .then(({ data }) => {
         if (data === 'registrationSuccesul') {
           toast({ html: 'Please confirm email' });
-          browserHistory.push('/login');
+          this.setState({ goLogin: true });
         }
       })
       .catch(err => console.log(err));
@@ -53,8 +54,12 @@ class SignUpForm extends Component {
 
   render() {
     const {
-      fname, lname, email, password, isEmailExist
+      fname, lname, email, password, isEmailExist, goLogin
     } = this.state;
+    if (goLogin) {
+      return <Redirect to="/login" />;
+    }
+
     return (
       <div className="FormCenter">
         <form className="FormFields" onSubmit={this.handleSubmit} id="registrationForm">

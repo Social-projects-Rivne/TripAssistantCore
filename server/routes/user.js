@@ -3,8 +3,8 @@ const userController = require('../controllers/userController');
 
 const router = express.Router();
 
-router.get('/api/user/', userController.getUser);
-router.get('/api/user/cars', userController.getUserCars);
+router.get('/api/user/:iduser', userController.getUser);
+router.get('/api/user/:iduser/cars', userController.getUserCars);
 
 router.post('/api/user/addCar', userController.addNewCar);
 router.post('/api/user/deleteCar', userController.deleteCar);

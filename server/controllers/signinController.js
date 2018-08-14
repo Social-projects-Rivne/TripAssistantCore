@@ -2,24 +2,23 @@ const db = require('../db');
 const SigninModel = require('../models/signinModel');
 
 const signinController = {};
+signinController.sessions = {};
 
 signinController.login = ({ body: { email, passwordHash } }, res) => {
-  let response = '';
 
   db.query(SigninModel.findUserByEmail(email))
     .then(({ rows }) => {
       const result = rows[0];
       if (!result) {
-        response = 'No such email';
+        res.json({ response: 'No such email' });
       } else if (result.passwordhash !== passwordHash) {
-        response = 'Email and password do not match';
+        res.json({ response: 'Email and password do not match' });
       } else if (!result.is_activated) {
-        response = 'Email is not activated';
+        res.json({ response: 'Email is not activated' });
       } else  {
         response = 'ok';
-        res.cookie('iduser', result.iduser, { signed: true });
+        res.json({ response: { iduser: result.iduser } });
       }
-      res.send(response);
     })
     .catch(err => {
       res.status(500).end();

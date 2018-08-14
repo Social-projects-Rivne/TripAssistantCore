@@ -39,8 +39,10 @@ class CarsCard extends Component {
 
   handleAddNewCar = (e) => {
     e.preventDefault();
+    const iduser = sessionStorage.getItem('iduser');
     const { updateCarData } = this.props;
     const newCarinfo = {};
+    newCarinfo.iduser = iduser;
     inputInfo.forEach((el) => {
       newCarinfo[el.inputName] = e.target.elements[el.inputName].value;
     });

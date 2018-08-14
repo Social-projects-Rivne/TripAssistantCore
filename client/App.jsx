@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import axios from 'axios';
 import PropTypes from 'prop-types';
 import { GoogleApiWrapper } from 'google-maps-react';
 import './App.scss';
@@ -35,13 +34,16 @@ class App extends React.Component {
   }
 
   updateIsAuth = () => {
-    axios.get('/api/is-auth')
-      .then(({ data: { isAuth } }) => this.setState({ isAuth }));
+    if (sessionStorage.getItem('iduser')) {
+      this.setState({ isAuth: true });
+    } else {
+      this.setState({ isAuth: false });
+    }
   }
 
   runLogout = () => {
-    axios.get('/api/logout')
-      .then(() => this.setState({ isAuth: false }));
+    sessionStorage.removeItem('iduser');
+    this.setState({ isAuth: false });
   }
 
   render() {

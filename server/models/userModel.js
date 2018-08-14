@@ -15,15 +15,16 @@ UserModel.getUserCars = (idUser) => {
 };
 
 UserModel.addNewCar = ({ 
+  iduser,
   nameCar,
   tankVolume,
   maxPassengersCount,
   avgGasCost,
   baggageVolume,
   avgSpeed 
-}, userId) => {
+}) => {
   const query = {
-    text: `INSERT INTO cars (userId, nameCar, tankVolume, maxPassengersCount, avgGasCost, baggageVolume, avgSpeed) VALUES(${userId}, '${nameCar}', ${tankVolume}, ${maxPassengersCount}, ${avgGasCost}, ${baggageVolume}, ${avgSpeed})`
+    text: `INSERT INTO cars (userId, nameCar, tankVolume, maxPassengersCount, avgGasCost, baggageVolume, avgSpeed) VALUES(${iduser}, '${nameCar}', ${tankVolume}, ${maxPassengersCount}, ${avgGasCost}, ${baggageVolume}, ${avgSpeed})`
   };
   return query;
 };

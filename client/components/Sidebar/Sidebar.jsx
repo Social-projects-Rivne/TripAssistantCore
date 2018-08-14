@@ -18,7 +18,7 @@ class Sidebar extends Component {
   }
 
   saveTrip = (data) => {
-    const id = 1;
+    const id = sessionStorage.getItem('iduser');
     axios.post(`/api/trips/${id}/addTrip`, { data })
       .then(() => {
         toast({ html: `Your trip ${data.name} has been added!` });

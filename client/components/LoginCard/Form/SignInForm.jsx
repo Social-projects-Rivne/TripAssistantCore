@@ -30,12 +30,12 @@ class SignInForm extends Component {
     this.setState({ errorMsg: '' });
 
     axios.post('/api/login', { email, passwordHash })
-      .then(({ data }) => {
-        if (data === 'ok') {
+      .then(({ data: { response } }) => {
+        if (response.iduser) {
+          sessionStorage.setItem('iduser', response.iduser);
           updateIsAuth();
-          setTimeout(() => this.setState({ loginSuccess: true }), 1000);
         } else {
-          this.setState({ errorMsg: `*${data}` });
+          this.setState({ errorMsg: `*${response}` });
         }
       });
   }
