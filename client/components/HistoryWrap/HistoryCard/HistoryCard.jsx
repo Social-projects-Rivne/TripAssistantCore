@@ -12,7 +12,8 @@ const customStyles = {
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
     background: 'lightblue',
-    textAlign: 'center'
+    textAlign: 'center',
+    width: '20%'
   }
 };
 class HistoryCard extends React.Component {
@@ -41,7 +42,7 @@ class HistoryCard extends React.Component {
 
   render() {
     const { modalIsOpen } = this.state;
-    const { routeName, routeDate, isActive } = this.props;
+    const { routeName, routeDate, isActive, rating, feedback } = this.props;
     return (
       <div className={`historyCard ${isActive ? 'is-active' : ''}`}>
         <p className="historyCard__p">
@@ -53,14 +54,17 @@ class HistoryCard extends React.Component {
         <Modal
           isOpen={modalIsOpen}
           onRequestClose={this.closeModal}
+          closeTimeoutMS={200}
           ariaHideApp={false}
           contentLabel="Trip details"
           style={customStyles}
         >
           <h4>Trip details</h4>
-          {routeName && <p>{routeName}</p>}
-          {routeDate && <p>{routeDate}</p>}
-          <button type="submit" onClick={this.closeModal} className="historyCard__btn">close!</button>
+          <p>Route name:  {routeName}</p>
+          <p>Route date:  {routeDate}</p>
+          <p>Rating :  {rating}</p>
+          <p>Feedback :  {feedback}</p>
+          <button type="submit" onClick={this.closeModal} className="historyCard__btn trip_details">close!</button>
         </Modal>
       </div>
     );
@@ -75,7 +79,9 @@ HistoryCard.defaultProps = {
 HistoryCard.propTypes = {
   routeName: PropTypes.string.isRequired,
   routeDate: PropTypes.string.isRequired,
-  isActive: PropTypes.bool
+  isActive: PropTypes.bool,
+  rating: PropTypes.number.isRequired,
+  feedback: PropTypes.string.isRequired
 };
 
 export default HistoryCard;
