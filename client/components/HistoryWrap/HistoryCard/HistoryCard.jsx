@@ -3,6 +3,18 @@ import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 import './HistoryCard.scss';
 
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    background: 'lightblue',
+    textAlign: 'center'
+  }
+};
 class HistoryCard extends React.Component {
   constructor() {
     super();
@@ -13,6 +25,10 @@ class HistoryCard extends React.Component {
 
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+  }
+
+  componentDidMount() {
+    Modal.setAppElement(document.getElementById('app'));
   }
 
   openModal = () => {
@@ -39,9 +55,12 @@ class HistoryCard extends React.Component {
           onRequestClose={this.closeModal}
           ariaHideApp={false}
           contentLabel="Trip details"
+          style={customStyles}
         >
-          <h3>Some text</h3>
+          <h4>Trip details</h4>
           {routeName && <p>{routeName}</p>}
+          {routeDate && <p>{routeDate}</p>}
+          <button type="submit" onClick={this.closeModal} className="historyCard__btn">close!</button>
         </Modal>
       </div>
     );
