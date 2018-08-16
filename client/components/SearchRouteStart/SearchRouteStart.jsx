@@ -8,12 +8,16 @@ const SearchRouteStart = ({ setStartPoint, setEndPoint, handleSearchSubmit, isGo
     <div className="sr-form-wrap">
       <form className="car-card__form-wrap" onSubmit={handleSearchSubmit} autoComplete="off">
         <div className="input-field search-start__col">
-          {isGooleApiLoded && <Geosuggest name="startPoint" onSuggestSelect={setStartPoint} inputClassName="car-card__input" autoComplete="off" />}
-          <label className="car-card__label active">Start point</label>
+          <label className="car-card__label active" htmlFor="startPoint">
+            {isGooleApiLoded && <Geosuggest name="startPoint" onSuggestSelect={setStartPoint} inputClassName="car-card__input" autoComplete="off" />}
+          Start point
+          </label>
         </div>
         <div className="input-field search-start__col">
-          {isGooleApiLoded && <Geosuggest name="endPoint" onSuggestSelect={setEndPoint} inputClassName="car-card__input" autoComplete="off" />}
-          <label className="car-card__label active">End point</label>
+          <label className="car-card__label active" htmlFor="endPoint">
+            {isGooleApiLoded && <Geosuggest name="endPoint" onSuggestSelect={setEndPoint} inputClassName="car-card__input" autoComplete="off" />}
+          End point
+          </label>
         </div>
         <button type="submit" href="#!" className="search-start__btn-submit">SEARCH</button>
       </form>

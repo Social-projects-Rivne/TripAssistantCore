@@ -51,31 +51,33 @@ class SignInForm extends Component {
       <div className="FormCenter">
         <form className="FormFields" onSubmit={this.handleSubmit} id="loginForm">
           <div className="FormField">
-            <label className="FormField__Label">E-Mail Address</label>
-            <input
-              type="email"
-              id="email"
-              className="FormField__Input"
-              placeholder="Enter your email"
-              name="email"
-              value={email}
-              onChange={this.handleChange}
-              required
-            />
+            <label className="FormField__Label" htmlFor="email">E-Mail Address
+              <input
+                type="email"
+                id="email"
+                className="FormField__Input"
+                placeholder="Enter your email"
+                name="email"
+                value={email}
+                onChange={this.handleChange}
+                required
+              />
+            </label>
           </div>
 
           <div className="FormField">
-            <label className="FormField__Label">Password</label>
-            <input
-              type="password"
-              id="password"
-              className="FormField__Input"
-              placeholder="Enter your password"
-              name="password"
-              value={password}
-              onChange={this.handleChange}
-              required
-            />
+            <label className="FormField__Label" htmlFor="password">Password
+              <input
+                type="password"
+                id="password"
+                className="FormField__Input"
+                placeholder="Enter your password"
+                name="password"
+                value={password}
+                onChange={this.handleChange}
+                required
+              />
+            </label>
           </div>
 
           <div className="FormField">

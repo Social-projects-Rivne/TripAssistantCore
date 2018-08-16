@@ -64,57 +64,61 @@ class SignUpForm extends Component {
       <div className="FormCenter">
         <form className="FormFields" onSubmit={this.handleSubmit} id="registrationForm">
           <div className="FormField">
-            <label className="FormField__Label">First Name</label>
-            <input
-              type="text"
-              id="fname"
-              className="FormField__Input"
-              placeholder="Enter your first name"
-              name="fname"
-              value={fname}
-              onChange={this.handleChange}
-              required
-            />
+            <label className="FormField__Label" htmlFor="fname">First Name
+              <input
+                type="text"
+                id="fname"
+                className="FormField__Input"
+                placeholder="Enter your first name"
+                name="fname"
+                value={fname}
+                onChange={this.handleChange}
+                required
+              />
+            </label>
           </div>
           <div className="FormField">
-            <label className="FormField__Label">Last Name</label>
-            <input
-              type="text"
-              id="lname"
-              className="FormField__Input"
-              placeholder="Enter your last name"
-              name="lname"
-              value={lname}
-              onChange={this.handleChange}
-              required
-            />
+            <label className="FormField__Label" htmlFor="lname">Last Name
+              <input
+                type="text"
+                id="lname"
+                className="FormField__Input"
+                placeholder="Enter your last name"
+                name="lname"
+                value={lname}
+                onChange={this.handleChange}
+                required
+              />
+            </label>
           </div>
           <div className="FormField">
-            <label className="FormField__Label" htmlFor="email">E-Mail Address</label>
-            <input
-              type="email"
-              id="email"
-              className={`FormField__Input ${isEmailExist ? 'invalid' : null}`}
-              placeholder="Enter your email"
-              name="email"
-              value={email}
-              onChange={this.handleChange}
-              required
-            />
+            <label className="FormField__Label" htmlFor="email">E-Mail Address
+              <input
+                type="email"
+                id="email"
+                className={`FormField__Input ${isEmailExist ? 'invalid' : null}`}
+                placeholder="Enter your email"
+                name="email"
+                value={email}
+                onChange={this.handleChange}
+                required
+              />
+            </label>
             {isEmailExist && <span className="helper-text">*Email already exists</span>}
           </div>
           <div className="FormField">
-            <label className="FormField__Label">Password</label>
-            <input
-              type="password"
-              id="password"
-              className="FormField__Input"
-              placeholder="Enter your password"
-              name="password"
-              value={password}
-              onChange={this.handleChange}
-              required
-            />
+            <label className="FormField__Label" htmlFor="password">Password
+              <input
+                type="password"
+                id="password"
+                className="FormField__Input"
+                placeholder="Enter your password"
+                name="password"
+                value={password}
+                onChange={this.handleChange}
+                required
+              />
+            </label>
           </div>
           <div className="FormField">
             <button className="FormField__Button mr-20" type="submit">Sign Up</button>

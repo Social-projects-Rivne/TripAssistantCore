@@ -40,20 +40,28 @@ class RoutersFilters extends Component {
       <div className="filter-card">
         <p className="filter-card-p">Filters</p>
         <div className="input-field filter-card-input-wrap">
-          <input type="text" ref={this.datepicker} placeholder="Pick the date" name="date" onChange={() => this.handleDataPickerSelect(undefined)} />
-          <label className="filter-card-label active">Date of start</label>
+          <label className="filter-card-label active" htmlFor="date">
+            <input type="text" ref={this.datepicker} placeholder="Pick the date" name="date" onChange={() => this.handleDataPickerSelect(undefined)} />
+            Date of start
+          </label>
         </div>
         <div className="input-field filter-card-input-wrap">
-          <input className="filter-card-input" type="text" placeholder="Number of passengers" name="passengers" onChange={this.handleFilterChange} />
-          <label className="filter-card-label active">Number of passengers</label>
+          <label className="filter-card-label active" htmlFor="passengers">
+            <input className="filter-card-input" type="text" placeholder="Number of passengers" name="passengers" onChange={this.handleFilterChange} />
+          Number of passengers
+          </label>
         </div>
         <div className="input-field filter-card-input-wrap">
-          <input className="filter-card-input" type="text" placeholder="Min price" name="minPrice" onChange={this.handleFilterChange} />
-          <label className="filter-card-label active">Min price</label>
+          <label className="filter-card-label active" htmlFor="minPrice">
+            <input className="filter-card-input" type="text" placeholder="Min price" name="minPrice" onChange={this.handleFilterChange} />
+          Min price
+          </label>
         </div>
         <div className="input-field filter-card-input-wrap">
-          <input className="filter-card-input" type="text" placeholder="Max price" name="maxPrice" onChange={this.handleFilterChange} />
-          <label className="filter-card-label active">Max price</label>
+          <label className="filter-card-label active" htmlFor="maxPrice">
+            <input className="filter-card-input" type="text" placeholder="Max price" name="maxPrice" onChange={this.handleFilterChange} />
+          Max price
+          </label>
         </div>
       </div>
     );

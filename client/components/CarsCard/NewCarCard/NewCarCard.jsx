@@ -7,16 +7,18 @@ const CarInput = ({
   }
 }) => (
   <div className="input-field car-card__col">
-    <input
-      className="car-card__input"
-      type="text"
-      name={inputName}
-      pattern={inputPattern}
-      title={inputTitle}
-      placeholder="Please enter new value"
-      required
-    />
-    <label className="car-card__label active">{inputLabel}</label>
+    <label className="car-card__label active" htmlFor={inputName}>
+      <input
+        className="car-card__input"
+        type="text"
+        name={inputName}
+        pattern={inputPattern}
+        title={inputTitle}
+        placeholder="Please enter new value"
+        required
+      />
+      {inputLabel}
+    </label>
   </div>
 );
 
