@@ -20,14 +20,16 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-    axios.get('public/data/feedbacksData.json')
-      .then(({ data }) => this.setState({ feedbacksInfo: data }));
-
+    this.fetchFeedbacksData();
     this.fetchUserData();
-
     this.updateCarData();
-
     this.fetchHistoryData();
+  }
+
+  fetchFeedbacksData = () => {
+    axios.get(`/api/feedbacks/${this.USER_ID}`)
+      .then(({ data }) => this.setState({ feedbacksInfo: data }))
+      .catch(e => console.error(e));
   }
 
   fetchHistoryData = () => {

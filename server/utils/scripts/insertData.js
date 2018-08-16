@@ -26,12 +26,25 @@ const trips = {
   table: 'trips',
   fields: 'user_id, name, color, distance, start_address, end_address, duration, time',
   values: [
-    `1, 'New Trip', 'teal', '{ "end": { "lat": 49.839683, "lng": 24.029717000000005 }, "start": { "lat": 50.5905728, "lng": 26.1526353 } }', 'М06 & Е40, Rivnenska oblast, Ukraine', 'Miskevycha Square, 9, Lviv, Lvivska oblast, Ukraine, 79000', '203 km', '2 hours 38 mins'`
+    `1, 'Big trip to Lviv', 'teal', '{ "end": { "lat": 49.839683, "lng": 24.029717000000005 }, "start": { "lat": 50.5905728, "lng": 26.1526353 } }', 'М06 & Е40, Rivnenska oblast, Ukraine', 'Miskevycha Square, 9, Lviv, Lvivska oblast, Ukraine, 79000', '203 km', '2 hours 38 mins'`,
+    `1, 'Fun trip to Lviv', 'purple', '{ "end": { "lat": 49.839683, "lng": 24.029717000000005 }, "start": { "lat": 50.5905728, "lng": 26.1526353 } }', 'М06 & Е40, Rivnenska oblast, Ukraine', 'Miskevycha Square, 9, Lviv, Lvivska oblast, Ukraine, 79000', '203 km', '2 hours 38 mins'`,
+    `1, 'Fast trip to Lviv', 'green', '{ "end": { "lat": 49.839683, "lng": 24.029717000000005 }, "start": { "lat": 50.5905728, "lng": 26.1526353 } }', 'М06 & Е40, Rivnenska oblast, Ukraine', 'Miskevycha Square, 9, Lviv, Lvivska oblast, Ukraine, 79000', '203 km', '2 hours 38 mins'`
+  ]
+}
+
+const feedback = {
+  table: 'feedback',
+  fields: 'user_id, trip_id, create_by, rating, text',
+  values: [
+    `1, 1, 2, 4.7, 'The driver was drunk! I liked everything! Quisque varius imperdiet auctor. In et dui elit. Nam metus lorem, imperdiet iaculis imperdiet sit amet, ullamcorper quis ipsum. Sed sed nisi vitae magna vestibulum commodo.'`,
+    `1, 2, 3, 3, 'The driver was drunk! I liked everything! Quisque varius imperdiet auctor. In et dui elit. Nam metus lorem, imperdiet iaculis imperdiet sit amet, ullamcorper quis ipsum. Sed sed nisi vitae magna vestibulum commodo.'`,
+    `1, 3, 5, 5, 'The driver was drunk! I liked everything! Quisque varius imperdiet auctor. In et dui elit. Nam metus lorem, imperdiet iaculis imperdiet sit amet, ullamcorper quis ipsum. Sed sed nisi vitae magna vestibulum commodo.'`
   ]
 }
 
 module.exports = [
   users,
   cars,
-  trips
+  trips,
+  feedback
 ];
