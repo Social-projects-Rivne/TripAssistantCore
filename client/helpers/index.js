@@ -17,5 +17,3 @@ export function getDateFromTimestamp(string) {
     .reverse()
     .join('/');
 }
-
-export default random;

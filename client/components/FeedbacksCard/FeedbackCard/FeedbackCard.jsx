@@ -4,6 +4,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import './FeedbackCard.scss';
 import arrowDown from 'images/arrow-down.svg';
+import { getDateFromTimestamp } from '../../../helpers';
 
 class FeedbackCard extends Component {
   constructor() {
@@ -23,12 +24,16 @@ class FeedbackCard extends Component {
 
   render() {
     const {
-      feedbackInfo: {
-        name, rating, feedback, userName, date
-      }
+      feedbackInfo:
+        {
+          trip_name: name,
+          rating,
+          feedback,
+          user_name: { first: userName },
+          date
+        }
     } = this.props;
     const { isActive } = this.state;
-
     return (
       <div className="feedback__wrap">
         <button type="button" className="feedback__heading-block" onClick={this.toggleFeedbackBody}>
@@ -47,7 +52,7 @@ class FeedbackCard extends Component {
             <div className="feedback__body">
               <p className="feedback__body-p">{feedback}</p>
               <p className="feedback__body-p2">{userName}</p>
-              <p className="feedback__body-p2">{date}</p>
+              <p className="feedback__body-p2">{getDateFromTimestamp(date)}</p>
             </div>)}
         </ReactCSSTransitionGroup>
       </div>
