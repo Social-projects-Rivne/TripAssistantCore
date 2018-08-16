@@ -33,6 +33,7 @@ class SignInForm extends Component {
       .then(({ data: { response } }) => {
         if (response.iduser) {
           sessionStorage.setItem('iduser', response.iduser);
+          sessionStorage.setItem('role', response.role);
           updateIsAuth();
         } else {
           this.setState({ errorMsg: `*${response}` });

@@ -15,9 +15,11 @@ signinController.login = ({ body: { email, passwordHash } }, res) => {
         res.json({ response: 'Email and password do not match' });
       } else if (!result.is_activated) {
         res.json({ response: 'Email is not activated' });
+      } else if (!result['acount_status']) {
+        res.json({ response: 'Account has been BLOCKED' });
       } else  {
         response = 'ok';
-        res.json({ response: { iduser: result.iduser } });
+        res.json({ response: { iduser: result.iduser, role: result.role } });
       }
     })
     .catch(err => {

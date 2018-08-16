@@ -1,6 +1,6 @@
 module.exports = {
   getAll: () => {
-    return `SELECT * FROM trips;`
+    return `SELECT trips.*, users.name username FROM trips INNER JOIN users ON (trips.user_id = users.iduser);`
   },
 
   getById: (id) => {

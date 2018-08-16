@@ -2,7 +2,28 @@ const UserModel = {};
 
 UserModel.getUser = (idUser) => {
   const query = {
-    text: `SELECT name, email, homePoint, driveHoursPerDay, driveStopPeriod, eatStopPeriod, online, acountStatus, is_activated, activation_id, avatar FROM users WHERE idUser=${idUser}`,
+    text: `SELECT name, email, homePoint, driveHoursPerDay, driveStopPeriod, eatStopPeriod, online, acount_status, is_activated, activation_id, avatar FROM users WHERE idUser=${idUser}`,
+  };
+  return query;
+};
+
+UserModel.getAllUsers = () => {
+  const query = {
+    text: `SELECT iduser, name, avatar, acount_status, role FROM users`,
+  };
+  return query;
+};
+
+UserModel.deleteUser = (iduser) => {
+  const query = {
+    text: `DELETE FROM users WHERE iduser = ${iduser}`,
+  };
+  return query;
+};
+
+UserModel.unblockUser = (iduser, status) => {
+  const query = {
+    text: `UPDATE users SET acount_status = ${status} WHERE iduser = ${iduser}`,
   };
   return query;
 };
