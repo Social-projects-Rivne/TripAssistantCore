@@ -1,20 +1,42 @@
 
 .main-info {
-  background-color: #f7f8fa;
   display: flex;
   flex-direction: column;
+  background: url('~@images/profile-page-bg.jpg') top;
 }
 
-.Map {
+.team {
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 100%;
+  margin: 0 auto;
+
+  h1 {
+    text-align: center;
+  }
+
+  p {
+    text-align: center;
+  }
+}
+
+.map {
   width: 80%;
   height: 300px;
-  border: 1px, solid, black;
+  border: 1px solid black;
   margin: 0 auto;
-  background-color: lightblue;
+  margin-top: 50px;
+}
+
+.map div:first-child {
+  position: relative !important;
+  height: 100% !important;
+  width: 100% !important;
 }
 
 .contacts {
+  margin-top: 100px;
   text-align: center;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .form {
@@ -27,15 +49,15 @@ footer {
   margin-top: 50px;
   height: 100px;
   width: 100%;
-  background-color: rgb(140, 188, 243);
   display: flex;
   justify-content: center;
   flex-wrap: nowrap;
 }
 
 .copyright {
-  margin-top: 40px;
+  margin-top: 50px;
   width: 30%;
+  text-align: center;
 }
 
 .footer-menu {
@@ -47,16 +69,19 @@ footer {
     flex-direction: row;
 
     li {
-      margin-right: 30px;
+      margin-right: 20px;
       margin-left: 60px;
-      padding: 5px;
+      padding: 10px;
     }
 
     li:hover {
-      background-color: chocolate;
-      padding: 5px;
-      transition: 0.2s;
+      background-color: aquamarine;
+      padding: 10px;
+      transition: 0.8s;
+    }
+
+    img {
+      width: 30px;
     }
   }
 }
-

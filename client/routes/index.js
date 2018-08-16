@@ -4,7 +4,6 @@ import Dashboard from '../pages/Dashbord';
 import SearchRoute from '../pages/SearchRoute';
 import NewTrip from '../pages/NewTrip';
 
-
 const Routes = [
   {
     path: '/',
