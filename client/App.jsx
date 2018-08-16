@@ -43,6 +43,7 @@ class App extends React.Component {
 
   runLogout = () => {
     sessionStorage.removeItem('iduser');
+    sessionStorage.removeItem('role');
     this.setState({ isAuth: false });
   }
 

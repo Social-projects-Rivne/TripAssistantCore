@@ -14,7 +14,9 @@ module.exports = [
       acountStatus boolean,
       is_activated boolean,
       activation_id text,
-      avatar char(100)`
+      avatar char(100),
+      role text DEFAULT 'user'
+      `
   },
   {
     tableName: 'cars',
@@ -39,7 +41,9 @@ module.exports = [
     start_address TEXT,
     end_address TEXT,
     duration TEXT,
-    time TEXT
+    time TEXT,
+    active boolean NOT NULL DEFAULT true,
+    date TIMESTAMPTZ NOT NULL DEFAULT NOW()
     `
   }
 ];

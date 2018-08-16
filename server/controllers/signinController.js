@@ -17,7 +17,7 @@ signinController.login = ({ body: { email, passwordHash } }, res) => {
         res.json({ response: 'Email is not activated' });
       } else  {
         response = 'ok';
-        res.json({ response: { iduser: result.iduser } });
+        res.json({ response: { iduser: result.iduser, role: result.role } });
       }
     })
     .catch(err => {

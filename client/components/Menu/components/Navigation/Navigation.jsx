@@ -14,9 +14,19 @@ const MENU_ITEM = [
   { name: 'dashboard', path: '/dashboard', ico: DashbordIco }
 ];
 
+const isAdmin = (name) => {
+  if (name === 'dashboard') {
+    return sessionStorage.getItem('role') === 'admin' ? null : 'hide';
+  }
+  return null;
+};
+
 const NavigationItem = ({ name, path, ico }) => (
   <li>
-    <Link className="navigation_item" to={path}>
+    <Link
+      className={`navigation_item ${isAdmin(name)}`}
+      to={path}
+    >
       <img src={ico} alt="ico" />
       {name}
     </Link>
