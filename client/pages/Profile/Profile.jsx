@@ -20,8 +20,9 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-    axios.get('public/data/feedbacksData.json')
-      .then(({ data }) => this.setState({ feedbacksInfo: data }));
+    axios.get(`/api/feedbacks/${this.USER_ID}`)
+      .then(({ data }) => console.log(data) && this.setState({ feedbacksInfo: data }))
+      .catch(e => console.error(e));
 
     this.fetchUserData();
 

@@ -4,6 +4,7 @@ const userRoutes = require('./routes/user');
 const signupRoutes = require('./routes/signup');
 const signinRoutes = require('./routes/signin');
 const tripsRoutes = require('./routes/trips');
+const feedbacksRoutes = require('./routes/feedback');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 require('dotenv').config({path: 'server/.env'})
@@ -24,6 +25,7 @@ app.use(userRoutes);
 app.use(signupRoutes);
 app.use(signinRoutes);
 app.use(tripsRoutes);
+app.use(feedbacksRoutes);
 
 app.listen(process.env.PORT || 3000, () => console.log(cowsay.say({
 	text : `API server listening on ${process.env.PORT || 3000} port`,

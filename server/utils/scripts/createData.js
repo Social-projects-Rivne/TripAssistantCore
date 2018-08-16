@@ -45,5 +45,16 @@ module.exports = [
     active boolean NOT NULL DEFAULT true,
     date TIMESTAMPTZ NOT NULL DEFAULT NOW()
     `
+  },
+  {
+    tableName: 'feedback',
+    column: `
+    id SERIAL PRIMARY KEY NOT NULL,
+    user_id INT,
+    trip_id INT,
+    create_by INT,
+    rating NUMERIC,
+    text TEXT
+    `
   }
 ];

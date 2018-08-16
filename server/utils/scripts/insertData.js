@@ -23,7 +23,9 @@ const trips = {
   table: 'trips',
   fields: 'user_id, name, color, distance, start_address, end_address, duration, time',
   values: [
-    `1, 'New Trip', 'teal', '{ "end": { "lat": 49.839683, "lng": 24.029717000000005 }, "start": { "lat": 50.5905728, "lng": 26.1526353 } }', 'М06 & Е40, Rivnenska oblast, Ukraine', 'Miskevycha Square, 9, Lviv, Lvivska oblast, Ukraine, 79000', '203 km', '2 hours 38 mins'`
+    `1, 'Big trip to Lviv', 'teal', '{ "end": { "lat": 49.839683, "lng": 24.029717000000005 }, "start": { "lat": 50.5905728, "lng": 26.1526353 } }', 'М06 & Е40, Rivnenska oblast, Ukraine', 'Miskevycha Square, 9, Lviv, Lvivska oblast, Ukraine, 79000', '203 km', '2 hours 38 mins'`,
+    `1, 'Fun trip to Lviv', 'purple', '{ "end": { "lat": 49.839683, "lng": 24.029717000000005 }, "start": { "lat": 50.5905728, "lng": 26.1526353 } }', 'М06 & Е40, Rivnenska oblast, Ukraine', 'Miskevycha Square, 9, Lviv, Lvivska oblast, Ukraine, 79000', '203 km', '2 hours 38 mins'`,
+    `1, 'Fast trip to Lviv', 'green', '{ "end": { "lat": 49.839683, "lng": 24.029717000000005 }, "start": { "lat": 50.5905728, "lng": 26.1526353 } }', 'М06 & Е40, Rivnenska oblast, Ukraine', 'Miskevycha Square, 9, Lviv, Lvivska oblast, Ukraine, 79000', '203 km', '2 hours 38 mins'`
   ]
 }
 
