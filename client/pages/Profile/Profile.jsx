@@ -16,29 +16,33 @@ class Profile extends Component {
       feedbacksInfo: [],
       allHistory: []
     };
+    this.USER_ID = sessionStorage.getItem('iduser');
   }
 
   componentDidMount() {
     axios.get('public/data/feedbacksData.json')
       .then(({ data }) => this.setState({ feedbacksInfo: data }));
 
-    axios.get('public/data/allHistory.json')
-      .then(({ data }) => this.setState({ allHistory: data }));
-
     this.fetchUserData();
 
     this.updateCarData();
+
+    this.fetchHistoryData();
+  }
+
+  fetchHistoryData = () => {
+    axios.get(`/api/trips/${this.USER_ID}/byId`)
+      .then(({ data }) => this.setState({ allHistory: data }))
+      .catch(e => console.error(e));
   }
 
   fetchUserData = () => {
-    const iduser = sessionStorage.getItem('iduser');
-    axios.get(`api/user/${iduser}`)
+    axios.get(`api/user/${this.USER_ID}`)
       .then(({ data }) => this.setState({ userInfo: data[0] }));
   }
 
   updateCarData = () => {
-    const iduser = sessionStorage.getItem('iduser');
-    axios.get(`api/user/${iduser}/cars`)
+    axios.get(`api/user/${this.USER_ID}/cars`)
       .then(({ data }) => this.setState({ carsInfo: data }));
   }
 
