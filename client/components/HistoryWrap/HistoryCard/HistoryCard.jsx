@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 import './HistoryCard.scss';
 
-const HistoryCard = ({ routeName, routeDate, isActive }) => (
-  <div className={`historyCard ${isActive ? 'is-active' : ''}`}>
+const HistoryCard = ({ routeName, routeDate, isActive, routeColor }) => (
+  <div className={`historyCard lighten-5 ${routeColor} ${isActive ? 'is-active' : ''}`}>
     <p className="historyCard__p">
       {routeName} &nbsp;
       <span className="historyCard__p--date">{
@@ -29,7 +29,8 @@ HistoryCard.defaultProps = {
 HistoryCard.propTypes = {
   routeName: PropTypes.string.isRequired,
   routeDate: PropTypes.string.isRequired,
-  isActive: PropTypes.bool
+  isActive: PropTypes.bool,
+  routeColor: PropTypes.string.isRequired
 };
 
 export default HistoryCard;

@@ -5,7 +5,7 @@ module.exports = {
 
   getById: (id) => {
     return {
-      text: `SELECT date, active, name FROM trips WHERE user_id=$1`,
+      text: `SELECT date, active, name, color FROM trips WHERE user_id=$1`,
       values: [id]
     }
   },
