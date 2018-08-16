@@ -6,12 +6,13 @@ import DefaultUserpic from 'images/default-userpic.png';
 const ListItem = ({
   iduser,
   avatar,
+  role,
   name: { first, last },
   acount_status: acountStatus,
   setUserStatus,
   deleteUser
 }) => (
-  <div className={`userlist__item main-card__wrap ${acountStatus ? '' : 'red lighten-4'}`}>
+  <div className={`userlist__item main-card__wrap ${acountStatus ? '' : 'red lighten-4'} ${role === 'admin' ? 'hide' : ''}`}>
     <div className="userlist__info">
       <div className="userlist__img">
         <img src={avatar ? `images/${avatar}` : DefaultUserpic} alt={first} />
@@ -29,6 +30,7 @@ const ListItem = ({
 );
 
 ListItem.propTypes = {
+  role: PropTypes.string.isRequired,
   iduser: PropTypes.number.isRequired,
   setUserStatus: PropTypes.func.isRequired,
   deleteUser: PropTypes.func.isRequired,

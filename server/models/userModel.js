@@ -9,7 +9,7 @@ UserModel.getUser = (idUser) => {
 
 UserModel.getAllUsers = () => {
   const query = {
-    text: `SELECT iduser, name, avatar, acount_status FROM users`,
+    text: `SELECT iduser, name, avatar, acount_status, role FROM users`,
   };
   return query;
 };
