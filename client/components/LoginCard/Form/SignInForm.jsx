@@ -17,6 +17,22 @@ class SignInForm extends Component {
     };
   }
 
+  componentDidMount() {
+    const { location: { search }, updateIsAuth } = this.props;
+    const id = search.substr(1);
+    if (id) {
+      axios.get(`/api/register/${id}`)
+        .then(({ data: { iduser, role } }) => {
+          if (iduser) {
+            sessionStorage.setItem('iduser', iduser);
+            sessionStorage.setItem('role', role);
+            updateIsAuth();
+          }
+        })
+        .catch(e => console.log(e));
+    }
+  }
+
   handleChange = ({ target: { value, name } }) => {
     this.setState({ [name]: value });
   }
@@ -78,7 +94,6 @@ class SignInForm extends Component {
               required
             />
           </div>
-
           <div className="FormField">
             <button className="FormField__Button mr-20" type="submit">Sign In</button> <Link to="/register" className="FormField__Link">Create an account</Link>
           </div>
@@ -90,7 +105,8 @@ class SignInForm extends Component {
 }
 
 SignInForm.propTypes = {
-  updateIsAuth: PropTypes.func.isRequired
+  updateIsAuth: PropTypes.func.isRequired,
+  location: PropTypes.objectOf(PropTypes.any).isRequired
 };
 
 export default SignInForm;
