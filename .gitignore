@@ -29,5 +29,6 @@ coverage
 benchmarks/graphs
 
 # Other
+.vscode
 build
 server/.env

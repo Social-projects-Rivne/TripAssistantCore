@@ -7,7 +7,7 @@ const users = {
       `'{ "first": "Oneill", "last": "Long" }', '5b421eedc4235617a7ca1c0f', 'oneill.long@email.net', '{ "city": "Cutter", "position": ["-71.644535", "-32.810064"] }', 15, 7, 3.7, true, true, true, 'qert45qtegwb34wb3645b645e45g4b5', 'user'`,
       `'{ "first": "Odessa", "last": "Mckee" }', '5b421eedc4235617a7ca1c0f', 'oneill.long@email.net', '{ "city": "Cutter", "position": ["-71.644535", "-32.810064"] }', 15, 7, 3.7, true, true, true, 'qert45qtegwb34wb3645b645e45g4b5', 'user'`,
       `'{ "first": "Calhoun", "last": "Wilkerson" }', '5b421eedc4235617a7ca1c0f', 'oneill.long@email.net', '{ "city": "Cutter", "position": ["-71.644535", "-32.810064"] }', 15, 7, 3.7, true, true, true, 'qert45qtegwb34wb3645b645e45g4b5', 'user'`,
-      `'{ "first": "Rajesh", "last": "Koothrappali" }', '65e84be33532fb784c48129675f9eff3a682b27168c0ea744b2cf58ee02337c5', 'email@mail.com', '{ "city": "Cutter", "position": ["-71.644535", "-32.810064"] }', 15, 7, 3.7, true, true, true, 'qert45qtegwb34wb3645b645e45g4b5', 'admin'`,
+      `'{ "first": "Rajesh", "last": "Koothrappali" }', '65e84be33532fb784c48129675f9eff3a682b27168c0ea744b2cf58ee02337c5', 'email@mail.com', '{ "city": "Cutter", "position": ["-71.644535", "-32.810064"] }', 15, 7, 3.7, true, true, true, 'qert45qtegwb34wb3645b645e45g4b5', 'user'`,
   ]
 };
 
