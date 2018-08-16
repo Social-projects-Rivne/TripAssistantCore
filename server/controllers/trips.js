@@ -19,5 +19,14 @@ module.exports = {
         res.status(500).end();
         console.error(err);
       });
+  },
+
+  getTripById: ({ params: { id } }, res ) => {
+    db.query(TRIPS_MODEL.getById(id))
+      .then(({ rows }) => res.json(rows))
+      .catch(err => {
+        res.status(500).end();
+        console.error(err);
+      });
   }
 }

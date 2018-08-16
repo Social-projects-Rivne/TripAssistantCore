@@ -3,6 +3,13 @@ module.exports = {
     return `SELECT * FROM trips;`
   },
 
+  getById: (id) => {
+    return {
+      text: `SELECT date, active, name FROM trips WHERE user_id=$1`,
+      values: [id]
+    }
+  },
+
   addNew: ({
     name,
     color,

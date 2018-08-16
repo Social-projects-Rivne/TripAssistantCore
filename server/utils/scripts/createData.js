@@ -39,7 +39,9 @@ module.exports = [
     start_address TEXT,
     end_address TEXT,
     duration TEXT,
-    time TEXT
+    time TEXT,
+    active boolean NOT NULL DEFAULT true,
+    date TIMESTAMPTZ NOT NULL DEFAULT NOW()
     `
   }
 ];
