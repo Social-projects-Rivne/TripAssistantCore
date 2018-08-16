@@ -28,7 +28,7 @@ class FeedbackCard extends Component {
         {
           trip_name: name,
           rating,
-          feedback,
+          text,
           user_name: { first: userName },
           date
         }
@@ -50,7 +50,7 @@ class FeedbackCard extends Component {
         <ReactCSSTransitionGroup transitionName="slideInOut" transitionEnterTimeout={400} transitionLeaveTimeout={350}>
           {isActive && (
             <div className="feedback__body">
-              <p className="feedback__body-p">{feedback}</p>
+              <p className="feedback__body-p">{text}</p>
               <p className="feedback__body-p2">{userName}</p>
               <p className="feedback__body-p2">{getDateFromTimestamp(date)}</p>
             </div>)}
@@ -63,7 +63,7 @@ class FeedbackCard extends Component {
 FeedbackCard.propTypes = {
   feedbackInfo: PropTypes.shape({
     name: PropTypes.string,
-    rating: PropTypes.number,
+    rating: PropTypes.string,
     feedback: PropTypes.string,
     userName: PropTypes.string,
     date: PropTypes.string

@@ -40,12 +40,14 @@ class Profile extends Component {
 
   fetchUserData = () => {
     axios.get(`api/user/${this.USER_ID}`)
-      .then(({ data }) => this.setState({ userInfo: data[0] }));
+      .then(({ data }) => this.setState({ userInfo: data[0] }))
+      .catch(e => console.error(e));
   }
 
   updateCarData = () => {
     axios.get(`api/user/${this.USER_ID}/cars`)
-      .then(({ data }) => this.setState({ carsInfo: data }));
+      .then(({ data }) => this.setState({ carsInfo: data }))
+      .catch(e => console.error(e));
   }
 
   render() {
