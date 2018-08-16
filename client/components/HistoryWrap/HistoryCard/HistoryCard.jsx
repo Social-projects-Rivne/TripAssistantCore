@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getDateFromTimestamp } from '../../../helpers';
 
 import './HistoryCard.scss';
 
@@ -7,14 +8,7 @@ const HistoryCard = ({ routeName, routeDate, isActive, routeColor }) => (
   <div className={`historyCard lighten-5 ${routeColor} ${isActive ? 'is-active' : ''}`}>
     <p className="historyCard__p">
       {routeName} &nbsp;
-      <span className="historyCard__p--date">{
-        routeDate
-          .split('')
-          .splice(0, 10)
-          .join('')
-          .split('-')
-          .reverse()
-          .join('/')}
+      <span className="historyCard__p--date">{getDateFromTimestamp(routeDate)}
       </span>
       {isActive && <span className="historyCard__p--is-active">Active</span>}
     </p>

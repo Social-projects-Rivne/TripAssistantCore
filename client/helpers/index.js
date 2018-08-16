@@ -9,5 +9,13 @@ export const colors = [
   'lime',
   'orange'
 ];
+export function getDateFromTimestamp(string) {
+  return string.split('')
+    .splice(0, 10)
+    .join('')
+    .split('-')
+    .reverse()
+    .join('/');
+}
 
 export default random;
