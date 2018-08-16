@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { toast } from 'materialize-css';
 import ListItem from './components/ListItem';
 import './UserList.scss';
 
@@ -13,8 +14,30 @@ class UserList extends Component {
   }
 
   componentDidMount() {
-    axios.get('public/data/userData.json')
+    this.getAllUsers();
+  }
+
+  getAllUsers = () => {
+    axios.get('/api/allUsers')
       .then(({ data }) => this.setState({ userList: data }));
+  }
+
+  setUserStatus = (id, status) => {
+    axios.post('/api/user/unblock', { iduser: id, status })
+      .then(() => {
+        toast({ html: 'Account had been blocked' });
+        this.getAllUsers();
+      })
+      .catch(err => console.log(err));
+  }
+
+  deleteUser = (id) => {
+    axios.post('/api/user/delete', { iduser: id })
+      .then(() => {
+        toast({ html: 'Account had been deleted' });
+        this.getAllUsers();
+      })
+      .catch(err => console.log(err));
   }
 
   render() {
@@ -28,7 +51,14 @@ class UserList extends Component {
             <span>Actions</span>
           </div>
           <div className="userlist main-card__body">
-            {userList.map((user, i) => <ListItem {...user} key={i} />)}
+            {userList.map((user, i) => (
+              <ListItem
+                {...user}
+                setUserStatus={this.setUserStatus}
+                deleteUser={this.deleteUser}
+                key={i}
+              />
+            ))}
           </div>
         </div>
       </div>

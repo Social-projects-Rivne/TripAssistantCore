@@ -2,7 +2,7 @@ const SigninModel = {};
 
 SigninModel.findUserByEmail = (email) => {
   const query = {
-    text: `SELECT iduser, email, passwordhash, is_activated, role FROM users WHERE email = '${email}'`,
+    text: `SELECT iduser, email, passwordhash, is_activated, role, acount_status FROM users WHERE email = '${email}'`,
   };
   return query;
 };

@@ -1,7 +1,7 @@
 
 const users = {
   table: 'users',
-  fields: 'name, passwordHash, email, homePoint, driveHoursPerDay, driveStopPeriod, eatStopPeriod, online, acountStatus, is_activated, activation_id, role',
+  fields: 'name, passwordHash, email, homePoint, driveHoursPerDay, driveStopPeriod, eatStopPeriod, online, acount_status, is_activated, activation_id, role',
   values: [
       `'{ "first": "Admin", "last": "Adminovich" }', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 'admin@email.com', null, null, null, null, true, true, true, 'qert45qtegwb34wb3645b645e45g4b5', 'admin'`,
       `'{ "first": "Oneill", "last": "Long" }', '5b421eedc4235617a7ca1c0f', 'oneill.long@email.net', '{ "city": "Cutter", "position": ["-71.644535", "-32.810064"] }', 15, 7, 3.7, true, true, true, 'qert45qtegwb34wb3645b645e45g4b5', 'user'`,
@@ -17,6 +17,8 @@ const cars = {
   values: [
     `1, 'Peugeot', 50, 2, 7, 2, 80`,
     `1, 'Ford', 50, 2, 7, 2, 80`,
+    `2, 'Peugeot', 50, 2, 7, 2, 80`,
+    `2, 'Ford', 50, 2, 7, 2, 80`,
   ]
 }
 

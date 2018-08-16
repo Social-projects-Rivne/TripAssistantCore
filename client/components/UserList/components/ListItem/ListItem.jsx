@@ -1,51 +1,47 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import DefaultUserpic from 'images/default-userpic.png';
 
-
-const OnlineStatus = ({ status }) => (
-  <span className={`userlist__status ${status ? 'online' : 'offline'}`}>{status ? 'Online' : 'Offline'}</span>
-);
 
 const ListItem = ({
-  picture,
+  iduser,
+  avatar,
   name: { first, last },
-  online,
-  acount_status: acountStatus
+  acount_status: acountStatus,
+  setUserStatus,
+  deleteUser
 }) => (
   <div className={`userlist__item main-card__wrap ${acountStatus ? '' : 'red lighten-4'}`}>
     <div className="userlist__info">
       <div className="userlist__img">
-        <img src={picture} alt={first} />
+        <img src={avatar ? `images/${avatar}` : DefaultUserpic} alt={first} />
       </div>
       <div className="userlist__column">
-        <h4>{`${first} ${last}`}</h4>
-        <OnlineStatus status={online} />
+        <h5>{`${first} ${last}`}</h5>
       </div>
     </div>
     <div className="userlist__actions">
-      <a href="/#" className="main-btn">View</a>
-      <a href="/#" className="main-btn">{acountStatus ? 'Block' : 'Unblock'}</a>
-      <a href="/#" className="main-btn">Delete</a>
+      {/* <a href="/#" className="main-btn">View</a> */}
+      <a href="#!" className="main-btn" onClick={() => setUserStatus(iduser, !acountStatus)}>{acountStatus ? 'Block' : 'Unblock'}</a>
+      <a href="#!" className="main-btn" onClick={() => deleteUser(iduser)}>Delete</a>
     </div>
   </div>
 );
 
-OnlineStatus.propTypes = {
-  status: PropTypes.bool
-};
-
-OnlineStatus.defaultProps = {
-  status: false
-};
-
 ListItem.propTypes = {
-  picture: PropTypes.string.isRequired,
+  iduser: PropTypes.number.isRequired,
+  setUserStatus: PropTypes.func.isRequired,
+  deleteUser: PropTypes.func.isRequired,
+  avatar: PropTypes.string,
   name: PropTypes.shape({
     first: PropTypes.string.isRequired,
     last: PropTypes.string.isRequired
   }).isRequired,
-  online: PropTypes.bool.isRequired,
   acount_status: PropTypes.bool.isRequired
+};
+
+ListItem.defaultProps = {
+  avatar: null
 };
 
 export default ListItem;

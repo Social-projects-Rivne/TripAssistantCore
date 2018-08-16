@@ -12,6 +12,33 @@ userController.getUser = ({ params: { iduser } }, res) => {
     });
 };
 
+userController.getAllUsers = (req, res) => {
+  db.query(UserModel.getAllUsers())
+    .then(({ rows }) => res.json(rows))
+    .catch(err => {
+      res.status(500).end();
+      console.error(err);
+    });
+};
+
+userController.unblockUser = ({ body: { iduser, status } }, res) => {
+  db.query(UserModel.unblockUser(iduser, status))
+    .then(() => res.send('Ok'))
+    .catch(err => {
+      res.status(500).end();
+      console.error(err);
+    });
+};
+
+userController.deleteUser = ({ body: { iduser } }, res) => {
+  db.query(UserModel.deleteUser(iduser))
+    .then(() => res.send('Ok'))
+    .catch(err => {
+      res.status(500).end();
+      console.error(err);
+    });
+};
+
 userController.getUserCars = ({ params: { iduser } }, res) => {
   db.query(UserModel.getUserCars(iduser))
     .then(({ rows }) => res.json(rows))

@@ -11,10 +11,10 @@ module.exports = [
       driveStopPeriod double precision,
       eatStopPeriod double precision,
       online boolean,
-      acountStatus boolean,
+      acount_status boolean DEFAULT true,
       is_activated boolean,
       activation_id text,
-      avatar char(100),
+      avatar char(100) DEFAULT NULL,
       role text DEFAULT 'user'
       `
   },

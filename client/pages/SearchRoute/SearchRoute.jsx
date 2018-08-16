@@ -6,17 +6,15 @@ import './SearchRoute.scss';
 import SearchRouteStart from '../../components/SearchRouteStart';
 import SearchRouteResult from '../../components/SearchRouteStart/SearchRouteResult';
 
-const MissingData = () => {
-  const names = ['Oleksii Iordatii', 'Serhii Kovach', 'Olena Kovach', 'Vasilii Melnyk', 'Claus Green', 'Kith Brown', 'Katie Luw', 'Marry Smith', 'Jake Black', 'Sam Harris', 'Seth Green'];
-  return {
-    name: names[Math.floor(Math.random() * names.length)],
+const MissingData = () => (
+  {
     rating: Number.parseFloat((Math.random() * 2).toFixed(1)) + 3,
     date: `${Math.ceil(Math.random() * 12)}/${Math.ceil(Math.random() * 28)}/2018`,
     seats: Math.ceil(Math.random() * 5),
     price: Math.ceil(Math.random() * 10) * 50,
     currency: 'UAH'
-  };
-};
+  }
+);
 
 class SearchRoute extends Component {
   constructor() {
@@ -99,8 +97,9 @@ class SearchRoute extends Component {
 
             return (shouldReturnStart && shouldReturnEnd);
           })
-          .map(({ start_address: startAddress, end_address: endAddress }) => {
+          .map(({ start_address: startAddress, end_address: endAddress, username }) => {
             const missingData = MissingData();
+            missingData.name = `${username.first} ${username.last}`;
             missingData.startPoint = startAddress;
             missingData.endPoint = endAddress;
             return missingData;
