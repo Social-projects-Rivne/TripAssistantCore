@@ -10,7 +10,8 @@ module.exports = {
   entry: paths.appIndexJs,
   output: {
     path: paths.appBuild,
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/'
   },
   module: {
     rules: [

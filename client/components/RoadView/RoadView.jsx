@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { GoogleApiWrapper, Map } from 'google-maps-react';
 
-const KEY = 'AIzaSyDOPDY3_XTTcJelWP-84Csj5FcIdPUBcDs';
+const KEY = 'AIzaSyBA3gUpJSVxQ3Hu51l3XB7C6fcpObXSQ80'; 
 
 const calculateRoute = (google, startPoint, endPoint) => {
   if (google) {

@@ -11,11 +11,12 @@ module.exports = {
     values.forEach(val => db.query(`INSERT INTO ${table} (${fields}) VALUES (${val})`)); 
   },
   reCreate: () => {
-    const { PGDEFAULTSCHEMA, USER } = process.env;
+    const { PGUSER } = process.env;
     const SQL = `
-      DROP SCHEMA ${PGDEFAULTSCHEMA} CASCADE;
-      CREATE SCHEMA ${PGDEFAULTSCHEMA};
-      GRANT ALL ON SCHEMA ${PGDEFAULTSCHEMA} TO ${USER};
+      DROP SCHEMA public CASCADE;
+      CREATE SCHEMA public;
+      GRANT ALL ON SCHEMA public TO ${PGUSER};
+      GRANT ALL ON SCHEMA public TO public;
       `
     db.query(SQL)
       .catch(e => console.error(e));

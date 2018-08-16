@@ -11,7 +11,7 @@ class Profile extends Component {
     super();
 
     this.state = {
-      userInfo: {},
+      userInfo: null,
       carsInfo: [],
       feedbacksInfo: [],
       allHistory: []
@@ -19,9 +19,6 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-    axios.get('public/data/profileUserData.json')
-      .then(({ data }) => this.setState({ userInfo: data[0] }));
-
     axios.get('public/data/feedbacksData.json')
       .then(({ data }) => this.setState({ feedbacksInfo: data }));
 
@@ -34,14 +31,14 @@ class Profile extends Component {
   }
 
   fetchUserData = () => {
-    const id = 1;
-    fetch(`api/user/${id}`)
-      .then(res => res.json());
+    const iduser = sessionStorage.getItem('iduser');
+    axios.get(`api/user/${iduser}`)
+      .then(({ data }) => this.setState({ userInfo: data[0] }));
   }
 
   updateCarData = () => {
-    const id = 1;
-    axios.get(`api/user/${id}/cars`)
+    const iduser = sessionStorage.getItem('iduser');
+    axios.get(`api/user/${iduser}/cars`)
       .then(({ data }) => this.setState({ carsInfo: data }));
   }
 
@@ -56,7 +53,7 @@ class Profile extends Component {
         <div className="profile-content-wrap">
           <div className="row">
             <div className="col-12 col-md-6">
-              <PersonalInfoCard settings={userInfo} />
+              {userInfo && <PersonalInfoCard settings={userInfo} />}
               <FeedbacksCard feedbacksInfo={feedbacksInfo} />
             </div>
             <div className="col-12 col-md-6">

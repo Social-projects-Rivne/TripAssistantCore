@@ -38,14 +38,15 @@ class CarsCard extends Component {
   }
 
   handleAddNewCar = (e) => {
-    const idUser = 1;
     e.preventDefault();
+    const iduser = sessionStorage.getItem('iduser');
     const { updateCarData } = this.props;
     const newCarinfo = {};
+    newCarinfo.iduser = iduser;
     inputInfo.forEach((el) => {
       newCarinfo[el.inputName] = e.target.elements[el.inputName].value;
     });
-    axios.post(`api/user/${idUser}/addCar`, { formData: newCarinfo })
+    axios.post('api/user/addCar', { formData: newCarinfo })
       .then(() => {
         updateCarData();
         toast({ html: 'New vehicle has been added!' });

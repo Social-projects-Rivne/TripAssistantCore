@@ -2,28 +2,29 @@ const UserModel = {};
 
 UserModel.getUser = (idUser) => {
   const query = {
-    text: `SELECT name, email, homePoint, driveHoursPerDay, driveStopPeriod, eatStopPeriod, online, acountStatus, avatar FROM users WHERE idUser=${idUser}`,
+    text: `SELECT name, email, homePoint, driveHoursPerDay, driveStopPeriod, eatStopPeriod, online, acountStatus, is_activated, activation_id, avatar FROM users WHERE idUser=${idUser}`,
   };
   return query;
 };
 
 UserModel.getUserCars = (idUser) => {
   const query = {
-    text: `SELECT cars.idCar, cars.nameCar, cars.tankVolume, cars.maxPassengersCount, cars.avgGasCost, cars.baggageVolume, cars.avgSpeed FROM cars, users WHERE cars.userId = ${idUser} ORDER BY cars.idCar DESC`
+    text: `SELECT cars.idCar, cars.nameCar, cars.tankVolume, cars.maxPassengersCount, cars.avgGasCost, cars.baggageVolume, cars.avgSpeed FROM cars WHERE cars.userId = ${idUser} ORDER BY cars.idCar DESC`
   };
   return query;
 };
 
 UserModel.addNewCar = ({ 
+  iduser,
   nameCar,
   tankVolume,
   maxPassengersCount,
   avgGasCost,
   baggageVolume,
   avgSpeed 
-}, userId) => {
+}) => {
   const query = {
-    text: `INSERT INTO cars (userId, nameCar, tankVolume, maxPassengersCount, avgGasCost, baggageVolume, avgSpeed) VALUES(${userId}, '${nameCar}', ${tankVolume}, ${maxPassengersCount}, ${avgGasCost}, ${baggageVolume}, ${avgSpeed})`
+    text: `INSERT INTO cars (userId, nameCar, tankVolume, maxPassengersCount, avgGasCost, baggageVolume, avgSpeed) VALUES(${iduser}, '${nameCar}', ${tankVolume}, ${maxPassengersCount}, ${avgGasCost}, ${baggageVolume}, ${avgSpeed})`
   };
   return query;
 };

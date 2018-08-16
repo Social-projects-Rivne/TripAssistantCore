@@ -168,5 +168,4 @@ class SearchRoute extends Component {
   }
 }
 
-
 export default SearchRoute;

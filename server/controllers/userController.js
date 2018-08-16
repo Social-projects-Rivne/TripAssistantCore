@@ -3,8 +3,8 @@ const UserModel = require('../models/userModel');
 
 const userController = {};
 
-userController.getUser = ({ params: { id } }, res) => {
-  db.query(UserModel.getUser(id))
+userController.getUser = ({ params: { iduser } }, res) => {
+  db.query(UserModel.getUser(iduser))
     .then(({ rows }) => res.json(rows))
     .catch(err => {
       res.status(500).end();
@@ -12,8 +12,8 @@ userController.getUser = ({ params: { id } }, res) => {
     });
 };
 
-userController.getUserCars = ({ params: { id } }, res) => {
-  db.query(UserModel.getUserCars(id))
+userController.getUserCars = ({ params: { iduser } }, res) => {
+  db.query(UserModel.getUserCars(iduser))
     .then(({ rows }) => res.json(rows))
     .catch(err => {
       res.status(500).end();
@@ -21,8 +21,8 @@ userController.getUserCars = ({ params: { id } }, res) => {
     });
 };
 
-userController.addNewCar = ({ params: { id }, body: { formData } }, res) => {
-  db.query(UserModel.addNewCar(formData, id))
+userController.addNewCar = ({ body: { formData } }, res) => {
+  db.query(UserModel.addNewCar(formData))
     .then(res.send())
     .catch(err => {
       res.status(500).end();

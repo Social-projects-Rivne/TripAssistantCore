@@ -7,7 +7,7 @@ class PersonalInfoCard extends Component {
   render() {
     const {
       settings: {
-        name, email, userpic, rating, kmTraveled, tripsCount
+        name: { last, first }, email, userpic = null, rating = 5, kmTraveled = 10, tripsCount = 4
       }
     } = this.props;
 
@@ -16,7 +16,7 @@ class PersonalInfoCard extends Component {
         <p className="personal-info__heading">Personal Information</p>
         <div className="personal-info__body">
           <img src={userpic ? `images/${userpic}` : DefaultUserpic} className="personal-info__userpic" alt="userpic" />
-          <p className="personal-info__name">{name}</p>
+          <p className="personal-info__name">{`${first} ${last}`}</p>
           <p className="personal-info__email">{email}</p>
           <div className="personal-info__divider" />
           <div className="personal-info__stats">
@@ -44,7 +44,7 @@ class PersonalInfoCard extends Component {
 
 PersonalInfoCard.propTypes = {
   settings: PropTypes.shape({
-    name: PropTypes.string,
+    name: PropTypes.object,
     email: PropTypes.string,
     userpic: PropTypes.string,
     rating: PropTypes.number,

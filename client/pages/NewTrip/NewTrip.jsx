@@ -6,7 +6,6 @@ import PreLoader from '../../components/PreLoader';
 import { random, colors } from '../../helpers';
 import './NewTrip.scss';
 
-
 class NewTrip extends Component {
   constructor() {
     super();
