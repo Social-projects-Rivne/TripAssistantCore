@@ -1,31 +1,32 @@
-
 import React, { Component } from 'react';
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import './LoginCard.scss';
 import SignUpForm from './Form/SignUpForm';
 import SignInForm from './Form/SignInForm';
 
 class LoginCard extends Component {
   render() {
+    const { updateIsAuth } = this.props;
+
     return (
-      <Router basename="/react-auth-ui/">
-        <div className="Auth_Card">
-          <div className="Auth__Aside" />
-          <div className="Auth__Form">
-            <div className="PageSwitcher">
-              <Link to="/login" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign In</Link>
-              <Link exact to="/" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign Up</Link>
-            </div>
-            <Route exact path="/" component={SignUpForm} />
-            <Route path="/login" component={SignInForm} />
-            <div className="FormTitle">
-              <Link to="/login" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign In</Link> or <Link exact to="/" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign Up</Link>
-            </div>
+      <div className="Auth_Card">
+        <div className="Auth__Aside" />
+        <div className="Auth__Form">
+          <div className="PageSwitcher">
+            <Link to="/login" className="PageSwitcher__Item">Sign In</Link>
+            <Link to="/register" className="PageSwitcher__Item">Sign Up</Link>
           </div>
+          <Route path="/register" component={SignUpForm} />
+          <Route path="/login" render={props => <SignInForm {...props} updateIsAuth={updateIsAuth} />} />
         </div>
-      </Router>
+      </div>
     );
   }
 }
+
+LoginCard.propTypes = {
+  updateIsAuth: PropTypes.func.isRequired
+};
 
 export default LoginCard;

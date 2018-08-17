@@ -1,11 +1,15 @@
 import React, { Fragment } from 'react';
+import { Redirect } from 'react-router-dom';
 import UserList from '../../components/UserList';
 
 const Dashbord = () => (
-  <Fragment>
-    <h1>Dashbord</h1>
-    <UserList />
-  </Fragment>
+  sessionStorage.getItem('role') === 'admin'
+    ? (
+      <Fragment>
+        <h1 className="main-header">Dashbord</h1>
+        <UserList />
+      </Fragment>)
+    : <Redirect to="/profile" />
 );
 
 export default Dashbord;

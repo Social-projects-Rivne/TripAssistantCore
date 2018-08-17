@@ -2,7 +2,7 @@ const paths = require('./paths');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-var styleLintPlugin = require('stylelint-webpack-plugin');
+const styleLintPlugin = require('stylelint-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 
@@ -10,7 +10,8 @@ module.exports = {
   entry: paths.appIndexJs,
   output: {
     path: paths.appBuild,
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/'
   },
   module: {
     rules: [

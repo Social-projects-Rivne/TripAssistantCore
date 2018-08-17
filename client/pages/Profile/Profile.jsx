@@ -11,29 +11,43 @@ class Profile extends Component {
     super();
 
     this.state = {
-      userInfo: {},
+      userInfo: null,
       carsInfo: [],
       feedbacksInfo: [],
       allHistory: []
     };
+    this.USER_ID = sessionStorage.getItem('iduser');
   }
 
   componentDidMount() {
-    axios.get('public/data/profileUserData.json')
-      .then(({ data }) => this.setState({ userInfo: data[0] }));
-
-    axios.get('public/data/feedbacksData.json')
-      .then(({ data }) => this.setState({ feedbacksInfo: data }));
-
-    axios.get('public/data/allHistory.json')
-      .then(({ data }) => this.setState({ allHistory: data }));
-
+    this.fetchFeedbacksData();
+    this.fetchUserData();
     this.updateCarData();
+    this.fetchHistoryData();
+  }
+
+  fetchFeedbacksData = () => {
+    axios.get(`/api/feedbacks/${this.USER_ID}`)
+      .then(({ data }) => this.setState({ feedbacksInfo: data }))
+      .catch(e => console.error(e));
+  }
+
+  fetchHistoryData = () => {
+    axios.get(`/api/trips/${this.USER_ID}/byId`)
+      .then(({ data }) => this.setState({ allHistory: data }))
+      .catch(e => console.error(e));
+  }
+
+  fetchUserData = () => {
+    axios.get(`api/user/${this.USER_ID}`)
+      .then(({ data }) => this.setState({ userInfo: data[0] }))
+      .catch(e => console.error(e));
   }
 
   updateCarData = () => {
-    axios.get('public/data/userCarsData.json')
-      .then(({ data }) => this.setState({ carsInfo: data }));
+    axios.get(`api/user/${this.USER_ID}/cars`)
+      .then(({ data }) => this.setState({ carsInfo: data }))
+      .catch(e => console.error(e));
   }
 
   render() {
@@ -47,7 +61,7 @@ class Profile extends Component {
         <div className="profile-content-wrap">
           <div className="row">
             <div className="col-12 col-md-6">
-              <PersonalInfoCard settings={userInfo} />
+              {userInfo && <PersonalInfoCard settings={userInfo} />}
               <FeedbacksCard feedbacksInfo={feedbacksInfo} />
             </div>
             <div className="col-12 col-md-6">

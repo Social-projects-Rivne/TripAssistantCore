@@ -1,10 +1,15 @@
 [  
+<<<<<<< HEAD
   {  "id":1,
      "name": "Lviv - Paris",
+=======
+  {  
+     "name": "from trip where trip id",
+>>>>>>> 276a0a0c3e59aafdc031825c862ab6e1cd6fc623
      "rating": 4.7,
      "feedback": "The driver was drunk! I liked everything!\n\n Quisque varius imperdiet auctor. In et dui elit. Nam metus lorem, imperdiet iaculis imperdiet sit amet, ullamcorper quis ipsum. Sed sed nisi vitae magna vestibulum commodo.",
-     "userName": "Petro",
-     "date": "07/08/2018"
+     "userName": "from user where create_by",
+     "date": "from trip where trip id"
   },
   {  
     "id":2,

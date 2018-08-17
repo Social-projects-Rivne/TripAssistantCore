@@ -13,3 +13,15 @@
   border-bottom: 1px solid #364154;
   background-color: #252d3a;
 }
+
+.logoutBtn {
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    color: #fff;
+    background: transparent;
+  }
+}

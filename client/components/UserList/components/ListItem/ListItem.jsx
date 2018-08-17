@@ -1,88 +1,49 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import DefaultUserpic from 'images/default-userpic.png';
 
-
-const OnlineStatus = ({ status }) => (
-  <span className={`userlist-status ${status ? 'online' : 'offline'}`}>{status ? 'Online' : 'Offline'}</span>
-);
-
-const AccountStatus = ({ status }) => (
-  <span className={`new badge ${status ? 'blue' : 'red darken-4'}`} data-badge-caption={status ? 'Active' : 'Block'} />
-);
-
-const UserRole = ({ isModerator }) => (
-  <span title="Change user role" className="userlist-role new badge" data-badge-caption={isModerator ? 'Moderator' : 'User'} />
-);
-
-const BlockButton = ({ isActive }) => (
-  <a href="/#" className={`userlist-block waves-effect waves-light btn-large yellow ${isActive ? 'darken-3' : 'darken-1'}`}>{isActive ? 'Block' : 'Unblock'}</a>
-);
 
 const ListItem = ({
-  picture,
+  iduser,
+  avatar,
+  role,
   name: { first, last },
-  online,
-  home_point: { city },
-  acount_status: acountStatus
+  acount_status: acountStatus,
+  setUserStatus,
+  deleteUser
 }) => (
-  <li className="collection-item">
-    <div className="userlist-info">
-      <div className="userlist-img">
-        <img src={picture} alt={first} />
+  <div className={`userlist__item main-card__wrap ${acountStatus ? '' : 'red lighten-4'} ${role === 'admin' ? 'hide' : ''}`}>
+    <div className="userlist__info">
+      <div className="userlist__img">
+        <img src={avatar ? `images/${avatar}` : DefaultUserpic} alt={first} />
       </div>
-      <div className="userlist-column">
-        <h4>{`${first} ${last}`}</h4>
-        <OnlineStatus status={online} />
+      <div className="userlist__column">
+        <h5>{`${first} ${last}`}</h5>
       </div>
     </div>
-    <div className="userlist-column">
-      <span className="userlist-city">City: <b>{city}</b></span>
-      <span>Account Status: <AccountStatus status={acountStatus} /></span>
-      <span>Role:<UserRole /></span>
+    <div className="userlist__actions">
+      {/* <a href="/#" className="main-btn">View</a> */}
+      <a href="#!" className="main-btn" onClick={() => setUserStatus(iduser, !acountStatus)}>{acountStatus ? 'Block' : 'Unblock'}</a>
+      <a href="#!" className="main-btn" onClick={() => deleteUser(iduser)}>Delete</a>
     </div>
-    <div className="userlist-actions">
-      <a href="/#" className="waves-effect waves-light btn-large">View</a>
-      <BlockButton isActive={acountStatus} />
-      <a href="/#" className="waves-effect waves-light btn-large red darken-2">Delete</a>
-    </div>
-  </li>
+  </div>
 );
 
-OnlineStatus.propTypes = {
-  status: PropTypes.bool
-};
-
-OnlineStatus.defaultProps = {
-  status: false
-};
-
-AccountStatus.propTypes = {
-  status: PropTypes.bool.isRequired
-};
-
-UserRole.propTypes = {
-  isModerator: PropTypes.bool
-};
-
-UserRole.defaultProps = {
-  isModerator: false
-};
-
-BlockButton.propTypes = {
-  isActive: PropTypes.bool.isRequired
-};
-
 ListItem.propTypes = {
-  picture: PropTypes.string.isRequired,
+  role: PropTypes.string.isRequired,
+  iduser: PropTypes.number.isRequired,
+  setUserStatus: PropTypes.func.isRequired,
+  deleteUser: PropTypes.func.isRequired,
+  avatar: PropTypes.string,
   name: PropTypes.shape({
     first: PropTypes.string.isRequired,
     last: PropTypes.string.isRequired
   }).isRequired,
-  online: PropTypes.bool.isRequired,
-  home_point: PropTypes.shape({
-    city: PropTypes.string.isRequired
-  }).isRequired,
   acount_status: PropTypes.bool.isRequired
+};
+
+ListItem.defaultProps = {
+  avatar: null
 };
 
 export default ListItem;

@@ -38,7 +38,7 @@ class CarCard extends Component {
   }
 
   componentDidMount() {
-    this.setFirstCarAsActive();
+
   }
 
   setFirstCarAsActive = () => {
@@ -53,8 +53,8 @@ class CarCard extends Component {
 
   handleDeleteCar = (e) => {
     e.preventDefault();
-    const { carInfo: { idCars }, updateCarData } = this.props;
-    axios.post('localhost/something', { logs: idCars })
+    const { carInfo: { idcar: idCar }, updateCarData } = this.props;
+    axios.post('api/user/deleteCar/', { data: idCar })
       .then(() => {
         updateCarData();
         toast({ html: 'Vehicle has been deleted!' });
@@ -66,11 +66,11 @@ class CarCard extends Component {
   handleUpdateCar = (e) => {
     e.preventDefault();
     const { inputInfo, updateCarData } = this.props;
-    const updateCarinfo = { idCars: e.target.elements.idCars.value };
+    const updateCarinfo = { idCar: e.target.elements.idCars.value };
     inputInfo.forEach((el) => {
       updateCarinfo[el.inputName] = e.target.elements[el.inputName].value;
     });
-    axios.post('localhost/something', { logs: updateCarinfo })
+    axios.post('/api/user/updateCar/', { newCarData: updateCarinfo })
       .then(() => {
         updateCarData();
         toast({ html: 'Vehicle has been updated!' });
@@ -86,14 +86,20 @@ class CarCard extends Component {
   render() {
     const {
       carInfo: {
-        idCars, nameCar, tankVolume, maxPassengersCount, avgGasCost, baggageVolume, avgSpeed
+        idcar: idCars,
+        namecar: nameCar,
+        tankvolume: tankVolume,
+        maxpassengerscount: maxPassengersCount,
+        avggascost: avgGasCost,
+        baggagevolume: baggageVolume,
+        avgspeed: avgSpeed
       },
       id,
       inputInfo
     } = this.props;
     const { isActive, isModalOpen } = this.state;
     const carInfoArr = [
-      nameCar, tankVolume, maxPassengersCount, avgGasCost, baggageVolume, avgSpeed
+      nameCar.trim(), tankVolume, maxPassengersCount, avgGasCost, baggageVolume, avgSpeed
     ];
 
     return (

@@ -1,30 +1,53 @@
 .userlist {
-  .collection-item {
+  &__header {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+
+    span {
+      min-width: 30%;
+    }
   }
 
-  &-info {
+  &__item {
     display: flex;
-    width: 35%;
+    justify-content: space-around;
+    margin-bottom: 5px;
+
+    & > div {
+      min-width: 40%;
+      min-height: 80px;
+    }
+  }
+
+  &__content {
+    max-width: 1024px;
+  }
+
+  &__info {
+    display: flex;
     align-items: center;
   }
 
-  &-img {
+  &__img {
     margin-right: 30px;
     border-radius: 50%;
     height: 55px;
     overflow: hidden;
   }
 
-  &-column {
+  &__column {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+
+    &--margin {
+      margin-left: -5%;
+    }
   }
 
-  &-actions {
+  &__actions {
     display: flex;
+    justify-content: flex-end;
     align-items: center;
 
     & > :not(:last-child) {
@@ -32,7 +55,7 @@
     }
   }
 
-  &-status {
+  &__status {
     display: flex;
     align-items: center;
     margin-left: 5px;
@@ -40,17 +63,12 @@
     margin-bottom: 14px;
   }
 
-  &-city {
-    display: flex;
-    justify-content: space-between;
+  .main-btn {
+    min-width: 100px;
   }
 
-  &-role {
-    cursor: pointer;
-  }
-
-  &-block {
-    min-width: 130px;
+  h5 {
+    margin: 5px 0;
   }
 }
 
@@ -61,4 +79,31 @@
 
 .options-list {
   margin-bottom: 10px;
+  background-color: #fcfcfd;
+  display: flex;
+  padding: 10px;
 }
+
+.filter-title {
+  margin-left: 10px;
+  padding-top: 6px;
+  font-weight: 600;
+}
+
+.filter-button {
+  display: inline-block;
+  padding: 10px 15px;
+  margin: 0 10px;
+  border-radius: 3px;
+  background-color: #33afe0;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1em;
+  letter-spacing: 0.6px;
+  cursor: pointer;
+  transition: background-color 0.15s linear;
+  text-align: center;
+  vertical-align: middle;
+}
+
