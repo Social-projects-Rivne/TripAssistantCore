@@ -18,19 +18,12 @@ class SignInForm extends Component {
   }
 
   componentDidMount() {
-    const { location: { search }, updateIsAuth } = this.props;
-    const id = search.substr(1);
-    if (id) {
-      axios.get(`/api/register/${id}`)
-        .then(({ data: { iduser, role } }) => {
-          if (iduser) {
-            sessionStorage.setItem('iduser', iduser);
-            sessionStorage.setItem('role', role);
-            updateIsAuth();
-          }
-        })
-        .catch(e => console.log(e));
-    }
+    setTimeout(() => {
+      if (sessionStorage.getItem('iduser')) {
+        const { updateIsAuth } = this.props;
+        updateIsAuth();
+      }
+    }, 1000);
   }
 
   handleChange = ({ target: { value, name } }) => {
@@ -105,8 +98,7 @@ class SignInForm extends Component {
 }
 
 SignInForm.propTypes = {
-  updateIsAuth: PropTypes.func.isRequired,
-  location: PropTypes.objectOf(PropTypes.any).isRequired
+  updateIsAuth: PropTypes.func.isRequired
 };
 
 export default SignInForm;

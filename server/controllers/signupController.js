@@ -23,8 +23,7 @@ signupController.register = (req, res) => {
   const activationId = uuid();
   db.query(SignupModel.inserNewUser(fname, lname, email, password, activationId))
     .then(() => {
-      const fullUrl = `${req.get('origin')}/login?${activationId}`;
-      console.log(fullUrl)
+      const fullUrl = `${req.get('origin')}?${activationId}`;
       const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
