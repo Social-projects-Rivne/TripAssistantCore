@@ -2,7 +2,7 @@ const paths = require('./paths');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-var styleLintPlugin = require('stylelint-webpack-plugin');
+const styleLintPlugin = require('stylelint-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 

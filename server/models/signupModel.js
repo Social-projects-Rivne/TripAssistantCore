@@ -14,6 +14,6 @@ SignupModel.inserNewUser = (fname, lname, email, password, activationId) => {
   return query;
 };
 
-SignupModel.updateIsActivated = activationId => `UPDATE users SET is_activated='true' WHERE activation_id='${activationId}'`;
+SignupModel.updateIsActivated = activationId => `UPDATE users SET is_activated='true' WHERE activation_id='${activationId}' RETURNING iduser, role`;
 
 module.exports = SignupModel;

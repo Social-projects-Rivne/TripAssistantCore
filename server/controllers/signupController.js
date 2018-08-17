@@ -23,8 +23,7 @@ signupController.register = (req, res) => {
   const activationId = uuid();
   db.query(SignupModel.inserNewUser(fname, lname, email, password, activationId))
     .then(() => {
-      const fullUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}/${activationId}`;
-
+      const fullUrl = `${req.get('origin')}?${activationId}`;
       const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -52,13 +51,9 @@ signupController.register = (req, res) => {
 
 signupController.confirmEmail = ({ params: { confirmEmail } }, res) => {
   db.query(SignupModel.updateIsActivated(confirmEmail))
-    .then(({ rowCount }) => {
-      rowCount
-        ? res.redirect('/login')
-        : res.redirect('/')
-    })
+    .then(({ rows }) => res.send(rows[0]))
     .catch(err => {
-      res.sendFile(path.resolve(__dirname, '..', '..', 'dist', 'index.html'));
+      res.status(500).end();
       console.error(err);
     })
 };

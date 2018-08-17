@@ -17,6 +17,15 @@ class SignInForm extends Component {
     };
   }
 
+  componentDidMount() {
+    setTimeout(() => {
+      if (sessionStorage.getItem('iduser')) {
+        const { updateIsAuth } = this.props;
+        updateIsAuth();
+      }
+    }, 1000);
+  }
+
   handleChange = ({ target: { value, name } }) => {
     this.setState({ [name]: value });
   }
@@ -78,7 +87,6 @@ class SignInForm extends Component {
               required
             />
           </div>
-
           <div className="FormField">
             <button className="FormField__Button mr-20" type="submit">Sign In</button> <Link to="/register" className="FormField__Link">Create an account</Link>
           </div>

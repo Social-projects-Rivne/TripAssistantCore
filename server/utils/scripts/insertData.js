@@ -7,7 +7,7 @@ const users = {
       `'{ "first": "Oneill", "last": "Long" }', '5b421eedc4235617a7ca1c0f', 'oneill.long@email.net', '{ "city": "Cutter", "position": ["-71.644535", "-32.810064"] }', 15, 7, 3.7, true, true, true, 'qert45qtegwb34wb3645b645e45g4b5', 'user'`,
       `'{ "first": "Odessa", "last": "Mckee" }', '5b421eedc4235617a7ca1c0f', 'oneill.long@email.net', '{ "city": "Cutter", "position": ["-71.644535", "-32.810064"] }', 15, 7, 3.7, true, true, true, 'qert45qtegwb34wb3645b645e45g4b5', 'user'`,
       `'{ "first": "Calhoun", "last": "Wilkerson" }', '5b421eedc4235617a7ca1c0f', 'oneill.long@email.net', '{ "city": "Cutter", "position": ["-71.644535", "-32.810064"] }', 15, 7, 3.7, true, true, true, 'qert45qtegwb34wb3645b645e45g4b5', 'user'`,
-      `'{ "first": "Rajesh", "last": "Koothrappali" }', '65e84be33532fb784c48129675f9eff3a682b27168c0ea744b2cf58ee02337c5', 'email@mail.com', '{ "city": "Cutter", "position": ["-71.644535", "-32.810064"] }', 15, 7, 3.7, true, true, true, 'qert45qtegwb34wb3645b645e45g4b5', 'admin'`,
+      `'{ "first": "Rajesh", "last": "Koothrappali" }', '65e84be33532fb784c48129675f9eff3a682b27168c0ea744b2cf58ee02337c5', 'email@mail.com', '{ "city": "Cutter", "position": ["-71.644535", "-32.810064"] }', 15, 7, 3.7, true, true, true, 'qert45qtegwb34wb3645b645e45g4b5', 'user'`,
   ]
 };
 
@@ -36,9 +36,9 @@ const feedback = {
   table: 'feedback',
   fields: 'user_id, trip_id, create_by, rating, text',
   values: [
-    `1, 1, 2, 4.7, 'The driver was drunk! I liked everything! Quisque varius imperdiet auctor. In et dui elit. Nam metus lorem, imperdiet iaculis imperdiet sit amet, ullamcorper quis ipsum. Sed sed nisi vitae magna vestibulum commodo.'`,
-    `1, 2, 3, 3, 'The driver was drunk! I liked everything! Quisque varius imperdiet auctor. In et dui elit. Nam metus lorem, imperdiet iaculis imperdiet sit amet, ullamcorper quis ipsum. Sed sed nisi vitae magna vestibulum commodo.'`,
-    `1, 3, 5, 5, 'The driver was drunk! I liked everything! Quisque varius imperdiet auctor. In et dui elit. Nam metus lorem, imperdiet iaculis imperdiet sit amet, ullamcorper quis ipsum. Sed sed nisi vitae magna vestibulum commodo.'`
+    `1, 2, 2, 4.7, 'The driver was drunk! I liked everything! Quisque varius imperdiet auctor. In et dui elit. Nam metus lorem, imperdiet iaculis imperdiet sit amet, ullamcorper quis ipsum. Sed sed nisi vitae magna vestibulum commodo.'`,
+    `6, 4, 3, 3, 'The driver was drunk! I liked everything! Quisque varius imperdiet auctor. In et dui elit. Nam metus lorem, imperdiet iaculis imperdiet sit amet, ullamcorper quis ipsum. Sed sed nisi vitae magna vestibulum commodo.'`,
+    `6, 5, 5, 5, 'The driver was drunk! I liked everything! Quisque varius imperdiet auctor. In et dui elit. Nam metus lorem, imperdiet iaculis imperdiet sit amet, ullamcorper quis ipsum. Sed sed nisi vitae magna vestibulum commodo.'`
   ]
 }
 
