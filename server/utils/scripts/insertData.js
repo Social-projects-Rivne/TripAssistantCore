@@ -36,9 +36,9 @@ const feedback = {
   table: 'feedback',
   fields: 'user_id, trip_id, create_by, rating, text',
   values: [
-    `1, 1, 2, 4.7, 'The driver was drunk! I liked everything! Quisque varius imperdiet auctor. In et dui elit. Nam metus lorem, imperdiet iaculis imperdiet sit amet, ullamcorper quis ipsum. Sed sed nisi vitae magna vestibulum commodo.'`,
-    `1, 2, 3, 3, 'The driver was drunk! I liked everything! Quisque varius imperdiet auctor. In et dui elit. Nam metus lorem, imperdiet iaculis imperdiet sit amet, ullamcorper quis ipsum. Sed sed nisi vitae magna vestibulum commodo.'`,
-    `1, 3, 5, 5, 'The driver was drunk! I liked everything! Quisque varius imperdiet auctor. In et dui elit. Nam metus lorem, imperdiet iaculis imperdiet sit amet, ullamcorper quis ipsum. Sed sed nisi vitae magna vestibulum commodo.'`
+    `1, 2, 2, 4.7, 'The driver was drunk! I liked everything! Quisque varius imperdiet auctor. In et dui elit. Nam metus lorem, imperdiet iaculis imperdiet sit amet, ullamcorper quis ipsum. Sed sed nisi vitae magna vestibulum commodo.'`,
+    `6, 4, 3, 3, 'The driver was drunk! I liked everything! Quisque varius imperdiet auctor. In et dui elit. Nam metus lorem, imperdiet iaculis imperdiet sit amet, ullamcorper quis ipsum. Sed sed nisi vitae magna vestibulum commodo.'`,
+    `6, 5, 5, 5, 'The driver was drunk! I liked everything! Quisque varius imperdiet auctor. In et dui elit. Nam metus lorem, imperdiet iaculis imperdiet sit amet, ullamcorper quis ipsum. Sed sed nisi vitae magna vestibulum commodo.'`
   ]
 }
 
