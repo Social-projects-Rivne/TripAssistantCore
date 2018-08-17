@@ -79,4 +79,31 @@
 
 .options-list {
   margin-bottom: 10px;
+  background-color: #fcfcfd;
+  display: flex;
+  padding: 10px;
 }
+
+.filter-title {
+  margin-left: 10px;
+  padding-top: 6px;
+  font-weight: 600;
+}
+
+.filter-button {
+  display: inline-block;
+  padding: 10px 15px;
+  margin: 0 10px;
+  border-radius: 3px;
+  background-color: #33afe0;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1em;
+  letter-spacing: 0.6px;
+  cursor: pointer;
+  transition: background-color 0.15s linear;
+  text-align: center;
+  vertical-align: middle;
+}
+

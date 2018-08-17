@@ -9,7 +9,8 @@ class UserList extends Component {
     super();
 
     this.state = {
-      userList: []
+      userList: [],
+      initialState: []
     };
   }
 
@@ -19,7 +20,7 @@ class UserList extends Component {
 
   getAllUsers = () => {
     axios.get('/api/allUsers')
-      .then(({ data }) => this.setState({ userList: data }));
+      .then(({ data }) => this.setState({ userList: data, initialState: data }));
   }
 
   setUserStatus = (id, status) => {
@@ -40,12 +41,45 @@ class UserList extends Component {
       .catch(err => console.log(err));
   }
 
+  sortListASC = () => {
+    const { initialState } = this.state;
+    this.setState({ userList: initialState.sort((a, b) => (a.name.last < b.name.last ? -1 : 1)) });
+  };
+
+  sortListDESC = () => {
+    const { initialState } = this.state;
+    this.setState({ userList: initialState.sort((a, b) => (a.name.last > b.name.last ? -1 : 1)) });
+  };
+
+  filterListActive = () => {
+    const { initialState } = this.state;
+    this.setState({ userList: initialState.filter(person => person.acount_status === true) });
+  };
+
+  filterListBlock = () => {
+    const { initialState } = this.state;
+    this.setState({ userList: initialState.filter(person => person.acount_status === false) });
+  };
+
+  initState = () => {
+    this.getAllUsers();
+  };
+
   render() {
     const { userList } = this.state;
     return (
       <div className="content__wrapper userlist__content">
         {/* <a href="/#" className="waves-effect waves-light btn purple darken-4">Add user</a> */}
         <div className="main-card__wrap">
+          <div className="options-list">
+            <a href="#!" className="filter-button" onClick={this.initState}>Clear filters and sorting</a>
+            <p className="filter-title">Sort alphabetically(by last name):</p>
+            <a href="#!" className="filter-button" onClick={this.sortListASC}>Ascending</a>
+            <a href="#!" className="filter-button" onClick={this.sortListDESC}>Descending</a>
+            <p className="filter-title">Filter by:</p>
+            <a href="#!" className="filter-button" onClick={this.filterListActive}>User is active</a>
+            <a href="#!" className="filter-button" onClick={this.filterListBlock}>User is block</a>
+          </div>
           <div className="userlist__header main-card__heading">
             <span>User</span>
             <span>Actions</span>
