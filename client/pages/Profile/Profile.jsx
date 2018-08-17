@@ -66,7 +66,7 @@ class Profile extends Component {
             </div>
             <div className="col-12 col-md-6">
               <CarsCard carsInfo={carsInfo} updateCarData={this.updateCarData} />
-              <HistoryWrap allHistory={allHistory} />
+              <HistoryWrap allHistory={allHistory} feedbacksInfo={feedbacksInfo} />
             </div>
           </div>
         </div>
@@ -74,5 +74,4 @@ class Profile extends Component {
     );
   }
 }
-
 export default Profile;

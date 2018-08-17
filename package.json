@@ -40,6 +40,7 @@
     "react-addons-css-transition-group": "^15.6.2",
     "react-dom": "^16.3.2",
     "react-geosuggest": "^2.8.0",
+    "react-modal": "^3.5.1",
     "react-router-dom": "^4.3.1",
     "uuid-v4": "^0.1.0",
     "react-loader-spinner": "^2.1.0"

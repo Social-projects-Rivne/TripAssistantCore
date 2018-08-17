@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 import './HistoryWrap.scss';
 import HistoryCard from './HistoryCard';
 
+
 class HistoryWrap extends Component {
   render() {
-    const { allHistory } = this.props;
+    const { allHistory, feedbacksInfo } = this.props;
 
     return (
       <div className="all-history__wrap">
@@ -14,14 +15,14 @@ class HistoryWrap extends Component {
           History
         </p>
         <div className="feedbacks__body">
-          {allHistory.map(({ name, date, active, color }, i) => (
-            <HistoryCard
-              key={i}
-              routeName={name}
-              routeColor={color}
-              routeDate={date}
-              isActive={active}
-            />))}
+          {allHistory.map(({ name, date, isActive, id }, i) => (
+            <HistoryCard key={i} routeName={name} routeDate={date} isActive={isActive} id={id} />
+          ))}
+        </div>
+        <div className="feedbacksInfo">
+          {feedbacksInfo.map(({ rating, feedback }, i) => (
+            <HistoryCard key={i} rating={rating} feedback={feedback} />
+          ))}
         </div>
       </div>
     );
@@ -29,7 +30,8 @@ class HistoryWrap extends Component {
 }
 
 HistoryWrap.propTypes = {
-  allHistory: PropTypes.arrayOf(PropTypes.object).isRequired
+  allHistory: PropTypes.arrayOf(PropTypes.object).isRequired,
+  feedbacksInfo: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default HistoryWrap;
