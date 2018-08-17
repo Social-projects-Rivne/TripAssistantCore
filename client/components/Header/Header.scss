@@ -1,0 +1,27 @@
+.header {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  padding: 5px 15px;
+  border-bottom: 1px solid #364154;
+  background-color: #252d3a;
+}
+
+.logoutBtn {
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    color: #fff;
+    background: transparent;
+  }
+}

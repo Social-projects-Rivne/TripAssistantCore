@@ -1,0 +1,54 @@
+.historyCard__p {
+  color: #333;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.5em;
+
+  .historyCard__p--date {
+    font-weight: 400;
+    opacity: 0.8;
+  }
+
+  .historyCard__p--is-active {
+    font-weight: 700;
+    opacity: 1;
+    display: inline-block;
+    margin-left: 15px;
+    color: #33afe0;
+  }
+}
+
+.historyCard {
+  box-shadow: 0 20px 40px rgba(89, 100, 191, 0.1);
+  border-radius: 2px;
+  background-color: #fff;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 18px 15px 22px;
+  width: 100%;
+}
+
+.historyCard__btn {
+  display: inline-block;
+  padding: 15px 23px 15px;
+  margin: 0 10px;
+  border-radius: 3px;
+  background-color: #33afe0;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1em;
+  letter-spacing: 0.6px;
+  cursor: pointer;
+  transition: background-color 0.15s linear;
+
+  &:hover {
+    background-color: #252d3a;
+  }
+}
+
+.trip_details {
+  margin-top: 20px;
+}

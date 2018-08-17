@@ -1,0 +1,61 @@
+
+.main-info {
+  background-color: #f7f8fa;
+  display: flex;
+  flex-direction: column;
+}
+
+.Map {
+  width: 80%;
+  height: 300px;
+  border: 1px, solid, black;
+  margin: 0 auto;
+  background-color: lightblue;
+}
+
+.contacts {
+  text-align: center;
+}
+
+.form {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+footer {
+  margin-top: 50px;
+  height: 100px;
+  width: 100%;
+  background-color: rgb(140, 188, 243);
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+.copyright {
+  margin-top: 40px;
+  width: 30%;
+}
+
+.footer-menu {
+  margin-top: 40px;
+  width: 30%;
+
+  ul {
+    display: flex;
+    flex-direction: row;
+
+    li {
+      margin-right: 30px;
+      margin-left: 60px;
+      padding: 5px;
+    }
+
+    li:hover {
+      background-color: chocolate;
+      padding: 5px;
+      transition: 0.2s;
+    }
+  }
+}
