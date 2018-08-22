@@ -1,0 +1,31 @@
+.trip-point {
+  margin: 10px;
+
+  &__wrapper {
+    padding: 20px 10px;
+    position: relative;
+  }
+
+  &__item {
+    margin-bottom: 10px;
+  }
+
+  input[type=text]:not(.browser-default) {
+    font-size: 1.2em;
+    background-color: transparent;
+    margin: 0;
+    border-color: transparent;
+
+    &::placeholder {
+      color: #252d3a;
+    }
+  }
+
+  .geosuggest__suggests {
+    background: #f7f8fa;
+    top: calc(100% - 19px);
+    border-top: 1px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}

@@ -1,0 +1,10 @@
+.new-trip {
+  display: flex;
+  position: relative;
+
+  .pre-loader {
+    left: 286px;
+    margin-top: -10px;
+    width: calc(100% - 300px);
+  }
+}

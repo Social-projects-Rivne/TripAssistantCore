@@ -1,0 +1,80 @@
+.FormCenter {
+  margin-bottom: 50px;
+}
+
+.FormField {
+  margin-bottom: 20px;
+
+  &__Label {
+    display: block;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.9em;
+    color: #7e7b7b;
+  }
+
+  &__Input {
+    width: 85%;
+    background-color: transparent;
+    border: none;
+    color: #252525;
+    outline: none;
+    border-bottom: 1px solid #50ff25;
+    font-size: 1em;
+    font-weight: 300;
+    padding-bottom: 10px;
+    margin-top: 10px;
+
+    &::placeholder {
+      color: #616e7f;
+    }
+  }
+
+  &__Button {
+    background-color: #4c5768;
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 25px;
+    padding: 15px 70px;
+    font-size: 0.8em;
+    font-weight: 500;
+  }
+
+  &__Link {
+    color: #0579d8f1;
+    text-decoration: none;
+    display: inline-block;
+    border-bottom: 1.5px solid #225e62;
+    padding-bottom: 5px;
+  }
+
+  &__CheckboxLabel {
+    color: #e3eefd;
+    font-size: 0.9em;
+  }
+
+  &__Checkbox {
+    position: relative;
+    top: 1.5px;
+  }
+
+  &__TermsLink {
+    color: white;
+    border-bottom: 1px solid #901986;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 5px;
+  }
+
+  .helper-text {
+    color: #ef5350;
+    font-size: 12px;
+  }
+}
+
+.helper-text.red-helper-text {
+  color: #ef5350;
+  font-size: 12px;
+}

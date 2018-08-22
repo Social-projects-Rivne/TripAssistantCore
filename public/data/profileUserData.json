@@ -1,0 +1,10 @@
+[  
+  {  
+     "id_user":1,
+     "email":"asda@asdasd.com",
+     "avatar":null,
+     "rating": 4.67,
+     "kmTraveled": 10.357,
+     "tripsCount": 5
+  }
+]

@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// What alternative for this
+html,
+body,
+#app,
+.menu,
+.main {
+  min-height: calc(100vh - 50px);
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  height: 100%;
+  flex-shrink: 0;
+}
+
+ul {
+  list-style: none;
+}

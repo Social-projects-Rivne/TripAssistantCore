@@ -1,0 +1,89 @@
+.profile {
+  min-height: calc(100vh - 50px);
+  margin: -10px -15px;
+  padding-bottom: 40px;
+  text-align: center;
+  background: url('~@images/profile-page-bg.jpg') top;
+  background-size: cover;
+}
+
+.toast {
+  background-color: #252d3a;
+}
+
+.profile__header {
+  color: #252d3a;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1em;
+  padding: 40px 15px 30px;
+  background-color: rgba(#fff, 0.5);
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+
+.profile-content-wrap {
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+  width: 100%;
+  max-width: 1240px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.col-12,
+.col-md-6 {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.col-12 {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+@media (min-width: 992px) {
+  .col-md-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+.deleteCar-modal {
+  background-color: #f7f8fa;
+  text-align: left;
+  margin-bottom: 35px;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 3px;
+  box-shadow: 20px 0 40px rgba(74, 77, 101, 0.2);
+}
+
+.deleteCar-heading {
+  position: relative;
+  color: #252d3a;
+  font-size: 14px;
+  line-height: 1em;
+  font-weight: 600;
+  margin-bottom: 0;
+  padding: 32px 20px 31px;
+  box-shadow: 0 20px 40px rgba(89, 100, 191, 0.1);
+  border-radius: 3px 3px 0 0;
+  text-align: center;
+}
+
+.deleteCar-body {
+  padding: 8px 10px 10px;
+  text-align: center;
+  overflow: hidden;
+}
